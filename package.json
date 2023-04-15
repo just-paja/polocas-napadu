@@ -1,0 +1,17 @@
+{
+  "name": "@polocas-napadu/root",
+  "private": true,
+  "description": "Collection of tools used by Poločas nápadu",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "homepage": "https://polocas-napadu.cz",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
