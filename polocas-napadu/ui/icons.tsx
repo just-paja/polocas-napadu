@@ -1,24 +1,24 @@
-import { RiAddLine, RiSubtractLine, RiClapperboardFill } from 'react-icons/ri'
+import { RiAddLine, RiSubtractLine, RiClapperboardFill } from "react-icons/ri"
 import {
-  FiChevronLeft,
-  FiChevronRight,
-  FiMoreVertical,
-  FiRefreshCw,
-  FiSend,
-  FiTrash2,
-} from 'react-icons/fi'
-import { TbFaceId } from 'react-icons/tb'
+	FiChevronLeft,
+	FiChevronRight,
+	FiMoreVertical,
+	FiRefreshCw,
+	FiSend,
+	FiTrash2,
+} from "react-icons/fi"
+import { TbFaceId } from "react-icons/tb"
 import {
-  FaCalendarDay,
-  FaEnvelopeOpenText,
-  FaFacebookSquare,
-  FaInstagram,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaTicketAlt,
-  FaTwitter,
-  FaYoutube,
-} from 'react-icons/fa'
+	FaCalendarDay,
+	FaEnvelopeOpenText,
+	FaFacebookSquare,
+	FaInstagram,
+	FaMapMarkerAlt,
+	FaPhone,
+	FaTicketAlt,
+	FaTwitter,
+	FaYoutube,
+} from "react-icons/fa"
 
 export const AddIcon = RiAddLine
 export const AgainIcon = FiRefreshCw

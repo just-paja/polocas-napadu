@@ -1,4 +1,9 @@
-import { createRedirectsApp } from './redirects.ts'
+import { createRedirectApp } from "./app.ts"
+import { createServer } from "http"
 
-const app = createRedirectsApp(process.env.REDIRECTS)
+const app = createRedirectApp(process.env.REDIRECTS || "[]")
+const server = createServer(app)
+const port = process.env.PORT || 3000
 
+server.listen(port)
+process.stdout.write(`Listening on server ${port}\n`)

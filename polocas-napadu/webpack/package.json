@@ -1,0 +1,12 @@
+{
+  "name": "@polocas-napadu/webpack",
+  "description": "Shared webpack methods",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "isolation": {
+    "isolate": false
+  }
+}
