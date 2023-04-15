@@ -9,9 +9,11 @@
     "test": "jest"
   },
   "devDependencies": {
-    "lerna": "^6.6.1"
+    "lerna": "^6.6.1",
+    "rome": "12.0.0"
   },
   "workspaces": [
-    "packages/*"
+    "polocas-napadu/*",
+    "longforman/*"
   ]
 }
