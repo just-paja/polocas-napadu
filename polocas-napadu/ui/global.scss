@@ -1,0 +1,47 @@
+@import './variables.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Open Sans', system-ui, sans-serif;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+
+address {
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: $font-size-base;
+  max-width: 40rem;
+  text-align: justify;
+}
+
+dl, ol, ul {
+  margin-top: $baseline;
+}
+
+h1, h2, h3 {
+  font-family: $font-family-heading;
+  margin-top: $baseline * 1.5;
+  text-transform: uppercase;
+}
+
+body > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@polocas-napadu/core",
+  "version": "0.9.18",
+  "description": "Core libraries for Poločas nápadu apps",
+  "private": true,
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "files": [
+    "*.mjs"
+  ],
+  "exports": {
+    "context": "./context.js",
+    "constants": "./constants.js",
+    "sides": "./sides.js",
+    "visibility": "./visibility.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
