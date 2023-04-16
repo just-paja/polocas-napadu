@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: le-letsencrypt
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: pavel.zak@polocas-napadu.cz
+    privateKeySecretRef:
+      name: le-letsencrypt
+    solvers:
+      - http01:
+          ingress:
+            name: le-ingress

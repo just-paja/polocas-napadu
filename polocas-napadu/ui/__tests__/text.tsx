@@ -1,7 +1,7 @@
 import React from "react"
 
 import { describe, it, expect } from '@jest/globals'
-import { ArrayList } from "../text.mjs"
+import { ArrayList } from "../text.tsx"
 import { mount } from "enzyme"
 
 describe("ArrayList component", () => {

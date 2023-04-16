@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 
 import { describe, expect, beforeAll, afterAll, it } from "@jest/globals"
 import { createServer } from "http"
-import { createRedirectApp } from "../redirects"
+import { createRedirectApp } from "../app"
 
 describe("redirects app", () => {
 	let server

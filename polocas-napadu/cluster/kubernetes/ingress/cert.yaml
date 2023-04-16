@@ -1,0 +1,14 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: le-ingress-cert
+spec:
+  domains:
+    - "longforman.cz"
+    - "polocas-napadu.cz"
+    - "polocasnapadu.cz"
+    - "*.longforman.cz"
+    - "*.polocas-napadu.cz"
+    - "*.polocasnapadu.cz"
+    - "*.staging.longforman.cz"
+    - "*.staging.polocas-napadu.cz"

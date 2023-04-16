@@ -33,6 +33,9 @@ const translateRedirect = (req: Request, redirect: Redirect): string | null => {
 export const createRedirectApp = (redirectsStr: string) => {
 	const app = express()
 	const redirects: Redirect[] = parseRedirects(redirectsStr)
+  app.get('/health', (_req, res) => {
+    res.status(200).send({ message: 'ok' })
+  })
 	app.use((req: Request, res: Response) => {
 		try {
 			for (const redirect of redirects) {
@@ -41,7 +44,7 @@ export const createRedirectApp = (redirectsStr: string) => {
 					return res.redirect(redirect.permanent ? 302 : 301, target)
 				}
 			}
-			return res.status(404).send("Not Found")
+			return res.redirect(302, `${parseProtocol(req)}://${getHost(req)}${req.originalUrl}`)
 		} catch (e) {
 			res.status(500).send("Internal Server Error")
 			console.error(e)
