@@ -4,8 +4,7 @@ kind: Ingress
 metadata:
   name: le-ingress
   annotations:
-    # cert-manager.io/issuer: le-letsencrypt
-    # kubernetes.io/ingress.class: nginx
+    cert-manager.io/issuer: le-letsencrypt
     cloud.google.com/neg: "{\"ingress\": true}"
     kubernetes.io/ingress.allow-http: "true"
     kubernetes.io/ingress.global-static-ip-name: le-public-ipv4
@@ -15,16 +14,17 @@ spec:
       name: le-redirects
       port:
         name: "http"
-  #  tls:
-  #  - secretName: le-web-ssl
-  #    hosts:
-  #      - "longforman.cz"
-  #      - "polocas-napadu.cz"
-  #      - "polocasnapadu.cz"
-  #      - "*.longforman.cz"
-  #      - "*.polocas-napadu.cz"
-  #      - "*.polocasnapadu.cz"
-  #      - "*.staging.polocas-napadu.cz"
+  tls:
+    - secretName: le-web-ssl
+      hosts:
+        - "pm.polocas-napadu.cz"
+        #      - "longforman.cz"
+        #      - "polocas-napadu.cz"
+        #      - "polocasnapadu.cz"
+        #      - "*.longforman.cz"
+        #      - "*.polocas-napadu.cz"
+        #      - "*.polocasnapadu.cz"
+        #      - "*.staging.polocas-napadu.cz"
   rules:
     - host: "pm.polocas-napadu.cz"
       http:

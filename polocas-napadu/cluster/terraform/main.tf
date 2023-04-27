@@ -1,7 +1,9 @@
 variable "DB_NAME" { type = string }
 variable "DB_PASS" { type = string }
-variable "DB_USER" { type = string }
 variable "DB_ROOT_PASSWORD" { type = string }
+variable "DB_USER" { type = string }
+variable "EMAIL_PASS" { type = string }
+variable "EMAIL_USER" { type = string }
 variable "REDMINE_SECRET_KEY_BASE" { type = string }
 
 resource "google_iam_workload_identity_pool" "default" {
@@ -27,6 +29,8 @@ locals {
     db_name = var.DB_NAME
     db_pass = var.DB_PASS
     db_user = var.DB_USER
+    email_pass = var.EMAIL_PASS
+    email_user = var.EMAIL_USER
   })
 }
 

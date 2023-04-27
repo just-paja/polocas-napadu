@@ -20,6 +20,7 @@ locals {
   service_port = 30001
   sidecar  = "gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.1.0"
   redmine_secrets = "${terraform.workspace}-redmine-secrets"
+  redmine_config  = "${terraform.workspace}-redmine-config"
   service_account = "${terraform.workspace}-redmine-db"
 }
 
@@ -29,6 +30,27 @@ resource "kubernetes_secret_v1" "redmine_secrets" {
   }
   data = {
     "secret_key_base": var.secret_base,
+  }
+}
+
+resource "kubernetes_secret_v1" "redmine_config" {
+  metadata {
+    name = local.redmine_config
+  }
+  data = {
+    "configuration.yml" = yamlencode({
+      production = {
+        delivery_method = ":smtp"
+        smtp_settings   = {
+          address        = "smtp.gmail.com"
+          authentication = ":plain"
+          domain         = "smtp.gmail.com"
+          password       = var.common.email_pass
+          port           = 587
+          user_name      = var.common.email_user
+        }
+      }
+    })
   }
 }
 
@@ -117,8 +139,10 @@ resource "google_sql_database" "db" {
 resource "kubernetes_deployment" "deployment" {
   depends_on = [
     google_sql_database.db,
-    kubernetes_persistent_volume.files,
     kubernetes_persistent_volume_claim.files,
+    kubernetes_persistent_volume.files,
+    kubernetes_secret_v1.redmine_config,
+    kubernetes_secret_v1.redmine_secrets,
   ]
 
   metadata {
@@ -152,10 +176,22 @@ resource "kubernetes_deployment" "deployment" {
 
       spec {
         service_account_name = local.service_account
+          
+        security_context {
+          fs_group = 1000
+        }
+
         volume {
           name = "files"
           persistent_volume_claim {
             claim_name = local.fs_name
+          }
+        }
+
+        volume {
+          name = "configuration"
+          secret {
+            secret_name = local.redmine_config
           }
         }
 
@@ -173,6 +209,12 @@ resource "kubernetes_deployment" "deployment" {
         container {
           image = local.image
           name  = module.npm.ident
+/*
+          command = [
+            "/bin/sh", "-c",
+            "ln -s /var/redmine/config/configuration.yml /usr/src/redmine/config/configuration.yml && rails server -b 0.0.0.0"
+          ]
+*/
           env {
             name  = "REDMINE_DB_POSTGRES"
             value = "127.0.0.1"
@@ -209,6 +251,10 @@ resource "kubernetes_deployment" "deployment" {
             }
           }
           env {
+            name  = "REDMINE_PLUGINS_MIGRATE"
+            value = "true"
+          }
+          env {
             name  = "PORT"
             value = local.service_port
           }
@@ -218,6 +264,10 @@ resource "kubernetes_deployment" "deployment" {
           volume_mount {
             mount_path = "/usr/src/redmine/files"
             name       = "files"
+          }
+          volume_mount {
+            mount_path = "/var/redmine/config"
+            name       = "configuration"
           }
           readiness_probe {
             initial_delay_seconds = 5

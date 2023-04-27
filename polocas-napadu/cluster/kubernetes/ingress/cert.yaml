@@ -5,11 +5,12 @@ metadata:
   name: le-ingress-cert
 spec:
   domains:
-    - "longforman.cz"
-    - "polocas-napadu.cz"
-    - "polocasnapadu.cz"
-    - "*.longforman.cz"
-    - "*.polocas-napadu.cz"
-    - "*.polocasnapadu.cz"
-    - "*.staging.longforman.cz"
-    - "*.staging.polocas-napadu.cz"
+    - "pm.polocas-napadu.cz"
+#    - "longforman.cz"
+#    - "polocas-napadu.cz"
+#    - "polocasnapadu.cz"
+#    - "*.longforman.cz"
+#    - "*.polocas-napadu.cz"
+#    - "*.polocasnapadu.cz"
+#    - "*.staging.longforman.cz"
+#    - "*.staging.polocas-napadu.cz"
