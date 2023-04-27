@@ -11,6 +11,16 @@ locals {
   service_port = 30000
   redirects = [
     {
+      test: "www.polocasnapadu.cz",
+      target: "polocas-napadu.cz",
+      permanent: true,
+    },
+    {
+      test: "www.longforman.cz",
+      target: "longforman.cz",
+      permanent: true,
+    },
+    {
       test: "(.*)\\.?polocasnapadu.cz",
       target: "$1polocas-napadu.cz",
     },
