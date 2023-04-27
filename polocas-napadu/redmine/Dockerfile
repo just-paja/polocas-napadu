@@ -1,13 +1,17 @@
 FROM redmine:5-alpine
 
 ADD plugins/redmine_agile-1_6_5-light.zip /usr/src/redmine/plugins
-ADD https://github.com/mrliptontea/PurpleMine2/archive/master.zip /usr/src/redmine/public/themes/purple-mine.zip
 
 RUN cd plugins && \
+  wget -O redmine_openid_connect.zip https://github.com/devopskube/redmine_openid_connect/archive/refs/heads/master.zip && \
+  unzip redmine_openid_connect.zip && \
   unzip redmine_agile-1_6_5-light.zip && \
-  rm redmine_agile-1_6_5-light.zip && \
+  mv redmine_openid_connect-master redmine_openid_connect && \
+  rm *.zip && \
   cd ../public/themes && \
+  wget -O purple-mine.zip https://github.com/mrliptontea/PurpleMine2/archive/master.zip && \
   unzip purple-mine.zip && \
   rm purple-mine.zip
 
-RUN bundle install --without development test --no-deployment
+RUN bundle config set --local without 'development test' && \
+  bundle install --no-deployment
