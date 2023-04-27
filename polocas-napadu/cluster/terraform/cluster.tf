@@ -1,3 +1,9 @@
+resource "google_project_iam_member" "runtime_client" {
+  member  = "serviceAccount:${google_service_account.runtime.email}"
+  project = local.common.project
+  role    = "roles/logging.logWriter"
+}
+
 resource "google_container_cluster" "primary" {
   depends_on = [google_project_service.container]
   name       = local.common.cluster
