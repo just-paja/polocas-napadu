@@ -114,93 +114,112 @@ resource "google_sql_database" "db" {
   instance = var.db_instance
 }
 
-resource "kubernetes_pod" "pod" {
+resource "kubernetes_deployment" "deployment" {
   depends_on = [
     google_sql_database.db,
     kubernetes_persistent_volume.files,
     kubernetes_persistent_volume_claim.files,
   ]
+
   metadata {
     name   = module.npm.ident
     labels = {
       app = module.npm.ident
     }
   }
+
   spec {
-    service_account_name = local.service_account
-    volume {
-      name = "files"
-      persistent_volume_claim {
-        claim_name = local.fs_name
+    replicas = 1
+    selector {
+      match_labels = {
+        app = module.npm.ident
       }
     }
 
-    container {
-      image = local.sidecar
-      name  = "${module.npm.ident}-sql-proxy"
-      args  = [
-        var.db_connect
-      ]
-      security_context {
-        run_as_non_root = true
+    template {
+      metadata {
+        labels = {
+          app = module.npm.ident
+        }
       }
-    }
 
-    container {
-      image = local.image
-      name  = module.npm.ident
-      env {
-        name  = "REDMINE_DB_POSTGRES"
-        value = "127.0.0.1"
-      }
-      env { 
-        name  = "REDMINE_DB_DATABASE"
-        value = local.db_name
-      }
-      env { 
-        name  = "REDMINE_DB_PASSWORD"
-        value_from {
-          secret_key_ref {
-            name = var.db_auth
-            key  = "pass"
+      spec {
+        service_account_name = local.service_account
+        volume {
+          name = "files"
+          persistent_volume_claim {
+            claim_name = local.fs_name
           }
         }
-      }
-      env { 
-        name  = "REDMINE_DB_USERNAME"
-        value_from {
-          secret_key_ref {
-            name = var.db_auth
-            key  = "user"
+
+        container {
+          image = local.sidecar
+          name  = "${module.npm.ident}-sql-proxy"
+          args  = [
+            var.db_connect
+          ]
+          security_context {
+            run_as_non_root = true
           }
         }
-      }
-      env {
-        name  = "REDMINE_SECRET_KEY_BASE"
-        value_from {
-          secret_key_ref {
-            name = local.redmine_secrets
-            key  = "secret_key_base"
+
+        container {
+          image = local.image
+          name  = module.npm.ident
+          env {
+            name  = "REDMINE_DB_POSTGRES"
+            value = "127.0.0.1"
+          }
+          env {
+            name  = "REDMINE_DB_DATABASE"
+            value = local.db_name
+          }
+          env {
+            name  = "REDMINE_DB_PASSWORD"
+            value_from {
+              secret_key_ref {
+                name = var.db_auth
+                key  = "pass"
+              }
+            }
+          }
+          env {
+            name  = "REDMINE_DB_USERNAME"
+            value_from {
+              secret_key_ref {
+                name = var.db_auth
+                key  = "user"
+              }
+            }
+          }
+          env {
+            name  = "REDMINE_SECRET_KEY_BASE"
+            value_from {
+              secret_key_ref {
+                name = local.redmine_secrets
+                key  = "secret_key_base"
+              }
+            }
+          }
+          env {
+            name  = "PORT"
+            value = local.service_port
+          }
+          port {
+            container_port = local.service_port
+          }
+          volume_mount {
+            mount_path = "/usr/src/redmine/files"
+            name       = "files"
           }
         }
-      }
-      env {
-        name  = "PORT"
-        value = local.service_port
-      }
-      port {
-        container_port = local.service_port
-      }
-      volume_mount {
-        mount_path = "/usr/src/redmine/files"
-        name       = "files"
       }
     }
   }
 }
 
 resource "kubernetes_service" "service" {
-  depends_on = [kubernetes_pod.pod]
+  depends_on = [kubernetes_deployment.deployment]
   metadata {
     name = module.npm.ident
     annotations = {

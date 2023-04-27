@@ -27,35 +27,52 @@ locals {
   ]
 }
 
-resource "kubernetes_pod" "pod" {
+resource "kubernetes_deployment" "deployment" {
   metadata {
     name   = module.npm.ident
     labels = {
       app = module.npm.ident
     }
   }
+
   spec {
-    service_account_name = "le-redmine-db"
-    container {
-      image = local.image
-      name  = module.npm.ident
-      env { 
-        name  = "REDIRECTS"
-        value = jsonencode(local.redirects)
+    replicas = 1
+
+    selector {
+      match_labels = {
+        app = module.npm.ident
       }
-      env {
-        name  = "PORT"
-        value = local.service_port
+    }
+
+    template {
+      metadata {
+        labels = {
+          app = module.npm.ident
+        }
       }
-      port {
-        container_port = local.service_port
-      }
-      liveness_probe {
-        period_seconds = 16
-        timeout_seconds = 16
-        http_get {
-          path = "/health"
-          port = local.service_port
+      spec {
+        container {
+          image = local.image
+          name  = module.npm.ident
+          env {
+            name  = "REDIRECTS"
+            value = jsonencode(local.redirects)
+          }
+          env {
+            name  = "PORT"
+            value = local.service_port
+          }
+          port {
+            container_port = local.service_port
+          }
+          liveness_probe {
+            period_seconds = 16
+            timeout_seconds = 16
+            http_get {
+              path = "/health"
+              port = local.service_port
+            }
+          }
         }
       }
     }
@@ -63,7 +80,7 @@ resource "kubernetes_pod" "pod" {
 }
 
 resource "kubernetes_service" "service" {
-  depends_on = [kubernetes_pod.pod]
+  depends_on = [kubernetes_deployment.deployment]
   metadata {
     name = module.npm.ident
     annotations = {
