@@ -26,7 +26,7 @@ spec:
   #      - "*.polocasnapadu.cz"
   #      - "*.staging.polocas-napadu.cz"
   rules:
-    - host: "internal.polocas-napadu.cz"
+    - host: "pm.polocas-napadu.cz"
       http:
         paths:
           - pathType: ImplementationSpecific
