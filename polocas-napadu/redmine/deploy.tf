@@ -219,6 +219,23 @@ resource "kubernetes_deployment" "deployment" {
             mount_path = "/usr/src/redmine/files"
             name       = "files"
           }
+          readiness_probe {
+            initial_delay_seconds = 5
+            period_seconds = 16
+            timeout_seconds = 16
+            http_get {
+              path = "/login"
+              port = local.service_port
+            }
+          }
+          liveness_probe {
+            period_seconds = 16
+            timeout_seconds = 16
+            http_get {
+              path = "/login"
+              port = local.service_port
+            }
+          }
         }
       }
     }
