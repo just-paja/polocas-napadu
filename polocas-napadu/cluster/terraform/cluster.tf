@@ -30,7 +30,7 @@ resource "google_container_cluster" "primary" {
   }
 
   logging_config {
-    enable_components = []
+    enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
   }
 
   maintenance_policy {
