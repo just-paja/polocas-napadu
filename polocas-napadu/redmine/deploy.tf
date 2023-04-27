@@ -135,6 +135,13 @@ resource "kubernetes_deployment" "deployment" {
         app = module.npm.ident
       }
     }
+    strategy {
+      type = "RollingUpdate"
+      rolling_update {
+        max_surge = 0
+        max_unavailable = 1
+      }
+    }
 
     template {
       metadata {
