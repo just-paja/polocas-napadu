@@ -11,7 +11,7 @@ locals {
   service_port = 30000
   redirects = [
     {
-      test: "www.polocasnapadu.cz",
+      test: "www.polocas-napadu.cz",
       target: "polocas-napadu.cz",
       permanent: true,
     },

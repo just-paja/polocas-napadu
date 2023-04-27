@@ -30,6 +30,15 @@ const translateRedirect = (req: Request, redirect: Redirect): string | null => {
 	return null
 }
 
+const redirectToLastResort = (req: Request, res: Response): void => {
+	const defaultHost = 'polocas-napadu.cz'
+	if (getHost(req) === defaultHost) {
+		res.status(404).json({ message: 'Not Found' })
+	} else {
+		res.redirect(`${parseProtocol(req)}://${defaultHost}${req.originalUrl}`)
+	}
+}
+
 export const createRedirectApp = (redirectsStr: string) => {
 	const app = express()
 	const redirects: Redirect[] = parseRedirects(redirectsStr)
@@ -44,7 +53,7 @@ export const createRedirectApp = (redirectsStr: string) => {
 					return res.redirect(redirect.permanent ? 302 : 301, target)
 				}
 			}
-			return res.redirect(302, `${parseProtocol(req)}://${getHost(req)}${req.originalUrl}`)
+			return redirectToLastResort(req, res)
 		} catch (e) {
 			res.status(500).send("Internal Server Error")
 			console.error(e)
