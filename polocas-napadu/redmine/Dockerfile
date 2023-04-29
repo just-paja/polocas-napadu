@@ -4,8 +4,11 @@ ADD plugins/redmine_agile-1_6_5-light.zip /usr/src/redmine/plugins
 
 RUN cd plugins && \
   wget -O redmine_openid_connect.zip https://github.com/just-paja/redmine_openid_connect/archive/refs/heads/master.zip && \
+  wget -O redmine_messenger.zip https://github.com/AlphaNodes/redmine_messenger/archive/main.zip && \
+  unzip redmine_messenger.zip && \
   unzip redmine_openid_connect.zip && \
   unzip redmine_agile-1_6_5-light.zip && \
+  mv redmine_messenger-main redmine_messenger && \
   mv redmine_openid_connect-master redmine_openid_connect && \
   rm *.zip && \
   cd ../public/themes && \
