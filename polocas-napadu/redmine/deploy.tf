@@ -33,24 +33,20 @@ resource "kubernetes_secret_v1" "redmine_secrets" {
   }
 }
 
+data "template_file" "configuration" {
+  template = file("${path.module}/config/configuration.yml.tpl")
+  vars = {
+    password = var.common.email_pass
+    user_name = var.common.email_user
+  }
+}
+
 resource "kubernetes_secret_v1" "redmine_config" {
   metadata {
     name = local.redmine_config
   }
   data = {
-    "configuration.yml" = yamlencode({
-      production = {
-        delivery_method = ":smtp"
-        smtp_settings   = {
-          address        = "smtp.gmail.com"
-          authentication = ":plain"
-          domain         = "smtp.gmail.com"
-          password       = var.common.email_pass
-          port           = 587
-          user_name      = var.common.email_user
-        }
-      }
-    })
+    "configuration.yml" = data.template_file.configuration.rendered
   }
 }
 
@@ -209,12 +205,6 @@ resource "kubernetes_deployment" "deployment" {
         container {
           image = local.image
           name  = module.npm.ident
-/*
-          command = [
-            "/bin/sh", "-c",
-            "ln -s /var/redmine/config/configuration.yml /usr/src/redmine/config/configuration.yml && rails server -b 0.0.0.0"
-          ]
-*/
           env {
             name  = "REDMINE_DB_POSTGRES"
             value = "127.0.0.1"

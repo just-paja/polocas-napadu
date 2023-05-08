@@ -4,7 +4,7 @@ import Tooltip from "react-bootstrap/Tooltip"
 import classnames from "classnames"
 import React, { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import Spinner from "react-bootstrap/Spinner"
-import styles from "./Button.module.scss"
+import styles from "./buttons.module.scss"
 
 export const Button = forwardRef(
 	(

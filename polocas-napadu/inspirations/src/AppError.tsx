@@ -1,0 +1,13 @@
+import React from 'react'
+
+import { ErrorMessage } from '@polocas-napadu/core/constants'
+
+export const AppError = ({ error = null }: { error: ErrorMessage }) => {
+  if (!error) {
+    return null
+  }
+  if (error instanceof Error) {
+    return <span>{error.message}</span>
+  }
+  return <span>{String(error)}</span>
+}

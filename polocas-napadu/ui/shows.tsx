@@ -1,13 +1,13 @@
 import React from "react"
 
-import { EventStart, EventLocation } from "./events.mjs"
-import { PriceSummary } from "./prices.mjs"
+import { EventStart, EventLocation } from "./events"
+import { PriceSummary } from "./prices"
 import {
 	LocationIcon,
 	LogisticsIcon,
 	ShowFormatIcon,
 	TicketsIcon,
-} from "./icons.mjs"
+} from "./icons"
 
 export const ShowStart = ({ show }) => (
 	<>

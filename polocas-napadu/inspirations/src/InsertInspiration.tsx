@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
+import { Show } from '@polocas-napadu/core/constants'
 import { gql, useMutation } from '@apollo/client'
-import { InspirationForm } from './InspirationForm.mjs'
-import { InspirationSaved } from './InspirationSaved.mjs'
+import { InspirationForm } from './InspirationForm'
+import { InspirationSaved } from './InspirationSaved'
 
 const ADD_INSPIRATION = gql`
   mutation AddInspiration($showId: Int!, $inspirationText: String!) {
@@ -12,7 +13,7 @@ const ADD_INSPIRATION = gql`
   }
 `
 
-export const InsertInspiration = ({ show }) => {
+export const InsertInspiration = ({ show }: { show: Show }) => {
   const [saved, setSaved] = useState(false)
   const [save, { loading, error }] = useMutation(ADD_INSPIRATION)
 

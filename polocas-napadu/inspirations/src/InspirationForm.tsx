@@ -1,13 +1,23 @@
-import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
-import { Button } from '@polocas-napadu/ui/Button.mjs'
-import { Heading, Section } from '@polocas-napadu/ui/content.mjs'
-import { PlainInput } from '@polocas-napadu/ui/Input.mjs'
-import { SendIcon } from '@polocas-napadu/ui/icons.mjs'
+import { ErrorMessage } from '@polocas-napadu/core/constants'
+import { Button } from '@polocas-napadu/ui/buttons'
+import { Heading, Section } from '@polocas-napadu/ui/content'
+import { PlainInput } from '@polocas-napadu/ui/inputs'
+import { SendIcon } from '@polocas-napadu/ui/icons'
 
-export const InspirationForm = ({ onSubmit, error, saving }) => {
+interface InspirationFormProps {
+  error: ErrorMessage
+  onSubmit: Function
+  saving: boolean
+}
+
+export const InspirationForm = ({
+  error = null,
+  onSubmit,
+  saving = false,
+}: InspirationFormProps) => {
   const [inspiration, setInspiration] = useState('')
   return (
     <Section>
@@ -49,14 +59,4 @@ export const InspirationForm = ({ onSubmit, error, saving }) => {
       </form>
     </Section>
   )
-}
-
-InspirationForm.propTypes = {
-  error: PropTypes.shape({ message: PropTypes.string }),
-  saving: PropTypes.bool,
-}
-
-InspirationForm.defaultProps = {
-  error: null,
-  saving: false,
 }

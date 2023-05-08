@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { App } from '../App.mjs'
+import { App } from '../App'
 import { MockedProvider } from '@apollo/client/testing'
 
 describe('app', () => {

@@ -1,6 +1,6 @@
 import React from "react"
 
-import { withTranslation } from "./i18n.mjs"
+import { withTranslation } from "./i18n"
 
 const getMaxPrice = (prices) =>
 	prices.reduce((aggr, ticketPrice) =>

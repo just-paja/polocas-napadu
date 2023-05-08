@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./FixedDialog.module.scss"
+import styles from "./dialogs.module.scss"
 
 export const FixedDialog = ({ children }) => (
 	<div className={styles.fix}>

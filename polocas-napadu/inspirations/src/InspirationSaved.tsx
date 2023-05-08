@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Button } from '@polocas-napadu/ui/Button.mjs'
-import { AgainIcon } from '@polocas-napadu/ui/icons.mjs'
+import { Button } from '@polocas-napadu/ui/buttons'
+import { AgainIcon } from '@polocas-napadu/ui/icons'
 
-export const InspirationSaved = ({ onContinue }) => (
+export const InspirationSaved = ({ onContinue }: {onContinue: Function }) => (
   <div>
     <h2>Díky!</h2>
     <p>
@@ -18,7 +17,3 @@ export const InspirationSaved = ({ onContinue }) => (
     </div>
   </div>
 )
-
-InspirationSaved.propTypes = {
-  onContinue: PropTypes.func.isRequired,
-}

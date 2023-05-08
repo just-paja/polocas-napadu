@@ -1,15 +1,13 @@
-import React from "react"
+import React, { ReactComponent } from "react"
 
-import { propsTranslated } from "@polocas-napadu/core/proptypes.mjs"
 import { use } from "i18next"
 import { useTranslation, initReactI18next } from "react-i18next"
 
-export const withTranslation = (Component) => {
-	const fn = (props) => {
+export const withTranslation = (Component: ReactComponent) => {
+	const fn = (props: any) => {
 		const { i18n, t } = useTranslation()
 		return <Component {...props} i18n={i18n} t={t} />
 	}
-	Component.propTypes = propsTranslated
 	fn.displayName = `i18n(${Component.name})`
 	return fn
 }

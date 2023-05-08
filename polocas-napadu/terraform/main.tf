@@ -51,7 +51,7 @@ module "dns" {
 
 module "redirects" {
   common = local.cluster_common
-  source = "../../redirects"
+  source = "../redirects"
 }
 
 module "redmine" {
@@ -62,5 +62,5 @@ module "redmine" {
   runtime_account = google_service_account.runtime
   network_name    = module.network.vpc_name
   secret_base     = var.REDMINE_SECRET_KEY_BASE
-  source          = "../../redmine"
+  source          = "../redmine"
 }

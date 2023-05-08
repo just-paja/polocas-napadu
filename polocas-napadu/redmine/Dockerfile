@@ -18,3 +18,5 @@ RUN cd plugins && \
 
 RUN bundle config set --local without 'development test' && \
   bundle install --no-deployment
+
+CMD ["/bin/bash", "-c", "cp /var/redmine/config/configuration.yml /usr/src/redmine/config/configuration.yml && /docker-entrypoint.sh rails server -b 0.0.0.0"]

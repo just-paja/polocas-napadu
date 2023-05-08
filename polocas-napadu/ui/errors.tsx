@@ -1,14 +1,9 @@
 import React from "react"
 
-import { ArrayList } from "./text.mjs"
-import { ErrorType } from "@polocas-napadu/core/proptypes.mjs"
-import { withTranslation } from "./i18n.mjs"
+import { ArrayList } from "./text"
+import { withTranslation } from "./i18n"
 
 export const AppError = () => <div>Application failed with Error!</div>
-
-AppError.propTypes = {
-	error: ErrorType,
-}
 
 export const NotFound = withTranslation(({ t }) => (
 	<div>
