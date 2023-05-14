@@ -1,0 +1,12 @@
+{
+  "name": "@polocas/api",
+  "description": "API defending database of Poločas nápadu, theatre improvisation group",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "isolation": {
+    "isolate": false
+  }
+}

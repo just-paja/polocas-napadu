@@ -1,0 +1,18 @@
+{
+  "name": "@polocas/core",
+  "version": "0.9.18",
+  "description": "Core libraries for Poločas nápadu apps",
+  "private": true,
+  "type": "module",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "files": [
+    "dist/*.js"
+  ],
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}

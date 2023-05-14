@@ -1,0 +1,26 @@
+{
+  "name": "@polocas/redirects",
+  "description": "Redirects for predefined domains",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/main.mjs",
+  "scripts": {
+    "build": "node ./bindings/build.js",
+    "dev": "ts-node --esm index.ts",
+    "start": "node ."
+  },
+  "files": [
+    "dist/*.mjs"
+  ],
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "isolation": {
+    "pack:npm": true,
+    "store:local": true,
+    "version:neutral": true
+  }
+}

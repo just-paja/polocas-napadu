@@ -1,0 +1,37 @@
+{
+  "name": "@polocas/next",
+  "version": "0.9.18",
+  "description": "UI components for Poločas nápadu interfaces",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "homepage": "https://polocas-napadu.cz",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/just-paja/polocas-napadu.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    "./": "./dist/"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.14",
+    "bootstrap": "^5.2.2",
+    "classnames": "^2.3.2",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "query-string": "^8.1.0",
+    "@polocas-napadu/core": "file:../core",
+    "react-bootstrap": "^2.5.0",
+    "react-i18next": "^12.2.2",
+    "react-icons": "^4.8.0",
+    "react-overlays": "^5.2.1"
+  }
+}

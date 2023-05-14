@@ -1,0 +1,12 @@
+{
+  "name": "@polocas/redmine",
+  "description": "Redmine configuration and doker image",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "isolation": {
+    "isolate": false
+  }
+}

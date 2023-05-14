@@ -1,0 +1,21 @@
+FROM alpine:3.18
+
+WORKDIR /usr/local/app
+
+COPY dist/polocas_napadu_api-*.tar.gz ./app.tar.gz
+RUN tar -xf app.tar.gz --strip-components=1 -C .
+RUN rm app.tar.gz
+
+COPY requirements.txt requirements.txt
+COPY gunicorn.py gunicorn.py
+
+RUN \
+  apk add --no-cache "python3=3.11.3-r11" "py3-pip=23.1.2-r0" libjpeg libwebp zlib postgresql-libs && \
+  apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev && \
+  pip install -r requirements.txt --no-cache-dir && \
+  apk --purge del .build-deps
+
+EXPOSE 80
+
+# CMD python3 ./manage.py collectstatic --no-input && python3 ./manage.py migrate && gunicorn -c gunicorn.py api.wsgi
+CMD gunicorn -c gunicorn.py api.wsgi
