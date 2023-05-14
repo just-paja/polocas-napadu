@@ -49,7 +49,7 @@
     "ignore": true
   },
   "workspaces": [
-    "polocas-napadu/*",
+    "polocas/*",
     "longforman/*"
   ]
 }

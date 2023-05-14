@@ -1,5 +1,5 @@
 [MASTER]
-ignore=dist
+ignore=dist,migrations
 load_plugins=django_pylint
 django_settings_module=api.settings
 

@@ -15,7 +15,6 @@
     "lib": ["esnext"],
     "module": "nodenext",
     "moduleResolution": "node",
-    "sourceMap": true,
     "strict": true,
     "target": "esnext"
   },

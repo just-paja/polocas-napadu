@@ -4,7 +4,7 @@ RUN apk add --update nodejs npm
 
 WORKDIR /usr/src/app
 
-ADD polocas-napadu-redirects.tgz .
+ADD polocas-redirects.tgz .
 
 WORKDIR /usr/src/app/package
 

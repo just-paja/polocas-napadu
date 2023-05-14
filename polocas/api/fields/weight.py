@@ -17,4 +17,4 @@ class WeightedMixin(Model):
         abstract = True
 
     weight = WeightField()
-    ordering = ('weight')
+    ordering = ('weight',)

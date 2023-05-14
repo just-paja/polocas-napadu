@@ -1,7 +1,10 @@
+from django.core.exceptions import PermissionDenied
+
+
 def check_auth(args, pred):
     _, info = args
     if not pred(info.context):
-        raise Exception("Unauthorized")
+        raise PermissionDenied("Unauthorized")
 
 
 def is_staff(func):

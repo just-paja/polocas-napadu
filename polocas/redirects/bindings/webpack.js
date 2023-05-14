@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { dirname, join, resolve } from 'path'
 import { fileURLToPath } from 'url'
-import { readManifest, transpileScript } from '@polocas-napadu/webpack'
+import { readManifest, transpileScript } from '@polocas/webpack'
 
 const baseDir = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const getWebpackEnvironment = () => {

@@ -1,0 +1,10 @@
+strictness: high
+doc-warnings: false
+test-warnings: true
+
+ignore-paths:
+  - dist
+  
+ignore-patterns:
+  - .*/__tests__/.*
+  - .*/migrations/.*

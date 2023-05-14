@@ -1,4 +1,4 @@
-import { createRedirectApp } from "./app.ts"
+import { createRedirectApp } from "./app.js"
 import { createServer } from "http"
 
 const app = createRedirectApp(process.env.REDIRECTS || "[]")
