@@ -16,9 +16,7 @@ from urllib.parse import urlparse
 
 import os
 import hashlib
-import sentry_sdk
 
-from sentry_sdk.integrations.django import DjangoIntegration
 from django.utils.translation import gettext_lazy as _
 
 # Disable promise threading because of bug
@@ -219,7 +217,6 @@ if DEBUG:
     MEDIA_URL = "/media/"
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-RAVEN_DSN = os.environ.get('RAVEN_DSN', None)
 EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
@@ -296,9 +293,6 @@ if AWS_ACCESS_KEY_ID and AWS_STORAGE_BUCKET_NAME:
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'public,max-age=31536000'
     }
-
-if RAVEN_DSN:
-    sentry_sdk.init(dsn=RAVEN_DSN, integrations=[DjangoIntegration()])
 
 if DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID and DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET:
     DJANGO_ADMIN_SSO = True
