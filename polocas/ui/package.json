@@ -19,7 +19,48 @@
     "build": "node scripts/build.mjs"
   },
   "exports": {
-    "./": "./dist/"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": {
+         "development": "./index.tsx",
+         "default": "./dist/index.js"
+      }
+    },
+    "./apollo": {
+      "types": "./dist/apollo.d.ts",
+      "import": "./dist/apollo.js"
+    },
+    "./buttons": {
+      "types": "./dist/buttons.d.ts",
+      "import": "./dist/buttons.js"
+    },
+    "./content": {
+      "types": "./dist/content.d.ts",
+      "import": "./dist/content.js"
+    },
+    "./dialogs": {
+      "types": "./dist/dialogs.d.ts",
+      "import": "./dist/dialogs.js"
+    },
+    "./inputs": {
+      "types": "./dist/inputs.d.ts",
+      "import": "./dist/inputs.js"
+    },
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "import": "./dist/icons.js"
+    },
+    "./i18n": {
+      "types": "./dist/i18n.d.ts",
+      "import": "./dist/i18n.js"
+    },
+    "./locales/*": "./locales/*",
+    "./global.scss": "./global.scss",
+    "./variables.scss": "./variables.scss",
+    "./shows": {
+      "types": "./dist/shows.d.ts",
+      "import": "./dist/shows.js"
+    }
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",
@@ -33,6 +74,7 @@
     "react-hook-form": "^7.43.9",
     "react-i18next": "^12.2.2",
     "react-icons": "^4.8.0",
-    "react-overlays": "^5.2.1"
+    "react-overlays": "^5.2.1",
+    "react-router": "^6.4.5"
   }
 }

@@ -35,7 +35,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ENVIRONMENT = os.environ.get('PROJECT_ENVIRONMENT', None)
 DEBUG = PROJECT_ENVIRONMENT != 'production'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'w@6p6z=)+k-%ft55-)!yvuptvzda63@#aj^m5q&_x87ddd62el')
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(' ')
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -218,8 +218,8 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST', None)
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', None)
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', None)
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER', None)
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False)
 EMAIL_PORT = os.environ.get('EMAIL_PORT', None)
 EMAIL_MANAGER = os.environ.get('EMAIL_MANAGER', "test@example.com")
@@ -238,8 +238,8 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', None)
 
 DJANGO_ADMIN_SSO = False
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = os.environ.get('DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID', None)
-DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = os.environ.get('DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET', None)
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_ID = os.environ.get('SSO_OAUTH_CLIENT_ID', None)
+DJANGO_ADMIN_SSO_OAUTH_CLIENT_SECRET = os.environ.get('SSO_OAUTH_CLIENT_SECRET', None)
 
 CORS_ORIGIN_WHITELIST = (
     "http://127.0.0.1",

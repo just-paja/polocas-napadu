@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
-import { ErrorMessage } from '@polocas-napadu/core/constants'
-import { Button } from '@polocas-napadu/ui/buttons'
-import { Heading, Section } from '@polocas-napadu/ui/content'
-import { PlainInput } from '@polocas-napadu/ui/inputs'
-import { SendIcon } from '@polocas-napadu/ui/icons'
+import { ErrorMessage } from '@polocas/core/constants'
+import { Button } from '@polocas/ui/buttons'
+import { Heading, Section } from '@polocas/ui/content'
+import { PlainInput } from '@polocas/ui/inputs'
+import { SendIcon } from '@polocas/ui/icons'
 
 interface InspirationFormProps {
   error: ErrorMessage

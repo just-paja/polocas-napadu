@@ -1,9 +1,15 @@
-import React, { createContext, useContext } from "react"
+import { createContext, useContext } from "react"
 
 import { Children } from '@polocas/core/constants'
 
 export const HeadingLevelContext = createContext(0)
-export const useHeadingLevel = () => useContext(HeadingLevelContext)
+export const useHeadingLevel = () => {
+  try {
+    useContext(HeadingLevelContext)
+  } catch (_e) {
+    return 0
+  }
+}
 
 export const HeadingContext = ({ children, baseLevel }) => (
 	<HeadingLevelContext.Provider value={baseLevel || 0}>

@@ -1,10 +1,10 @@
-import React, { ReactComponent } from "react"
+import type { FC } from "react"
 
 import { use } from "i18next"
 import { useTranslation, initReactI18next } from "react-i18next"
 
-export const withTranslation = (Component: ReactComponent) => {
-	const fn = (props: any) => {
+export const withTranslation = (Component: FC) => {
+	const fn: FC = (props: any) => {
 		const { i18n, t } = useTranslation()
 		return <Component {...props} i18n={i18n} t={t} />
 	}

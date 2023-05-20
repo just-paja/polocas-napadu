@@ -2,7 +2,6 @@ variable "common" {}
 variable "db_auth" { type = string }
 variable "db_connect" { type = string }
 variable "db_instance" { type = string }
-variable "network_name" { type = string }
 variable "runtime_account" {}
 variable "secret_base" { type = string }
 
@@ -18,7 +17,6 @@ locals {
   fs_class = "${terraform.workspace}-gcs-bucket"
   image    = "${var.common.docker_repo}/${var.common.project}/${module.npm.pkg_ident}:${module.npm.revision}"
   service_port = 30001
-  sidecar  = "gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.1.0"
   redmine_secrets = "${terraform.workspace}-redmine-secrets"
   redmine_config  = "${terraform.workspace}-redmine-config"
   service_account = "${terraform.workspace}-redmine-db"
@@ -192,7 +190,7 @@ resource "kubernetes_deployment" "deployment" {
         }
 
         container {
-          image = local.sidecar
+          image = var.common.db_proxy_image
           name  = "${module.npm.ident}-sql-proxy"
           args  = [
             var.db_connect

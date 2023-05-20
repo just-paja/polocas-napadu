@@ -1,7 +1,6 @@
 import qs from "query-string"
-import React from "react"
 
-import type { ComponentType } from 'react'
+import type { FC, ReactNode } from 'react'
 import type { DocumentNode } from '@apollo/client'
 
 import { useParams } from "react-router"
@@ -24,14 +23,14 @@ export const mergeQueryResults = (results: object[]) =>
 
 interface ApolloProps {
 	apiUrl?: string
-	children: React.ReactNode
+	children: ReactNode
 }
 
 interface Headers {
 	[key: string]: string
 }
 
-export const Apollo: React.FC<ApolloProps> = ({ apiUrl, children }) => {
+export const Apollo: FC<ApolloProps> = ({ apiUrl, children }) => {
 	const params = qs.parse(document.location.search)
 	if ("authToken" in params) {
 		sessionStorage.setItem("authToken", String(params.token))
@@ -65,7 +64,7 @@ export const Apollo: React.FC<ApolloProps> = ({ apiUrl, children }) => {
 const DEFAULT_POLL_INTERVAL = 500
 
 export const withQuery = (
-	Component: ComponentType,
+	Component: FC,
 	query: DocumentNode,
 	poll: boolean = false
 ) => {

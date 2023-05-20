@@ -44,6 +44,7 @@ locals {
     cluster          = "le-primary"
     cluster_pool     = "le-web"
     continent        = local.continent
+    db_proxy_image   = "gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.1.0"
     dist_dir         = abspath("${local.root_dir}/dist")
     docker_repo      = var.GCP_DOCKER_REPO
     production       = local.production

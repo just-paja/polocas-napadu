@@ -87,6 +87,9 @@ export const getWebpackConfig = ({
   distDir,
   bundleName,
   entryPath,
+  externals,
+  externalsType,
+  externalsPresets,
   env,
   manifest,
   target = 'web',
@@ -96,15 +99,15 @@ export const getWebpackConfig = ({
   experiments: {
     outputModule: true,
   },
-  externals: { 'express': 'express' },
-  externalsType: 'module',
-  externalsPresets: { node: true },
+  externals,
+  externalsType,
+  externalsPresets,
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".mjs"],
+    extensions: [".tsx", ".ts", ".js", ".mjs", "..."],
     extensionAlias: {
-      ".js": [".js", ".ts"],
-      ".cjs": [".cjs", ".cts"],
-      ".mjs": [".mjs", ".mts"],
+      ".js": [".js", ".ts", ".tsx"],
+      ".cjs": [".cjs", ".cts", ".ctsx"],
+      ".mjs": [".mjs", ".mts", ".mtsx"],
     }
   },
   module: {
@@ -256,24 +259,56 @@ const getDefaultEnv = () => ({
   NODE_ENV: process.env.NODE_ENV || 'development',
 })
 
-export const getConfig = ({ distDir, entryPath, env, outputFileName, template }) => {
+export const getConfig = ({
+  distDir, 
+  entryPath,
+  env,
+  experiments,
+  externals,
+  externalsType,
+  externalsPresets,
+  outputFileName,
+  outputModules,
+  target,
+  template,
+}) => {
   const { plugins, rules } = getReactConfig({
     env,
     template,
   })
   return {
+    devtool: 'source-map',
     entry: entryPath,
+    experiments: {
+      ...experiments,
+      outputModule: Boolean(outputModules),
+    },
+    externals,
+    externalsType: outputModules ? 'module' : externalsType,
+    externalsPresets,
     mode: getMode(env),
     module: {
       rules,
     },
     output: {
+      chunkFormat: outputModules ? 'module' : undefined,
       path: distDir,
       publicPath: '/',
       filename: outputFileName || 'main-[chunkhash].js',
+      library: outputModules ? {
+        type: 'module',
+      } : undefined,
     },
     plugins,
-    target: 'web',
+    resolve: {
+      extensions: [".tsx", ".ts", ".js", ".mjs", "..."],
+      extensionAlias: {
+        ".js": [".js", ".ts", ".tsx"],
+        ".cjs": [".cjs", ".cts", ".ctsx"],
+        ".mjs": [".mjs", ".mts", ".mtsx"],
+      },
+    },
+    target: target || 'web',
   }
 }
 
@@ -300,7 +335,9 @@ export const setupReactWebpack = ({ defaultPort, env, ...webpackProps }) => {
     return new WebpackDevServer(devServerOptions, compiler)
   }
   const runDevServer = () => createDevServer().start()
-  const transpileScript = props => compile(webpack(getWebpackConfig(props)))
+  const transpileScript = props => {
+    return compile(webpack(getWebpackConfig(props)))
+  }
   const build = () =>
     transpileScript({
       env: { NODE_ENV: process.env.NODE_ENV || 'production' },

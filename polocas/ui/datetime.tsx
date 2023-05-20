@@ -1,5 +1,4 @@
-import React from "react"
-
+import type { FC } from 'react'
 import { useTranslation } from "react-i18next"
 
 const getFormat = (locale, props) =>
@@ -18,7 +17,12 @@ export const formatDateRange = (lang, start, end, props) =>
 		.formatRange(new Date(start), new Date(end))
 		.replace(" ", " ")
 
-export const DateLabel = ({ date, showTime, ...props }) => (
+interface DateLabelProps {
+  date: string | Date
+  showTime?: boolean
+}
+
+export const DateLabel: FC<DateLabelProps> = ({ date, showTime, ...props }) => (
 	<time dateTime={`${date}`}>
 		{formatDate(useTranslation().language, date, {
 			hour: showTime ? "numeric" : undefined,

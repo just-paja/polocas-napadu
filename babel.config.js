@@ -5,7 +5,7 @@ module.exports = {
         "node": "18"
       }
     }],
-    "@babel/preset-typescript",
-    "@babel/preset-react"
+    ["@babel/preset-typescript", { "allowDeclareFields": true }],
+    ["@babel/preset-react", { "runtime": "automatic" }]
   ]
 }

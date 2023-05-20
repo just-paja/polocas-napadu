@@ -8,5 +8,8 @@
   "type": "module",
   "isolation": {
     "isolate": false
+  },
+  "scripts": {
+    "dev": "poetry run ./manage.py runserver"
   }
 }

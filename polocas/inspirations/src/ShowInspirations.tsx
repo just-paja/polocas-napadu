@@ -2,10 +2,10 @@ import React from 'react'
 
 import { AppError } from './AppError'
 import { gql, useQuery } from '@apollo/client'
-import { Heading, Main } from '@polocas-napadu/ui/content'
+import { Heading, Main } from '@polocas/ui/content'
 import { InsertInspiration } from './InsertInspiration'
 import { NotFound } from './NotFound'
-import { ShowContext } from '@polocas-napadu/core/context'
+import { ShowContext } from '@polocas/core/context'
 import { useParams } from 'react-router'
 
 import styles from './ShowInspirations.module.scss'

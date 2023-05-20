@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-api:
-    name: Build & Test API
+    name: Build API
     runs-on: ubuntu-22.04
     env:
       wd: "./polocas/api"

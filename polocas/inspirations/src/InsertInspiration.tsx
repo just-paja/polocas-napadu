@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Show } from '@polocas-napadu/core/constants'
+import { Show } from '@polocas/core/constants'
 import { gql, useMutation } from '@apollo/client'
 import { InspirationForm } from './InspirationForm'
 import { InspirationSaved } from './InspirationSaved'

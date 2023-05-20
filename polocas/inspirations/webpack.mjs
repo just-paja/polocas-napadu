@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 
-import { setupReactWebpack } from '@polocas-napadu/webpack'
+import { setupReactWebpack } from '@polocas/webpack'
 import { resolve } from 'path'
 import { URL } from 'url'
 

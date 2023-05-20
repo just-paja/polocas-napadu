@@ -1,5 +1,3 @@
-import React from "react"
-
 import { withTranslation } from "./i18n.tsx"
 
 const getMaxPrice = (prices) =>

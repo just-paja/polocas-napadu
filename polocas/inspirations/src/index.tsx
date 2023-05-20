@@ -1,22 +1,17 @@
-import React, { ReactComponent } from 'react'
+import type { FC } from 'react'
 
-import { Apollo } from '@polocas-napadu/ui/apollo'
-import { App } from './App.mjs'
+import { App } from './App'
 import { createRoot } from 'react-dom/client'
-import { initLocalization } from '@polocas-napadu/ui/i18n'
+import { initLocalization } from '@polocas/ui/i18n'
 
-import cs from '@polocas-napadu/website/public/locales/cs/common.json'
-import en from '@polocas-napadu/website/public/locales/en/common.json'
+import cs from '@polocas/ui/locales/cs/common.json'
+import en from '@polocas/ui/locales/en/common.json'
 
 import './index.scss'
 
-const render = (RootComponent: ReactComponent) => {
+const render = (RootComponent: FC) => {
   const root = createRoot(document.getElementById('root'))
-  root.render(
-    <Apollo>
-      <RootComponent />
-    </Apollo>
-  )
+  root.render(<RootComponent />)
 }
 
 const startUp = () => {

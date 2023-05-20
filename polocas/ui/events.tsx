@@ -1,8 +1,7 @@
 import moment from "moment-timezone"
-import React from "react"
 
-import { DateLabel, DateRangeLabel } from "./datetime.tsx"
-import { withTranslation } from "./i18n.tsx"
+import { DateLabel, DateRangeLabel } from "./datetime.js"
+import { withTranslation } from "./i18n.js"
 
 export const EventLocation = ({ location }) => <span>{location.name}</span>
 

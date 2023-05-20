@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Button } from '@polocas-napadu/ui/buttons'
-import { AgainIcon } from '@polocas-napadu/ui/icons'
+import { Button } from '@polocas/ui/buttons'
+import { AgainIcon } from '@polocas/ui/icons'
 
 export const InspirationSaved = ({ onContinue }: {onContinue: Function }) => (
   <div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ErrorMessage } from '@polocas-napadu/core/constants'
+import { ErrorMessage } from '@polocas/core/constants'
 
 export const AppError = ({ error = null }: { error: ErrorMessage }) => {
   if (!error) {
