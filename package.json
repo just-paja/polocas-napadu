@@ -34,7 +34,7 @@
     "lerna-isolate": "^0.10.0",
     "lerna-jest": "^0.10.0",
     "mini-css-extract-plugin": "^2.7.5",
-    "rome": "12.1.0",
+    "rome": "^12.1.2",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",

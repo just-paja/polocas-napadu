@@ -28,16 +28,12 @@
   "dependencies": {
     "cookies-next": "^2.1.1",
     "locale": "^0.1.0",
-    "moment": "^2.29.4",
-    "moment-timezone": "^0.5.38",
-    "next": "^12.3.1",
-    "next-i18next": "^12.1.0",
-    "next-transpile-modules": "^9.1.0",
-    "@polocas-napadu/core": "^0.9.18",
-    "@polocas-napadu/ui": "^0.9.18",
+    "next": "^13.4.3",
+    "next-i18next": "^13.2.2",
+    "next-transpile-modules": "^10.0.0",
+    "@polocas/core": "file:../core",
+    "@polocas/ui": "file:../ui",
     "query-string-manipulator": "^1.2.2",
-    "react-hook-form": "^7.38.0",
-    "react-icons": "^4.6.0",
     "react-image-gallery": "^1.2.11",
     "react-markdown": "^8.0.3"
   }

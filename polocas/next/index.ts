@@ -1,4 +1,6 @@
-import getConfig from "next/config"
+import type { FC } from 'react'
+
+import getConfig from "next/config.js"
 
 import { ApolloClient, InMemoryCache } from "@apollo/client"
 import { mergeQueryResults, stripData } from "@polocas/ui/apollo"
@@ -11,7 +13,19 @@ export const apolloClient = new ApolloClient({
 	cache: new InMemoryCache(),
 })
 
-const getQuery = (props, query) => {
+interface QueryVariables {
+  [key: string]: string | number
+}
+
+interface QueryProps {
+  variables?: QueryVariables
+  [key: string]: any
+}
+
+type Props = any
+type Query = Function | QueryProps
+
+const getQuery = (props: Props, query: Query): Promise<any> => {
 	if (query instanceof Function) {
 		return getQuery(props, query(props))
 	}
@@ -24,9 +38,9 @@ const getQuery = (props, query) => {
 	})
 }
 
-const resolveQuery = (props) => (query) => getQuery(props, query)
+const resolveQuery = (props: Props) => (query: Query) => getQuery(props, query)
 
-export const withQueryset = (queryMap) => (fn) => async (props) => {
+export const withQueryset = (queryMap: Query[]) => (fn: FC) => async (props: Props) => {
 	const data = await Promise.all(
 		Object.values(queryMap).map(resolveQuery(props)),
 	)
