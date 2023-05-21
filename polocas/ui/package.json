@@ -42,6 +42,10 @@
       "types": "./dist/dialogs.d.ts",
       "import": "./dist/dialogs.js"
     },
+    "./forms": {
+      "types": "./dist/forms.d.ts",
+      "import": "./dist/forms.js"
+    },
     "./inputs": {
       "types": "./dist/inputs.d.ts",
       "import": "./dist/inputs.js"
