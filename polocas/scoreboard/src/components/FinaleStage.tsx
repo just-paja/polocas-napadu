@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from './FinaleStage.module.scss'
 
-import { Teams } from './Teams.mjs'
-import { GameHistory } from './GameHistory.mjs'
+import { Teams } from './Teams.js'
+import { GameHistory } from './GameHistory.js'
 
 export const FinaleStage = () => (
   <div>

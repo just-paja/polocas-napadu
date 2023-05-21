@@ -1,10 +1,9 @@
-import React from 'react'
 import styles from './MatchList.module.scss'
 
 import { gql } from '@apollo/client'
-import { Heading, Main } from '@polocas-napadu/ui/content.mjs'
+import { Heading, Main } from '@polocas/ui/content'
 import { Link } from 'react-router-dom'
-import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
+import { withQuery } from '@polocas/ui/apollo'
 
 const GET_MATCHES = gql`
   query {

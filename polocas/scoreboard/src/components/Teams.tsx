@@ -1,19 +1,14 @@
-import React from 'react'
-
-import { useMatch } from '@polocas-napadu/core/context.mjs'
-import { TeamDetails } from './TeamDetails.mjs'
-import {
-  CONTESTANT_HOME,
-  CONTESTANT_GUEST,
-} from '@polocas-napadu/core/constants.mjs'
+import { useMatch } from '@polocas/core/context'
+import { TeamDetails } from './TeamDetails.js'
+import { ContestantType } from '@polocas/core/contestants'
 
 const getGroup = (groups, type) =>
   groups.find(group => group.contestantType === type)
 
 export const Teams = ({ hideScore = false }) => {
   const { contestantGroups, currentStage } = useMatch()
-  const home = getGroup(contestantGroups, CONTESTANT_HOME)
-  const guest = getGroup(contestantGroups, CONTESTANT_GUEST)
+  const home = getGroup(contestantGroups, ContestantType.Home)
+  const guest = getGroup(contestantGroups, ContestantType.Guest)
 
   const dimmTeam = contestantGroupId => {
     if (currentStage && currentStage.scorePointPoll) {

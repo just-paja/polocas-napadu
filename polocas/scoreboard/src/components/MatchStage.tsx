@@ -1,24 +1,15 @@
-import React from 'react'
-
 import { gql } from '@apollo/client'
-import { MatchContext } from '@polocas-napadu/core/context.mjs'
-import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
-import {
-  STAGE_FINALE,
-  STAGE_GAME_RESULTS,
-  STAGE_GAME_SETUP,
-  STAGE_GAME,
-  STAGE_INTRO,
-  STAGE_PAUSE,
-} from '@polocas-napadu/core/constants.mjs'
+import { MatchContext } from '@polocas/core/context'
+import { withQuery } from '@polocas/ui/apollo'
+import { GameStage } from '@polocas/core/gameStage'
 
-import { FinaleStage } from './FinaleStage.mjs'
-import { GameResultsStage } from './GameResultsStage.mjs'
-import { GameSetupStage } from './GameSetupStage.mjs'
-import { GameStage } from './GameStage.mjs'
-import { IntroStage } from './IntroStage.mjs'
-import { PauseStage } from './PauseStage.mjs'
-import { ShowSetupStage } from './ShowSetupStage.mjs'
+import { FinaleStage } from './FinaleStage'
+import { GameResultsStage } from './GameResultsStage'
+import { GameSetupStage } from './GameSetupStage'
+import { GameStage as GameStageComponent } from './GameStage'
+import { IntroStage } from './IntroStage'
+import { PauseStage } from './PauseStage'
+import { ShowSetupStage } from './ShowSetupStage'
 
 const GET_MATCH_STAGE = gql`
   query Stage($matchId: Int!) {
@@ -74,22 +65,22 @@ const GET_MATCH_STAGE = gql`
 
 const getStageView = stage => {
   if (stage) {
-    if (stage.type === STAGE_FINALE) {
+    if (stage.type === GameStage.Finale) {
       return <FinaleStage />
     }
-    if (stage.type === STAGE_INTRO) {
+    if (stage.type === GameStage.Intro) {
       return <IntroStage />
     }
-    if (stage.type === STAGE_PAUSE) {
+    if (stage.type === GameStage.Pause) {
       return <PauseStage />
     }
-    if (stage.type === STAGE_GAME_RESULTS) {
+    if (stage.type === GameStage.GameResults) {
       return <GameResultsStage />
     }
-    if (stage.type === STAGE_GAME) {
-      return <GameStage />
+    if (stage.type === GameStage.Game) {
+      return <GameStageComponent />
     }
-    if (stage.type === STAGE_GAME_SETUP) {
+    if (stage.type === GameStage.GameSetup) {
       return <GameSetupStage />
     }
   }

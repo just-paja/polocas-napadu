@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from './SpectatorView.module.scss'
 
-import { MatchStage } from './MatchStage.mjs'
+import { MatchStage } from './MatchStage.js'
 
 export const SpectatorView = () => (
   <div className={styles.spectatorView}>

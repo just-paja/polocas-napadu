@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './GameHistory.module.scss'
 
 import { gql } from '@apollo/client'
-import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
+import { withQuery } from '@polocas/ui/apollo'
 
 const GET_MATCH_GAMES = gql`
   query Games($matchId: Int!) {

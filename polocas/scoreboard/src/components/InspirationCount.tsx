@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from './InspirationCount.module.scss'
 
 import { gql } from '@apollo/client'
-import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
+import { withQuery } from '@polocas/ui/apollo'
 
 const GET_MATCH_INSPIRATION_COUNT = gql`
   query TotalCount($matchId: Int!) {

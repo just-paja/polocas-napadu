@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from './GameInspiration.module.scss'
 
-import { useMatch } from '@polocas-napadu/core/context.mjs'
+import { useMatch } from '@polocas/core/context'
 
 export const GameInspiration = () => {
   const { game, inspirations } = useMatch().currentStage

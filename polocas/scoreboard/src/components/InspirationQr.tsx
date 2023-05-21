@@ -1,7 +1,5 @@
-import React from 'react'
-
 import { gql } from '@apollo/client'
-import { withQuery } from '@polocas-napadu/ui/apollo.mjs'
+import { withQuery } from '@polocas/ui/apollo'
 
 const GET_MATCH_INSPIRATION_QR = gql`
   query ($matchId: Int!) {

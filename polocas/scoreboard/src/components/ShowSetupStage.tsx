@@ -1,9 +1,8 @@
-import React from 'react'
 import styles from './ShowSetupStage.module.scss'
 
-import { InspirationCount } from './InspirationCount.mjs'
-import { InspirationQr } from './InspirationQr.mjs'
-import { Teams } from './Teams.mjs'
+import { InspirationCount } from './InspirationCount.js'
+import { InspirationQr } from './InspirationQr.js'
+import { Teams } from './Teams.js'
 
 export const ShowSetupStage = () => (
   <>

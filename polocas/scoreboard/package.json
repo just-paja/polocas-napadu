@@ -1,5 +1,5 @@
 {
-  "name": "@polocas-napadu/scoreboard",
+  "name": "@polocas/scoreboard",
   "version": "0.9.18",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "dev": "node scripts/dev-server.mjs"
   },
   "files": [
-    "build"
+    "dist"
   ],
   "dependencies": {
     "howler": "^2.2.3",

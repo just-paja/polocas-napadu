@@ -1,9 +1,9 @@
 import animations from 'react-animate-on-change'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './TeamScore.module.scss'
 
-import { AudioManager } from '../AudioManager.mjs'
-import { getNewRandomItem } from '../shuffle.mjs'
+import { AudioManager } from '../AudioManager.js'
+import { getNewRandomItem } from '../shuffle.js'
 import { Howl } from 'howler'
 
 import point8bit from '../sounds/point-8bit.wav'

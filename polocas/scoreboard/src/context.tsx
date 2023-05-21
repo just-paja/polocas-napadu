@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MatchContext } from '@polocas-napadu/core/context'
+import { MatchContext } from '@polocas/core/context'
 
 export const withStage = Component => props =>
   (

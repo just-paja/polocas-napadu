@@ -1,10 +1,9 @@
 import camelCase from 'camelcase'
 import classnames from 'classnames'
-import React from 'react'
 import styles from './TeamDetails.module.scss'
 
-import { TeamScore } from './TeamScore.mjs'
-import { TEAM_LOGO_DEFAULT } from '@polocas-napadu/core/constants.mjs'
+import { TeamScore } from './TeamScore.js'
+import { TEAM_LOGO_DEFAULT } from '@polocas/core/constants'
 
 const generatePenalties = number => {
   const items = []

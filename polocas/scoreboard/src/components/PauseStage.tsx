@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from './PauseStage.module.scss'
 
-import { GameHistory } from './GameHistory.mjs'
-import { Teams } from './Teams.mjs'
+import { GameHistory } from './GameHistory.js'
+import { Teams } from './Teams.js'
 
 export const PauseStage = () => (
   <>
