@@ -9,6 +9,7 @@
   "scripts": {
     "build": "lerna-isolate bundle",
     "dev": "lerna-isolate run",
+    "longforman": "npm run dev longforman",
     "polocas": "npm run dev polocas",
     "test": "jest"
   },
