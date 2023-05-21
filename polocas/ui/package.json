@@ -22,8 +22,8 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": {
-         "development": "./index.tsx",
-         "default": "./dist/index.js"
+        "development": "./index.tsx",
+        "default": "./dist/index.js"
       }
     },
     "./apollo": {
@@ -74,7 +74,9 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
     "query-string": "^8.1.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
     "react-i18next": "^12.2.2",
     "react-icons": "^4.8.0",

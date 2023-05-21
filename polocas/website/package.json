@@ -26,13 +26,12 @@
     "node": "^18.0.0"
   },
   "dependencies": {
-    "cookies-next": "^2.1.1",
-    "locale": "^0.1.0",
-    "next": "^13.4.3",
-    "next-i18next": "^13.2.2",
-    "next-transpile-modules": "^10.0.0",
     "@polocas/core": "file:../core",
+    "@polocas/inspirations": "file:../inspirations",
+    "@polocas/referee": "file:../referee",
+    "@polocas/scoreboard": "file:../scoreboard",
     "@polocas/ui": "file:../ui",
+    "locale": "^0.1.0",
     "query-string-manipulator": "^1.2.2",
     "react-image-gallery": "^1.2.11",
     "react-markdown": "^8.0.3"

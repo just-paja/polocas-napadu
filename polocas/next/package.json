@@ -19,10 +19,12 @@
     "build": "tsc"
   },
   "exports": {
-    "./": "./dist/"
+    "./": "./dist/index.js"
   },
   "dependencies": {
     "@polocas/ui": "file:../ui",
-    "next": "^13.4.3"
+    "cookies-next": "^2.1.1",
+    "next": "^13.4.3",
+    "next-i18next": "^13.2.2"
   }
 }

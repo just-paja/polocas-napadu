@@ -10,8 +10,7 @@
     "build"
   ],
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@polocas/ui": "file:../ui",
     "react-router": "^6.4.5"
   }
 }
