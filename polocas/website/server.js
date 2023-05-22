@@ -1,8 +1,9 @@
-const { createServer } = require('http')
+import next from 'next'
+
+import { createServer } from 'http'
 
 const PORT_DEFAULT = 3000
 
-const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || PORT_DEFAULT
 const hostname = process.env.FRONTEND_HOST || 'localhost'

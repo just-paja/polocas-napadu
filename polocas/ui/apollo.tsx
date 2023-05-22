@@ -66,28 +66,22 @@ const DEFAULT_POLL_INTERVAL = 500
 export const withQuery = (
 	Component: FC,
 	query: DocumentNode,
-	poll: boolean = false
-) => {
-	if (!Component) {
-		throw new Error("You must pass a Component.")
-	}
-
-	return (props: any) => {
-		const params = useParams()
-		const { pollInterval, variables } = props
-		const { data, error, loading } = useQuery(query, {
-			pollInterval: poll ? pollInterval || DEFAULT_POLL_INTERVAL : null,
-			variables: {
-				...params,
-				...variables,
-			},
-		})
-		if (loading) {
-			return <div>Loading...</div>
-		}
-		if (error) {
-			return <div>Error!</div>
-		}
-		return <Component data={data} variables={variables} {...props} />
-	}
+	poll: boolean = false,
+) => (props: any) => {
+  const params = useParams()
+  const { pollInterval, variables } = props
+  const { data, error, loading } = useQuery(query, {
+    pollInterval: poll ? pollInterval || DEFAULT_POLL_INTERVAL : null,
+    variables: {
+      ...params,
+      ...variables,
+    },
+  })
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Error!</div>
+  }
+  return <Component data={data} variables={variables} {...props} />
 }

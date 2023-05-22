@@ -1,8 +1,9 @@
 {
-  "name": "@polocas-napadu/website",
+  "name": "@polocas/website",
   "version": "0.9.18",
   "description": "Website to Prague improv group Poločas nápadu",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
@@ -20,7 +21,7 @@
     "routes.js",
     "server.js",
     "public",
-    "*.mjs"
+    "*"
   ],
   "engines": {
     "node": "^18.0.0"

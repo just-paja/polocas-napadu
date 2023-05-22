@@ -26,9 +26,11 @@ type Props = any
 type Query = Function | QueryProps
 
 const getQuery = (props: Props, query: Query): Promise<any> => {
+  console.log('Get QUERY')
 	if (query instanceof Function) {
 		return getQuery(props, query(props))
 	}
+  console.log(apolloClient)
 	return apolloClient.query({
 		...query,
 		variables: {

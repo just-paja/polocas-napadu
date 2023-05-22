@@ -38,9 +38,17 @@
       "types": "./dist/content.d.ts",
       "import": "./dist/content.js"
     },
+    "./decorators": {
+      "types": "./dist/decorators.d.ts",
+      "import": "./dist/decorators.js"
+    },
     "./dialogs": {
       "types": "./dist/dialogs.d.ts",
       "import": "./dist/dialogs.js"
+    },
+    "./events": {
+      "types": "./dist/events.d.ts",
+      "import": "./dist/events.js"
     },
     "./forms": {
       "types": "./dist/forms.d.ts",

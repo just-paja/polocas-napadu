@@ -1,5 +1,0 @@
-export * from './Address.mjs'
-export * from './Location.mjs'
-export * from './LocationName.mjs'
-export * from './UsualPlace.mjs'
-export * from './UsualPlaces.mjs'

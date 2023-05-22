@@ -232,7 +232,6 @@ export const getReactRules = nodeEnv => [
       ...babelConfig,
       plugins: [
         nodeEnv !== 'production' && 'react-refresh/babel',
-        '@babel/plugin-proposal-export-default-from',
       ].filter(Boolean),
     },
   },

@@ -1,9 +1,11 @@
-import { InternalServerError, MissingParam } from './errors.mjs'
+export class RoutingError extends Error {}
+export class MissingParam extends RoutingError {}
 
 const cs = {
   home: {
-    source: '/',
+    source: '/cs',
     destination: '/home',
+    locale: false,
   },
   about: {
     source: '/o-nas',
@@ -94,11 +96,12 @@ const routes = {
   en,
 }
 
-export const getRewrites = () =>
-  Object.values(routes).reduce(
+export const getRewrites = () => ({
+  beforeFiles: Object.values(routes).reduce(
     (aggr, paths) => aggr.concat(Object.values(paths)),
     []
   )
+})
 
 export const translateRoute = (path, params) =>
   path.replace(/(:[a-zA-Z]+)/g, match => {
@@ -116,7 +119,7 @@ export const reverse = (lang, name, params) => {
   const src = routes[lang || defaultLang]
   const route = src[name]
   if (!route) {
-    throw new InternalServerError(`Failed to find route "${lang}:${name}"`)
+    throw new RoutingError(`Failed to find route "${lang}:${name}"`)
   }
   return `/${lang}${translateRoute(route.source, params)}`
 }

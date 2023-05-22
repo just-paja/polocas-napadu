@@ -1,7 +1,0 @@
-export * from './CommonLayout.mjs'
-export * from './ContentContainer.mjs'
-export * from './Favicon.mjs'
-export * from './Footer.mjs'
-export * from './List.mjs'
-export * from './MainMenu.mjs'
-export * from './PageHeading.mjs'

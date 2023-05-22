@@ -8,5 +8,9 @@
   "main": "index.js",
   "isolation": {
     "isolate": false
+  },
+  "dependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "resolve-url-loader": "^5.0.0"
   }
 }

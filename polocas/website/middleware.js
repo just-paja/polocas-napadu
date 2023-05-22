@@ -1,8 +1,9 @@
+import i18nConfig from './next-i18next.config.cjs'
+
 import { NextResponse } from 'next/server'
-import { i18n } from './next-i18next.config.js'
 import { Locales } from 'locale'
 
-const supported = new Locales(i18n.locales, i18n.fallbackLocale)
+const supported = new Locales(i18nConfig.i18n.locales, i18nConfig.i18n.fallbackLocale)
 
 const PUBLIC_FILE = /^\/?$/
 
@@ -35,5 +36,4 @@ export const middleware = req => {
   if (shouldAssignLocale(req)) {
     return redirectToLocalizedUrl(req)
   }
-  return null
 }

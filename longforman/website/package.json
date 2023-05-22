@@ -3,9 +3,9 @@
   "version": "0.9.18",
   "private": true,
   "scripts": {
-    "dev": "NODE_PORT=3004 node server.ts",
+    "dev": "NODE_PORT=3004 node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.ts"
+    "start": "NODE_ENV=production node server.js"
   },
   "files": [
     ".next",
