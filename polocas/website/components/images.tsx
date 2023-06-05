@@ -9,7 +9,7 @@ function getImageSrc(image, size) {
     return image
   }
   if (image.thumbnails && size) {
-    const thumbnail = image.thumbnails.find(thumb => thumb.name === size)
+    const thumbnail = image.thumbnails.find((thumb) => thumb.name === size)
     if (thumbnail) {
       return thumbnail.webp
     }
@@ -43,7 +43,7 @@ export function Carousel({ className, photos, ...props }) {
       showPlayButton={false}
       slideInterval={5000}
       showThumbnails={false}
-      items={photos.map(photo => ({ original: photo.image }))}
+      items={photos.map((photo) => ({ original: photo.image }))}
       {...props}
     />
   )
@@ -52,7 +52,7 @@ export function Carousel({ className, photos, ...props }) {
 export function Gallery({ free, photos }) {
   return (
     <div className={classnames(styles.gallery, { [styles.freeGallery]: free })}>
-      {photos.map(photo => (
+      {photos.map((photo) => (
         <div className={styles.photo} key={photo.id}>
           <Image image={photo.image} alt={photo.description} />
         </div>

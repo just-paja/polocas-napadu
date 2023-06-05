@@ -65,7 +65,7 @@ const GET_MATCH = gql`
   }
 `
 
-const getStageView = stage => {
+const getStageView = (stage) => {
   if (stage) {
     if (stage.type === GameStage.Intro) {
       return <IntroStage />
@@ -96,5 +96,5 @@ export const MatchStage = withQuery(
     </MatchContext.Provider>
   ),
   GET_MATCH,
-  true
+  true,
 )

@@ -1,5 +1,5 @@
 export * from './Address'
-export * from './Location'
+export * from './LocationAddress'
 export * from './LocationName'
-export * from './UsualPlace'
+export * from './UsualPlaceSummary'
 export * from './UsualPlaces'

@@ -7,24 +7,24 @@ import { Linker } from '../links'
 import { withTranslation } from '@polocas/ui/i18n'
 
 export const MainMenu = withTranslation(({ t }) => (
-  <Navbar bg="primary" collapseOnSelect expand="lg" sticky="top" variant="dark">
+  <Navbar bg='primary' collapseOnSelect expand='lg' sticky='top' variant='dark'>
     <Container className={styles.menu}>
-      <Linker route="home">
+      <Linker route='home'>
         <Navbar.Brand>{t('projectName')}</Navbar.Brand>
       </Linker>
-      <Navbar.Toggle aria-controls="app-menu" />
-      <Navbar.Collapse id="app-menu">
+      <Navbar.Toggle aria-controls='app-menu' />
+      <Navbar.Collapse id='app-menu'>
         <Nav>
-          <Linker route="showList" activeProp="active">
+          <Linker route='showList' activeProp='active'>
             <Nav.Link>{t('shows')}</Nav.Link>
           </Linker>
-          <Linker route="repertoir" activeProp="active">
+          <Linker route='repertoir' activeProp='active'>
             <Nav.Link>{t('repertoir')}</Nav.Link>
           </Linker>
-          <Linker route="about" activeProp="active">
+          <Linker route='about' activeProp='active'>
             <Nav.Link>{t('about')}</Nav.Link>
           </Linker>
-          <Linker route="contact" activeProp="active">
+          <Linker route='contact' activeProp='active'>
             <Nav.Link>{t('contact')}</Nav.Link>
           </Linker>
         </Nav>

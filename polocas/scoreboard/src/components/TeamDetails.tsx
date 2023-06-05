@@ -5,7 +5,7 @@ import styles from './TeamDetails.module.scss'
 import { TeamScore } from './TeamScore.js'
 import { TEAM_LOGO_DEFAULT } from '@polocas/core/constants'
 
-const generatePenalties = number => {
+const generatePenalties = (number) => {
   const items = []
   for (let i = 0; i < number; i++) {
     items.push(<span key={i} className={styles.penalty} />)
@@ -14,7 +14,7 @@ const generatePenalties = number => {
 }
 
 const TEAM_NAME_LENGTH = 3
-const getTeamName = team =>
+const getTeamName = (team) =>
   team.band.name
     .replace(/[^a-z\u00C0-\u017F]/gi, '')
     .substr(0, TEAM_NAME_LENGTH)
@@ -37,20 +37,20 @@ export const TeamDetails = ({
         styles[camelCase(`teamBubble-${side}`)],
         {
           [styles.dimm]: dimm,
-        }
+        },
       )}
       style={{ backgroundColor: team.color }}
     >
       <div
         className={classnames(
           styles.nameBar,
-          styles[camelCase(`nameBar-${side}`)]
+          styles[camelCase(`nameBar-${side}`)],
         )}
       >
         <img
           className={classnames(styles.logo, styles[camelCase(`logo-${side}`)])}
           src={team.logo || TEAM_LOGO_DEFAULT}
-          alt="Band logo"
+          alt='Band logo'
         />
         <span
           className={classnames(styles.name, styles[camelCase(`name-${side}`)])}
@@ -63,7 +63,7 @@ export const TeamDetails = ({
         <span
           className={classnames(
             styles.penalties,
-            styles[camelCase(`penalties-${side}`)]
+            styles[camelCase(`penalties-${side}`)],
           )}
         >
           {generatePenalties(styles, team.penaltyPoints)}

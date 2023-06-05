@@ -7,11 +7,11 @@ const renderLink = (t, lngCurrent, lngChoice) => {
   return (
     <OptionalLink
       className={styles.link}
-      fallbackComponent="span"
+      fallbackComponent='span'
       isLink={lngChoice === lngCurrent ? 'span' : 'a'}
       key={lngChoice}
       language={lngChoice}
-      route="home"
+      route='home'
     >
       {t(`language-${lngChoice}`)}
     </OptionalLink>
@@ -21,7 +21,7 @@ const renderLink = (t, lngCurrent, lngChoice) => {
 export const LanguageSwitcher = withTranslation(({ lng, i18n, t }) => (
   <div>
     {i18n.options.locales
-      .filter(item => item !== 'default')
+      .filter((item) => item !== 'default')
       .reduce((acc, lngChoice, index, src) => {
         const next = [...acc, renderLink(t, lng, lngChoice)]
         if (index < src.length - 1) {

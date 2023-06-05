@@ -10,8 +10,8 @@ export const GameDetail = ({ rules }) => (
       {rules.name}
       <Title text={rules.name} />
       <Head>
-        <meta property="og:description" content={rules.description} />
-        <meta property="og:type" content="article" />
+        <meta property='og:description' content={rules.description} />
+        <meta property='og:type' content='article' />
       </Head>
     </Heading>
     <Markdown source={rules.description} />

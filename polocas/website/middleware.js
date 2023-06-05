@@ -3,36 +3,39 @@ import i18nConfig from './next-i18next.config.cjs'
 import { NextResponse } from 'next/server'
 import { Locales } from 'locale'
 
-const supported = new Locales(i18nConfig.i18n.locales, i18nConfig.i18n.fallbackLocale)
+const supported = new Locales(
+  i18nConfig.i18n.locales,
+  i18nConfig.i18n.fallbackLocale,
+)
 
 const PUBLIC_FILE = /^\/?$/
 
-const shouldAssignLocale = req =>
+const shouldAssignLocale = (req) =>
   PUBLIC_FILE.test(req.nextUrl.pathname) &&
   !req.nextUrl.pathname.includes('/api/') &&
   req.nextUrl.locale === 'default'
 
-const getBestLocale = req =>
+const getBestLocale = (req) =>
   new Locales(req.headers.get('accept-language')).best(supported)
 
-const getProto = req =>
+const getProto = (req) =>
   req.headers.get('x-forwarded-proto') || req.proto === 'https'
     ? 'https'
     : 'http'
 
-const getHost = req =>
+const getHost = (req) =>
   req.headers.get('x-forwarded-host') ||
   req.headers.get('host') ||
   process.env.FRONTEND_HOST
 
-const getOrigin = req => `${getProto(req)}://${getHost(req)}`
+const getOrigin = (req) => `${getProto(req)}://${getHost(req)}`
 
-const redirectToLocalizedUrl = req =>
+const redirectToLocalizedUrl = (req) =>
   NextResponse.redirect(
-    `${getOrigin(req)}/${getBestLocale(req)}${req.nextUrl.pathname}`
+    `${getOrigin(req)}/${getBestLocale(req)}${req.nextUrl.pathname}`,
   )
 
-export const middleware = req => {
+export const middleware = (req) => {
   if (shouldAssignLocale(req)) {
     return redirectToLocalizedUrl(req)
   }

@@ -7,13 +7,13 @@ export const InspirationForm = ({ onSubmit, values = defaultValues }) => {
     <Form defaultValues={values} onSubmit={onSubmit}>
       <div>
         <Input
-          name="inspiration"
-          label="Inspirace"
-          type="text"
+          name='inspiration'
+          label='Inspirace'
+          type='text'
           helpText='Inspirace může být cokoliv, třeba "Poslední tramvaj", "Pán s taškou" nebo "Stroj na lásku"'
         />
       </div>
-      <FormControls submitLabel="Vložit" />
+      <FormControls submitLabel='Vložit' />
     </Form>
   )
 }

@@ -6,9 +6,9 @@ export const GameList = withTranslation(({ gameRules, t }) => {
     <>
       <p>{t('gameRulesStats', { total: gameRules.length })}</p>
       <ul>
-        {gameRules.map(rules => (
+        {gameRules.map((rules) => (
           <li key={rules.slug}>
-            <Link route="gameDetail" params={{ slug: rules.slug }}>
+            <Link route='gameDetail' params={{ slug: rules.slug }}>
               {rules.name}
             </Link>
           </li>

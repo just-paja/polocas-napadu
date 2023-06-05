@@ -52,7 +52,7 @@ const EventDetailHeading = ({ event }) => {
 }
 
 const EventDetailDescription = ({ event }) => (
-  <Markdown className="lead" source={event.description} />
+  <Markdown className='lead' source={event.description} />
 )
 
 const ShowDetailDescription = ({ show }) => (
@@ -69,7 +69,7 @@ const ShowDetailTypeLink = withTranslation(({ showType, t }) => {
   console.log(showType)
   if (isVisible(showType)) {
     return (
-      <Link route="showFormatDetail" params={{ slug: showType.slug }}>
+      <Link route='showFormatDetail' params={{ slug: showType.slug }}>
         {t('moreAboutFormat', { formatName: showType.name })}
       </Link>
     )
@@ -115,7 +115,7 @@ export const getServerSideProps = compose(
   withQueryset({
     show: { query: gql(showQuery) },
   }),
-  props => props
+  (props) => props,
 )
 
 const TicketPrice = ({ price }) => (
@@ -131,26 +131,26 @@ const EventPrices = withTranslation(({ event, prices, t }) => (
     summary={<Heading>{t('ticket-links')}</Heading>}
   >
     <div>
-      {prices.map(price => (
+      {prices.map((price) => (
         <TicketPrice price={price} key={price.id} />
       ))}
     </div>
-    <div className="d-flex flex-wrap">
+    <div className='d-flex flex-wrap'>
       <LinkButton
         href={event.linkTickets}
         label={t('buyTickets')}
         icon={<TicketsIcon />}
-        variant="primary"
-        size="lg"
-        className="mt-2 me-2 flex-grow-1"
+        variant='primary'
+        size='lg'
+        className='mt-2 me-2 flex-grow-1'
       />
       <LinkButton
         href={event.linkReservations}
         label={t('reserveSeats')}
         icon={<TicketsIcon />}
         variant={event.linkTickets ? 'secondary' : 'primary'}
-        size="lg"
-        className="mt-2 me-2 flex-grow-1"
+        size='lg'
+        className='mt-2 me-2 flex-grow-1'
       />
     </div>
   </LogisticInfo>
@@ -181,7 +181,7 @@ const ShowInfo = ({ show }) => (
 export default function ShowDetail({ show }) {
   return (
     <CommonLayout>
-      <Section as="article">
+      <Section as='article'>
         <EventDetailHeading event={show} />
         <ContentContainer>
           <ShowInfo show={show} />
@@ -192,7 +192,7 @@ export default function ShowDetail({ show }) {
               <ShowDetailTypeLink showType={show.showType} />
             </div>
           </div>
-          <Row className="justify-content-center">
+          <Row className='justify-content-center'>
             <ShowDetailMatchReport match={show.match} />
             <ShowDetailParticipants participants={show.participants} />
           </Row>

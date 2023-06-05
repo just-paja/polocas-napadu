@@ -99,17 +99,17 @@ const routes = {
 export const getRewrites = () => ({
   beforeFiles: Object.values(routes).reduce(
     (aggr, paths) => aggr.concat(Object.values(paths)),
-    []
-  )
+    [],
+  ),
 })
 
 export const translateRoute = (path, params) =>
-  path.replace(/(:[a-zA-Z]+)/g, match => {
+  path.replace(/(:[a-zA-Z]+)/g, (match) => {
     const param = match.substring(1)
     const value = params && params[param]
     if (!value) {
       throw new MissingParam(
-        `Cannot translate path "${path}" without "${param}"`
+        `Cannot translate path "${path}" without "${param}"`,
       )
     }
     return value

@@ -1,4 +1,4 @@
-const clearSoundCallbacks = sound => {
+const clearSoundCallbacks = (sound) => {
   sound.off('end')
   sound.off('stop')
 }
@@ -31,7 +31,7 @@ class AudioManagerObject {
   }
 
   remove(uuid) {
-    const soundIndex = this.sounds.findIndex(sound => sound.uuid === uuid)
+    const soundIndex = this.sounds.findIndex((sound) => sound.uuid === uuid)
     if (soundIndex !== -1) {
       const nextState = this.sounds.slice()
       nextState.splice(soundIndex, 1)
@@ -40,7 +40,7 @@ class AudioManagerObject {
   }
 
   findByUuid(uuid) {
-    return this.sounds.find(sound => sound.uuid === uuid)
+    return this.sounds.find((sound) => sound.uuid === uuid)
   }
 
   find(...args) {
@@ -50,7 +50,7 @@ class AudioManagerObject {
   play(uuid) {
     const audio = this.findByUuid(uuid)
     if (audio) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const handleSoundFinish = () => {
           audio.playing = false
           clearSoundCallbacks(audio.sound)

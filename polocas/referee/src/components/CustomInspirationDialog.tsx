@@ -32,7 +32,7 @@ export const CustomInspirationDialog = ({
       <Modal.Body>
         <InspirationForm
           values={values}
-          onSubmit={formData => {
+          onSubmit={(formData) => {
             addAndUseInspiration({
               variables: {
                 inspirationText: formData.inspiration,

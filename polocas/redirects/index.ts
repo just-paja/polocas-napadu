@@ -1,7 +1,7 @@
-import { createRedirectApp } from "./app.js"
-import { createServer } from "http"
+import { createRedirectApp } from './app.js'
+import { createServer } from 'http'
 
-const app = createRedirectApp(process.env.REDIRECTS || "[]")
+const app = createRedirectApp(process.env.REDIRECTS || '[]')
 const server = createServer(app)
 const port = process.env.PORT || 3000
 

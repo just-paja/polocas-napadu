@@ -13,12 +13,12 @@ import { withTranslation } from '@polocas/ui/i18n'
 function getFouls(match) {
   return match.contestantGroups.reduce(
     (acc, group) => [...acc, ...group.fouls],
-    []
+    [],
   )
 }
 
 function getScorePoints(match) {
-  return match.scorePoints.map(point => ({
+  return match.scorePoints.map((point) => ({
     ...point,
     object: 'scorePoint',
   }))
@@ -56,10 +56,10 @@ function padLeft(number) {
 function getTimerValue(time, start) {
   const duration = moment.duration(
     moment(time).diff(start, 'seconds'),
-    'seconds'
+    'seconds',
   )
   return `${padLeft(duration.hours())}:${padLeft(duration.minutes())}:${padLeft(
-    duration.seconds()
+    duration.seconds(),
   )}`
 }
 
@@ -102,7 +102,7 @@ function MatchEvent({ event, start }) {
 }
 
 function renderScore(match) {
-  return match.contestantGroups.sort(sortByScore).map(group => (
+  return match.contestantGroups.sort(sortByScore).map((group) => (
     <div key={group.id}>
       {group.band.name}: {group.score}
     </div>
@@ -110,7 +110,7 @@ function renderScore(match) {
 }
 
 const addKey = (eventType, array) =>
-  array.map(item => ({ ...item, eventType, key: `${eventType}-${item.id}` }))
+  array.map((item) => ({ ...item, eventType, key: `${eventType}-${item.id}` }))
 
 export const MatchProgress = withTranslation(({ matchId, t }) => {
   if (!matchId) {
@@ -126,14 +126,14 @@ export const MatchProgress = withTranslation(({ matchId, t }) => {
     ...addKey('score', getScorePoints(match)),
     ...addKey('stage', match.stages),
   ].sort(sortByDate)
-  const start = log.find(event => event.type === STAGE_INTRO)
+  const start = log.find((event) => event.type === STAGE_INTRO)
   if (!start) {
     return <div className={styles.log}>{t('matchHasNotStartedYet')}</div>
   }
   return (
     <div className={styles.log}>
       {renderScore(match)}
-      {log.map(logEvent => (
+      {log.map((logEvent) => (
         <MatchEvent
           key={logEvent.key}
           event={logEvent}

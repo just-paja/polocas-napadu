@@ -1,3 +1,5 @@
+import type { ChangeEvent } from 'react'
+
 import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
@@ -27,12 +29,13 @@ export const InspirationForm = ({
         inspiraci do scének. Tedy potom, co si z nich rozhodčí vybere :-)
       </p>
       <form onSubmit={() => onSubmit({ inspiration })}>
-        <div className="mt-3">
+        <div className='mt-3'>
           <PlainInput
+            controlId='inspiration'
             disabled={saving}
-            id="inspirationField"
-            label="Inspirace"
-            onChange={e => setInspiration(e.target.value)}
+            id='inspirationField'
+            label='Inspirace'
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setInspiration(e.target.value)}
             value={inspiration}
             helpText='Inspirace může být cokoliv, třeba "Poslední tramvaj", "Pán s taškou" nebo "Stroj na lásku"'
           />
@@ -41,16 +44,17 @@ export const InspirationForm = ({
           <Button
             loading={saving}
             disabled={!inspiration}
-            type="submit"
+            type='submit'
             icon={<SendIcon />}
-            variant="primary"
+            variant='primary'
           >
             Vložit
           </Button>
           {!saving && error ? (
             <p className={styles.error}>
-              {error.graphQLErrors &&
-              error.graphQLErrors.some(err => err.message === 'already-exists')
+              {error?.graphQLErrors?.some(
+                (err) => err.message === 'already-exists',
+              )
                 ? 'Toto téma již v košíčku existuje'
                 : 'Něco se pokazilo. Zkuste to prosím znovu.'}
             </p>

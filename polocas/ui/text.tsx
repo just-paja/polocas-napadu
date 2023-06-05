@@ -1,16 +1,28 @@
-import PropTypes from "prop-types"
-import React from "react"
+import ReactMarkdown from 'react-markdown'
 
-export const ArrayList = ({ text }) =>
-	text &&
-	text instanceof Array && (
-		<ul>
-			{text.map((t) => (
-				<li key={t}>{t}</li>
-			))}
-		</ul>
-	)
+import type { FC } from 'react'
 
-ArrayList.propTypes = {
-	text: PropTypes.arrayOf(PropTypes.node),
+interface MarkdownProps {
+  source: string
+}
+
+export const Markdown: FC<MarkdownProps> = ({ source, ...props }) => {
+  return source ? <ReactMarkdown {...props}>{source}</ReactMarkdown> : null
+}
+
+interface ArrayListProps {
+  text: string[]
+}
+
+export const ArrayList: FC<ArrayListProps> = ({ text }) => {
+  if (!text || text.length === 0) {
+    return null
+  }
+  return (
+    <ul>
+      {text.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  )
 }

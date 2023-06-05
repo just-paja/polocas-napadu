@@ -11,15 +11,15 @@ import { ContentContainer } from '../layout/ContentContainer'
 import { Link } from '../links'
 
 const ShowFormatGalleryItem = ({ reverse, showFormat }) => (
-  <Section component="article" className={styles.format}>
+  <Section component='article' className={styles.format}>
     <Row className={classnames({ 'flex-row-reverse': reverse })}>
       <Col
         md={6}
-        className="d-flex flex-column align-items-center justify-content-center"
+        className='d-flex flex-column align-items-center justify-content-center'
       >
         <div className={styles.formatDescription}>
           <Heading>
-            <Link route="showFormatDetail" params={{ slug: showFormat.slug }}>
+            <Link route='showFormatDetail' params={{ slug: showFormat.slug }}>
               {showFormat.name}
             </Link>
           </Heading>
@@ -27,7 +27,7 @@ const ShowFormatGalleryItem = ({ reverse, showFormat }) => (
         </div>
       </Col>
       <Col md={6}>
-        <Link route="showFormatDetail" params={{ slug: showFormat.slug }}>
+        <Link route='showFormatDetail' params={{ slug: showFormat.slug }}>
           {showFormat.photos.length ? (
             <img src={showFormat.photos[0].image.src} />
           ) : null}

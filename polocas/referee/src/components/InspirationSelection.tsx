@@ -40,19 +40,19 @@ export const InspirationSelection = () => {
       <div className={styles.inspirationList}>
         <InspirationList inspirations={currentStage.inspirations} />
       </div>
-      <div className="mt-3">
+      <div className='mt-3'>
         <ButtonGroup>
           <ShuffleButton
             disabled={
               preparedInspirationCount === 0 ||
               currentStage.inspirations.length === 0
             }
-            label="Vylosovat a nahradit"
+            label='Vylosovat a nahradit'
             replace
           />
           <ShuffleButton
             disabled={preparedInspirationCount === 0}
-            label="Vylosovat"
+            label='Vylosovat'
           />
           <CustomInspirationSelection />
         </ButtonGroup>

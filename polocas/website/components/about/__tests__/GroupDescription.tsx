@@ -18,7 +18,7 @@ describe('GroupDescription component', () => {
     const comp = await renderWithI18n(<GroupDescription />)
     expect(comp.find('ReactMarkdown')).toHaveProp(
       'source',
-      'groupDescriptionPerex'
+      'groupDescriptionPerex',
     )
   })
 })

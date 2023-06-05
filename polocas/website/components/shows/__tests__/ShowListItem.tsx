@@ -18,7 +18,7 @@ describe('ShowListItem component', () => {
             name: 'Improvizační zápas',
           },
         }}
-      />
+      />,
     )
     expect(comp.find('EventStart')).toHaveProp('start', '2019-03-08T19:30:00')
   })

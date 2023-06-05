@@ -9,12 +9,12 @@ import { withTranslation } from '@polocas/ui/i18n'
 const SiteSponsorLogo = ({ sponsor }) => (
   <Image
     className={styles.logo}
-    component="a"
+    component='a'
     href={sponsor.website}
     image={sponsor.logo}
     onClick={openExternalUrl}
     title={sponsor.name}
-    size="avatar"
+    size='avatar'
   />
 )
 
@@ -26,11 +26,11 @@ export const SiteSponsors = withTranslation(({ t }) => {
 
   return (
     <div className={styles.sponsors}>
-      <h4 className="text-center">
+      <h4 className='text-center'>
         <strong>{t('coopWith')}</strong>
       </h4>
-      <div className="d-flex justify-content-center">
-        {sponsors.map(sponsor => (
+      <div className='d-flex justify-content-center'>
+        {sponsors.map((sponsor) => (
           <SiteSponsorLogo key={sponsor.id} sponsor={sponsor} />
         ))}
       </div>

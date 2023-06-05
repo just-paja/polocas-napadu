@@ -10,7 +10,7 @@ export function ShowListItem({ show }) {
   return (
     <Col md={6} lg={3} className={styles.col}>
       <Link
-        route="showDetail"
+        route='showDetail'
         params={{ slug: show.slug }}
         className={classnames(styles.host, { [styles.future]: isFuture })}
       >

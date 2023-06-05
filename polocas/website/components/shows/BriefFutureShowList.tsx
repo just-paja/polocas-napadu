@@ -9,7 +9,7 @@ export const BriefFutureShowList = ({ shows }) => {
   return (
     <List as={Row}>
       {shows.length ? (
-        shows.map(show => <ShowListItem key={show.id} show={show} />)
+        shows.map((show) => <ShowListItem key={show.id} show={show} />)
       ) : (
         <NoFutureShows />
       )}

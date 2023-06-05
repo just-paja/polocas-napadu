@@ -2,10 +2,10 @@ import React from 'react'
 
 import { MatchContext } from '@polocas-napadu/core/context'
 
-export const withStage = Component => props =>
+export const withStage = (Component) => (props) =>
   (
     <MatchContext.Consumer>
-      {matchContext => (
+      {(matchContext) => (
         <Component
           {...props}
           stage={matchContext.match.currentStage}

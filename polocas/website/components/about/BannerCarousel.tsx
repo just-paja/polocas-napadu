@@ -7,7 +7,9 @@ import { usePage } from '@polocas/core/context'
 import styles from './BannerCarousel.module.scss'
 
 function getRandomPhoto(list, current) {
-  const allowed = list.map(photo => photo.id).filter(photo => photo !== current)
+  const allowed = list
+    .map((photo) => photo.id)
+    .filter((photo) => photo !== current)
   const number = Math.floor(Math.random() * allowed.length)
   return allowed[number]
 }
@@ -25,7 +27,7 @@ export const BannerCarousel = ({ className }) => {
   useEffect(() => {
     const timeout = setTimeout(
       () => setBackgroundPhoto(getRandomPhoto(list, backgroundPhoto)),
-      PHOTO_TIMEOUT
+      PHOTO_TIMEOUT,
     )
     return () => {
       clearTimeout(timeout)
@@ -34,12 +36,12 @@ export const BannerCarousel = ({ className }) => {
   return (
     <div className={classnames(styles.carousel, className)}>
       <div className={styles.inner}>
-        {list.map(photo => (
+        {list.map((photo) => (
           <Image
             className={classnames(styles.photo, {
               [styles.visible]: photo.id === backgroundPhoto,
             })}
-            size="horizon"
+            size='horizon'
             key={photo.id}
             onClick={() => setBackgroundPhoto(photo.id)}
             image={photo.image}

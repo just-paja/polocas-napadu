@@ -46,5 +46,5 @@ export const STAGE_OPTIONS = [
 ]
 
 export function getStageOption(stage) {
-  return STAGE_OPTIONS.find(option => option.value === stage.type)
+  return STAGE_OPTIONS.find((option) => option.value === stage.type)
 }

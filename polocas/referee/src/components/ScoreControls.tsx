@@ -21,7 +21,7 @@ export const ScoreControls = ({ side }) => {
   const [subtractScore, subtractProps] = useMutation(CHANGE_SCORE)
   const contestantGroup = getContestantBySide(contestantGroups, side)
   const loading = addProps.loading || subtractProps.loading
-  const handleClick = method => () =>
+  const handleClick = (method) => () =>
     method({
       refetchQueries: ['MatchStage'],
       variables: {
@@ -30,7 +30,7 @@ export const ScoreControls = ({ side }) => {
       },
     })
   return (
-    <div className="d-flex justify-content-center pt-3">
+    <div className='d-flex justify-content-center pt-3'>
       <Button
         disabled={loading}
         icon={<AddIcon />}

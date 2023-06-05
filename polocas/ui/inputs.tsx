@@ -1,28 +1,55 @@
-import classnames from "classnames"
-import Form from "react-bootstrap/Form"
-import React, { forwardRef } from "react"
+import type { ChangeEvent, ReactNode } from 'react'
 
-export const InputLabel = ({ colon = true, formCheck, required, text }) => (
-	<Form.Label
-		className={classnames({
-			"form-check-label": formCheck,
-			"fw-bold": required,
-		})}
-	>
-		{text}
-		{colon ? ":" : ""}
-	</Form.Label>
+import classnames from 'classnames'
+
+import { forwardRef } from 'react'
+import { FormControl, FormGroup, FormLabel, FormText } from 'react-bootstrap'
+
+interface InputLabelProps {
+  colon?: boolean
+  formCheck?: boolean
+  required?: boolean
+  text: ReactNode
+}
+
+export function InputLabel({
+  colon = true,
+  formCheck,
+  required,
+  text,
+}: InputLabelProps) {
+  return (
+    <FormLabel
+      className={classnames({
+        'form-check-label': formCheck,
+        'fw-bold': required,
+      })}
+    >
+      {text}
+      {colon ? ':' : ''}
+    </FormLabel>
+  )
+}
+
+type OnChangeHandler = (e: ChangeEvent<HTMLInputElement>) => void
+
+interface PlainInputProps {
+  controlId: string
+  disabled?: boolean
+  helpText?: string
+  id?: string
+  label?: ReactNode
+  onChange?: OnChangeHandler
+  required?: boolean
+  value?: string
+}
+
+export const PlainInput = forwardRef<HTMLInputElement, PlainInputProps>(
+  ({ controlId, helpText, label, required, ...inputProps }, ref) => (
+    <FormGroup controlId={controlId}>
+      <InputLabel required={required} text={label} />
+      <FormControl {...inputProps} ref={ref} />
+      {helpText ? <FormText as='div'>{helpText}</FormText> : null}
+    </FormGroup>
+  ),
 )
-
-const ReflessPlainInput = (
-	{ controlId, helpText, label, required, ...inputProps },
-	ref,
-) => (
-	<Form.Group controlId={controlId}>
-		<InputLabel required={required} text={label} />
-		<Form.Control {...inputProps} ref={ref} />
-		{helpText ? <Form.Text as="div">{helpText}</Form.Text> : null}
-	</Form.Group>
-)
-
-export const PlainInput = forwardRef(ReflessPlainInput)

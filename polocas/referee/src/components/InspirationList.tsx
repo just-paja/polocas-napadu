@@ -31,7 +31,7 @@ const InspirationItem = ({ inspiration, readOnly }) => {
   return (
     <ListGroup.Item
       key={inspiration.id}
-      className="d-flex justify-content-between align-items-center"
+      className='d-flex justify-content-between align-items-center'
     >
       <span>{inspiration.text}</span>
       {readOnly ? null : <InspirationDiscard inspiration={inspiration} />}
@@ -41,7 +41,7 @@ const InspirationItem = ({ inspiration, readOnly }) => {
 
 export const InspirationList = ({ inspirations, readOnly = false }) => (
   <ListGroup>
-    {inspirations.map(inspiration => (
+    {inspirations.map((inspiration) => (
       <InspirationItem
         inspiration={inspiration}
         readOnly={readOnly}

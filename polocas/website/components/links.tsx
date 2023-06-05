@@ -33,7 +33,7 @@ export const Linker = withTranslation(
         {cloneElement(children, { ...extraProps })}
       </NextLink>
     )
-  }
+  },
 )
 
 export const Link = ({
@@ -84,9 +84,9 @@ export function ExternalLink({ children, href, icon: Icon }) {
   if (!href) {
     return null
   }
-  const open = useCallback(e => openExternalUrl(e, href), [href])
+  const open = useCallback((e) => openExternalUrl(e, href), [href])
   return (
-    <a href={href} rel="external" onClick={open}>
+    <a href={href} rel='external' onClick={open}>
       {Icon && (
         <>
           <Icon />{' '}

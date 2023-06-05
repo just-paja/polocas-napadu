@@ -12,7 +12,7 @@ const MonthButton = ({ month, onClick, selected, ...props }) => {
   return (
     <Button
       {...props}
-      type="button"
+      type='button'
       href={url}
       variant={selected ? 'primary' : 'secondary'}
     >
@@ -21,7 +21,7 @@ const MonthButton = ({ month, onClick, selected, ...props }) => {
   )
 }
 
-const toMonth = date => date.format('YYYY-MM')
+const toMonth = (date) => date.format('YYYY-MM')
 
 const MAX_MONTHS = 2
 
@@ -34,10 +34,10 @@ const MonthPicker = ({ value, ...props }) => {
     toMonth(now.clone().add(MAX_MONTHS, 'month')),
   ]
   return (
-    <div {...props} className="mt-2">
-      {followUpMonths.map(m => (
+    <div {...props} className='mt-2'>
+      {followUpMonths.map((m) => (
         <MonthButton
-          className="me-1"
+          className='me-1'
           month={m}
           key={m}
           selected={value === m}
@@ -49,7 +49,7 @@ const MonthPicker = ({ value, ...props }) => {
 
 export const EventFilter = ({ values }) => {
   return (
-    <div className="mt-3">
+    <div className='mt-3'>
       <MonthPicker value={values.month} />
     </div>
   )

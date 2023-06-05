@@ -45,9 +45,9 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="https://www.facebook.com/polocas.napadu/"
-        title="Poločas nápadu na Facebooku"
-      />
+        href='https://www.facebook.com/polocas.napadu/'
+        title='Poločas nápadu na Facebooku'
+      />,
     )
     expect(comp.find('a')).toHaveLength(1)
   })
@@ -56,12 +56,12 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="https://www.facebook.com/polocas.napadu/"
-        title="Poločas nápadu na Facebooku"
-      />
+        href='https://www.facebook.com/polocas.napadu/'
+        title='Poločas nápadu na Facebooku'
+      />,
     )
     expect(
-      comp.find('a[href="https://www.facebook.com/polocas.napadu/"]')
+      comp.find('a[href="https://www.facebook.com/polocas.napadu/"]'),
     ).toHaveLength(1)
   })
 
@@ -69,9 +69,9 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="https://www.facebook.com/polocas.napadu/"
-        title="Poločas nápadu na Facebooku"
-      />
+        href='https://www.facebook.com/polocas.napadu/'
+        title='Poločas nápadu na Facebooku'
+      />,
     )
     expect(comp.find('a[title="Poločas nápadu na Facebooku"]')).toHaveLength(1)
   })
@@ -80,9 +80,9 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="https://www.facebook.com/polocas.napadu/"
-        title="Poločas nápadu na Facebooku"
-      />
+        href='https://www.facebook.com/polocas.napadu/'
+        title='Poločas nápadu na Facebooku'
+      />,
     )
     expect(comp.find('TestIcon')).toHaveLength(1)
   })
@@ -91,9 +91,9 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="https://www.facebook.com/polocas.napadu/"
-        title="Poločas nápadu na Facebooku"
-      />
+        href='https://www.facebook.com/polocas.napadu/'
+        title='Poločas nápadu na Facebooku'
+      />,
     )
     window.open.mockImplementation(() => {})
     comp.find('a').simulate('click')
@@ -104,9 +104,9 @@ describe('SocialNetworkLink component', () => {
     const comp = await renderWithI18n(
       <SocialNetworkLink
         icon={TestIcon}
-        href="mailto:ahoj@polocas-napadu.cz"
-        title="Napiš nám e-mail"
-      />
+        href='mailto:ahoj@polocas-napadu.cz'
+        title='Napiš nám e-mail'
+      />,
     )
     window.open.mockImplementation(() => {})
     comp.find('a').simulate('click')

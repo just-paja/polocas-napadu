@@ -2,10 +2,10 @@ import moment from 'moment'
 
 import { useEffect, useRef, useState } from 'react'
 
-const getSecondDiff = start => moment().diff(start, 'seconds')
+const getSecondDiff = (start) => moment().diff(start, 'seconds')
 const numberBase = 10
 const timerInterval = 200
-const zeroPad = number => (number < numberBase ? `0${number}` : `${number}`)
+const zeroPad = (number) => (number < numberBase ? `0${number}` : `${number}`)
 
 export const Timer = ({ start }) => {
   const [time, setTime] = useState(getSecondDiff(start))

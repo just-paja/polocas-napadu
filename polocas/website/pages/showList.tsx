@@ -18,7 +18,7 @@ import { withPageProps } from '../pages'
 import { Heading, Main } from '@polocas/ui/content'
 import { EventFilter } from '../components/events'
 
-const withSelectedMonth = fn => props => {
+const withSelectedMonth = (fn) => (props) => {
   const { month } = props.query
   return fn({
     props: {
@@ -32,7 +32,7 @@ export const getServerSideProps = compose(
   withPageProps,
   withSelectedMonth,
   withQueryset({
-    shows: props => ({
+    shows: (props) => ({
       query: gql(showListQuery),
       variables: {
         month: props.props.month,
@@ -40,7 +40,7 @@ export const getServerSideProps = compose(
     }),
     usualPlaces: { query: gql(usualPlacesQuery) },
   }),
-  props => props
+  (props) => props,
 )
 
 export default compose(
@@ -49,7 +49,7 @@ export default compose(
     return (
       <CommonLayout>
         <Title text={t('shows')} description={t('showsInvite')} />
-        <OgImage src="/static/pixmaps/og-show-list.jpg" />
+        <OgImage src='/static/pixmaps/og-show-list.jpg' />
         <ContentContainer>
           <Main className={styles.list}>
             <Heading>{t('shows')}</Heading>
@@ -67,5 +67,5 @@ export default compose(
         </ContentContainer>
       </CommonLayout>
     )
-  }
+  },
 )

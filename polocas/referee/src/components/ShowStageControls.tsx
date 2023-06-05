@@ -31,14 +31,14 @@ export const ShowStageControls = () => {
     return (
       <>
         {currentStage ? (
-          <ShowProgress side="left">
+          <ShowProgress side='left'>
             <ShowStageControl
               back
               stage={prevStage ? prevStage.type : STAGE_SHOW_SETUP}
             />
           </ShowProgress>
         ) : null}
-        <ShowProgress side="right">
+        <ShowProgress side='right'>
           <ShowStageControl
             forward={forward}
             component={ShowStageMenu}

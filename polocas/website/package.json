@@ -26,6 +26,9 @@
   "engines": {
     "node": "^18.0.0"
   },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
     "@polocas/core": "file:../core",
     "@polocas/inspirations": "file:../inspirations",

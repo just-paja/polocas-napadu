@@ -18,18 +18,18 @@ import {
 const ListItem = ({ show }) => {
   return (
     <Section
-      as="article"
+      as='article'
       className={classnames('row', styles.event, {
         [styles.past]: isPast(show),
         [styles.live]: isLive(show),
       })}
     >
       <Heading>
-        <Link route="showDetail" params={{ slug: show.slug }}>
+        <Link route='showDetail' params={{ slug: show.slug }}>
           {show.name}
         </Link>
       </Heading>
-      <div className="mt-2">
+      <div className='mt-2'>
         <div>
           <ShowStart show={show} />
         </div>
@@ -37,7 +37,7 @@ const ListItem = ({ show }) => {
           <ShowLocation show={show} />
         </div>
         <div>
-          <Link route="showFormatDetail" params={{ slug: show.showType.slug }}>
+          <Link route='showFormatDetail' params={{ slug: show.showType.slug }}>
             <ShowFormat show={show} />
           </Link>
         </div>
@@ -53,7 +53,7 @@ const ListItem = ({ show }) => {
 }
 
 const NoFutureShows = withTranslation(({ t }) => (
-  <Alert className="mt-3" variant="light">
+  <Alert className='mt-3' variant='light'>
     {t('noShowsPlanned')}
   </Alert>
 ))
@@ -62,7 +62,7 @@ export const MonthShowList = ({ shows }) => {
   return (
     <div>
       {shows.length ? (
-        shows.map(show => <ListItem key={show.id} show={show} />)
+        shows.map((show) => <ListItem key={show.id} show={show} />)
       ) : (
         <NoFutureShows />
       )}

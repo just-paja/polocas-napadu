@@ -26,12 +26,12 @@ const defaultConsent = {
 const ConsentForm = ({ consent, onCancel, onSubmit }) => {
   const { t } = useTranslation()
   const defaultValues = consent || defaultConsent
-  const stopPropagation = e => e.stopPropagation()
+  const stopPropagation = (e) => e.stopPropagation()
   return (
     <Form
       defaultValues={defaultValues}
-      id="cookieConsent"
-      onSubmit={values =>
+      id='cookieConsent'
+      onSubmit={(values) =>
         onSubmit({
           ...values,
           [CONSENT_FUNCTIONAL]: true,
@@ -42,7 +42,7 @@ const ConsentForm = ({ consent, onCancel, onSubmit }) => {
         <Accordion.Item eventKey={CONSENT_FUNCTIONAL}>
           <Accordion.Header>
             <Input
-              type="checkbox"
+              type='checkbox'
               disabled
               checked
               name={CONSENT_FUNCTIONAL}
@@ -57,7 +57,7 @@ const ConsentForm = ({ consent, onCancel, onSubmit }) => {
         <Accordion.Item eventKey={CONSENT_TRACKING}>
           <Accordion.Header>
             <Input
-              type="checkbox"
+              type='checkbox'
               name={CONSENT_TRACKING}
               label={t('cookie-tracking')}
               onClick={stopPropagation}
@@ -70,7 +70,7 @@ const ConsentForm = ({ consent, onCancel, onSubmit }) => {
         <Accordion.Item eventKey={CONSENT_MARKETING}>
           <Accordion.Header>
             <Input
-              type="checkbox"
+              type='checkbox'
               name={CONSENT_MARKETING}
               label={t('cookie-marketing')}
               onClick={stopPropagation}
@@ -94,10 +94,10 @@ const QuickConsentForm = ({ onAccept, onCustomize }) => {
   const { t } = useTranslation()
   return (
     <div className={styles.quickForm}>
-      <Button variant="secondary" size="lg" onClick={onCustomize}>
+      <Button variant='secondary' size='lg' onClick={onCustomize}>
         {t('cookie-customize')}
       </Button>
-      <Button size="lg" onClick={onAccept}>
+      <Button size='lg' onClick={onAccept}>
         {t('cookie-confirm-all')}
       </Button>
     </div>
@@ -112,7 +112,7 @@ const ConsentDialog = ({ consent, onResolve, show }) => {
   return (
     <Offcanvas
       show={show}
-      placement="bottom"
+      placement='bottom'
       className={classnames(styles.canvas, { [styles.canvasBig]: showForm })}
     >
       <Offcanvas.Body>
@@ -144,8 +144,8 @@ const GoogleTagManager = () => {
   const { GTM_CODE } = publicRuntimeConfig
   return (
     <Script
-      id="gtm"
-      strategy="afterInteractive"
+      id='gtm'
+      strategy='afterInteractive'
       dangerouslySetInnerHTML={{
         __html: `
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -168,7 +168,7 @@ const getConsentValue = () => {
     .reduce((aggr, key) => Object.assign(aggr, { [key]: true }), {})
 }
 
-const publishConsent = consent => {
+const publishConsent = (consent) => {
   if (consent) {
     window.dataLayer.push({
       event: 'cookieConsentSubmit',
@@ -185,7 +185,7 @@ export const Tracking = () => {
   const [showDialog, setShowDialog] = useState(false)
   const showConsentDialog = useCallback(
     () => setShowDialog(true),
-    [setShowDialog]
+    [setShowDialog],
   )
   useEffect(() => {
     window.showConsentDialog = showConsentDialog
@@ -193,7 +193,7 @@ export const Tracking = () => {
   useEffect(() => {
     publishConsent(consent)
   }, [consent])
-  const saveConsent = values => {
+  const saveConsent = (values) => {
     setConsent(values)
     const cookieValue = Object.entries(values)
       .reduce((aggr, [key, value]) => (value ? [...aggr, key] : aggr), [])

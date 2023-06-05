@@ -9,7 +9,7 @@ export const MainControls = ({ center = false, children }) => {
   return (
     <div className={classnames(styles.form, { 'text-center': center })}>
       {closed ? null : (
-        <MatchSpeedDial className={styles.dial} label="Přidat" />
+        <MatchSpeedDial className={styles.dial} label='Přidat' />
       )}
       {children}
     </div>

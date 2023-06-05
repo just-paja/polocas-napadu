@@ -18,7 +18,7 @@ export const getServerSideProps = compose(
   withQueryset({
     usualPlaces: { query: gql(usualPlacesQuery), variables: { future: true } },
   }),
-  props => props
+  (props) => props,
 )
 
 export default withTranslation(({ usualPlaceList, t }) => (

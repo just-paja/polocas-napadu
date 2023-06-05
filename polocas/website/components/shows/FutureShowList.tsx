@@ -6,7 +6,7 @@ import { ShowListItem } from './ShowListItem'
 import { withTranslation } from '@polocas/ui/i18n'
 
 const NoFutureShows = withTranslation(({ t }) => (
-  <Alert className="mt-3" variant="light">
+  <Alert className='mt-3' variant='light'>
     {t('noShowsPlanned')}
   </Alert>
 ))
@@ -15,7 +15,7 @@ export const FutureShowList = ({ shows }) => {
   return (
     <Row>
       {shows.length ? (
-        shows.map(show => <ShowListItem key={show.id} show={show} />)
+        shows.map((show) => <ShowListItem key={show.id} show={show} />)
       ) : (
         <NoFutureShows />
       )}

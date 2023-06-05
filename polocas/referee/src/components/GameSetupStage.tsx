@@ -20,7 +20,7 @@ const SET_GAME = gql`
 export const GameSetupStage = () => {
   const [setGame, { loading }] = useMutation(SET_GAME)
   const match = useMatch()
-  const handleChange = value =>
+  const handleChange = (value) =>
     setGame({
       refetchQueries: ['MatchStage'],
       variables: {

@@ -12,7 +12,7 @@ export const GameInspiration = () => {
       ) : null}
       {list.length > 0 ? (
         <div className={styles.inspiration}>
-          {list.map(inspiration => inspiration.text).join(', ')}
+          {list.map((inspiration) => inspiration.text).join(', ')}
         </div>
       ) : null}
     </div>

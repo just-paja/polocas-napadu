@@ -22,13 +22,13 @@ export const TicketButtons = withTranslation(({ event, t }) => {
     moment().isBefore(event.start)
   ) {
     return (
-      <div className="mt-2 d-flex">
+      <div className='mt-2 d-flex'>
         <LinkButton
           href={event.linkTickets}
           label={t('buyTickets')}
           icon={<TicketsIcon />}
-          variant="primary"
-          className="me-2"
+          variant='primary'
+          className='me-2'
         />
         <LinkButton
           href={event.linkReservations}

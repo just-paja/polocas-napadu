@@ -8,7 +8,7 @@ function getGameLabel(stage) {
   if (stage.game && stage.game.rules) {
     const inspirations = getGameInspirations(stage)
     const name = (
-      <Link route="gameDetail" params={{ slug: stage.game.rules.slug }}>
+      <Link route='gameDetail' params={{ slug: stage.game.rules.slug }}>
         {stage.game.rules.name}
       </Link>
     )
@@ -26,7 +26,7 @@ function getGameLabel(stage) {
 function getGameInspirations(stage) {
   if (stage.game && stage.game.inspirations) {
     return stage.game.inspirations
-      .map(inspiration => inspiration.text)
+      .map((inspiration) => inspiration.text)
       .join(', ')
   }
   return null

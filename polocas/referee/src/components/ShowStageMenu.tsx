@@ -24,7 +24,9 @@ const ShowStageMenuItem = ({ matchId, mutate, option }) => {
   )
 }
 
-const mapStageToButton = stage => <ShowStageControl key={stage} stage={stage} />
+const mapStageToButton = (stage) => (
+  <ShowStageControl key={stage} stage={stage} />
+)
 
 export const ShowStageMenu = ({ forward, mutate, omit }) => {
   const { t } = useTranslation()
@@ -35,10 +37,10 @@ export const ShowStageMenu = ({ forward, mutate, omit }) => {
         <Dropdown.Toggle>{t('matchOptions')}</Dropdown.Toggle>
         <Dropdown.Menu>
           {StageOptions.filter(
-            option =>
+            (option) =>
               StageJumpOptions.indexOf(option.value) !== -1 &&
-              omit.indexOf(option.value) === -1
-          ).map(option => (
+              omit.indexOf(option.value) === -1,
+          ).map((option) => (
             <ShowStageMenuItem
               key={option.value}
               matchId={match.id}

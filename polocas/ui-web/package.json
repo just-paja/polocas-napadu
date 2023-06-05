@@ -1,0 +1,40 @@
+{
+  "name": "@polocas/ui-web",
+  "version": "0.9.18",
+  "description": "Web UI components for Poločas nápadu interfaces",
+  "author": "Pavel Žák <pavel@zak.global>",
+  "homepage": "https://polocas-napadu.cz",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/just-paja/polocas-napadu.git"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": {
+        "development": "./index.tsx",
+        "default": "./dist/index.js"
+      }
+    },
+    "./apollo": {
+      "types": "./dist/apollo.d.ts",
+      "import": "./dist/apollo.js"
+    }
+  },
+  "dependencies": {
+    "@polocas-napadu/ui": "file:../ui",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.17.0",
+    "react-router-dom": "^6.17.0"
+  }
+}

@@ -7,9 +7,7 @@ import '@polocas/ui/global.scss'
 
 const render = (RootComponent: FC) => {
   const root = createRoot(document.getElementById('root'))
-  root.render(
-      <RootComponent />
-  )
+  root.render(<RootComponent />)
 }
 
 const startUp = () => {

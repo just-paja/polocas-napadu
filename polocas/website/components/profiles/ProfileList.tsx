@@ -30,7 +30,7 @@ function Circle({ profile, children, className, rotate }) {
     return (
       <Link
         params={{ slug: profile.slug }}
-        route="profile"
+        route='profile'
         {...props}
         title={name}
       >
@@ -62,7 +62,7 @@ export function ProfileListItem({ dark, profile, className, rotate }) {
           [styles.withProfile]: Boolean(profile),
           [styles.withoutProfile]: !profile,
         },
-        className
+        className,
       )}
       profile={profile}
       rotate={rotate}
@@ -84,7 +84,7 @@ function renderCircles(profiles) {
         <ProfileListItem
           key={`dummy-secondary-${index}`}
           rotate={-2.33 * Math.PI * rotate}
-        />
+        />,
       )
     }
     if (dummySequences.dark.indexOf(index) !== -1) {
@@ -93,7 +93,7 @@ function renderCircles(profiles) {
           dark
           key={`dummy-dark-${index}`}
           rotate={3.7 * Math.PI * rotate}
-        />
+        />,
       )
     }
     result.push(item)

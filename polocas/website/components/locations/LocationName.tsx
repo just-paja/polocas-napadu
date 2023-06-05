@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-import { Location } from '@polocas-napadu/core/proptypes'
+import type { Location } from '@polocas-napadu/core/constants'
 
-export const LocationName = ({ location }) => (
+interface LocationNameProps {
+  location: Location
+}
+
+export const LocationName: FC<LocationNameProps> = ({ location }) => (
   <>
     {location.city ? `${location.city}, ` : ''}
     {location.name}
   </>
 )
-
-LocationName.propTypes = {
-  location: Location.isRequired,
-}

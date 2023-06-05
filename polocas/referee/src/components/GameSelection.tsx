@@ -17,13 +17,13 @@ export const GameSelection = withQuery(
     <Select
       classes={classes}
       options={data.gameRulesList}
-      getOptionLabel={option => option.name}
-      getOptionValue={option => option.id}
+      getOptionLabel={(option) => option.name}
+      getOptionValue={(option) => option.id}
       value={value}
       onChange={onChange}
-      placeholder="Vyber kategorii"
+      placeholder='Vyber kategorii'
       isClearable
     />
   ),
-  GET_GAMES
+  GET_GAMES,
 )

@@ -13,7 +13,7 @@ const GET_MATCH_INSPIRATION_QR = gql`
 
 export const InspirationQr = withQuery(
   ({ data, ...props }) => (
-    <img src={data.match.show.inspirationQrUrl} alt="invite" {...props} />
+    <img src={data.match.show.inspirationQrUrl} alt='invite' {...props} />
   ),
-  GET_MATCH_INSPIRATION_QR
+  GET_MATCH_INSPIRATION_QR,
 )

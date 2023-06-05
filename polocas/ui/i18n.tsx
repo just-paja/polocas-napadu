@@ -1,25 +1,39 @@
-import type { FC } from "react"
+import type { FC } from 'react'
 
-import { use } from "i18next"
-import { useTranslation, initReactI18next } from "react-i18next"
+import { use } from 'i18next'
+import { useTranslation, initReactI18next } from 'react-i18next'
 
-export const withTranslation = (Component: FC) => {
-	const fn: FC = (props: any) => {
-		const { i18n, t } = useTranslation()
-		return <Component {...props} i18n={i18n} t={t} />
-	}
-	fn.displayName = `i18n(${Component.name})`
-	return fn
+export type Translate = (t: string) => string
+
+export interface TranslatedComponent {
+  t: Translate
 }
 
-export const initLocalization = (locales) =>
-	use(initReactI18next).init({
-		resources: Object.fromEntries(
-			Object.entries(locales).map(([lang, translation]) => [
-				lang,
-				{ translation },
-			]),
-		),
-		lng: "cs", // if you're using a language detector, do not define the lng option
-		fallbackLng: "en",
-	})
+export function useI18n() {
+  return useTranslation()
+}
+
+export function withTranslation<T>(
+  Component: FC<T & TranslatedComponent>,
+): FC<T & TranslatedComponent> {
+  const fn = (props: T & TranslatedComponent) => {
+    const { i18n, t } = useTranslation()
+    return <Component {...props} i18n={i18n} t={t} />
+  }
+  fn.displayName = `i18n(${Component.name})`
+  return fn
+}
+
+export function initLocalization(locales: Record<string, string>) {
+  const resources = Object.fromEntries(
+    Object.entries(locales).map(([lang, translation]) => [
+      lang,
+      { translation },
+    ]),
+  )
+  return use(initReactI18next).init({
+    resources,
+    lng: 'cs', // if you're using a language detector, do not define the lng option
+    fallbackLng: 'en',
+  })
+}

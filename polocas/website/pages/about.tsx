@@ -22,7 +22,7 @@ export const getServerSideProps = compose(
       query: gql(showCountQuery),
     },
   }),
-  props => props
+  (props) => props,
 )
 
 export default withTranslation(({ profileGroupList, showTypeList, t }) => (

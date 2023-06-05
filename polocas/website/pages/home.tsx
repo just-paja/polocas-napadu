@@ -21,7 +21,7 @@ export const getServerSideProps = compose(
     showPhotos: { query: gql(showPhotosQuery) },
     shows: { query: gql(showListQuery), variables: { future: true } },
   }),
-  props => props
+  (props) => props,
 )
 
 export default withTranslation(({ showList, t }) => (
@@ -31,7 +31,7 @@ export default withTranslation(({ showList, t }) => (
       description={t('projectAbout')}
       pure
     />
-    <OgImage src="/static/pixmaps/og-main.jpg" />
+    <OgImage src='/static/pixmaps/og-main.jpg' />
     <MainMenu />
     <HomeBanner />
     <ContentContainer className={styles.content}>

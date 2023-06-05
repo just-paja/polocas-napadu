@@ -6,7 +6,7 @@ import { Team } from './Team.js'
 
 export const IntroStage = () => (
   <ControlsLayout>
-    <BoardLayout layout="horizontal">
+    <BoardLayout layout='horizontal'>
       <Team side={ContestantSide.Left} />
       <Team side={ContestantSide.Right} />
     </BoardLayout>

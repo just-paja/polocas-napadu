@@ -7,7 +7,7 @@ import { Teams } from './Teams.js'
 export const ShowSetupStage = () => (
   <>
     <Teams hideScore />
-    <div className="d-flex align-items-center justify-content-center">
+    <div className='d-flex align-items-center justify-content-center'>
       <InspirationQr className={styles.qr} />
     </div>
     <InspirationCount />

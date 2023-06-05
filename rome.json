@@ -1,21 +1,22 @@
 {
   "$schema": "./node_modules/rome/configuration_schema.json",
   "files": {
-      "ignore": ["node_modules/**"]
+    "ignore": ["node_modules/**", ".next/**", "dist/**"]
   },
   "organizeImports": {
     "enabled": false
   },
   "formatter": {
     "enabled": true,
-    "indentSize": 2
+    "indentSize": 2,
+    "indentStyle": "space"
   },
   "linter": {
     "enabled": true,
     "rules": {
       "all": true,
       "nursery": {
-        "useHookAtTopLevel": "off"        
+        "useHookAtTopLevel": "off"
       },
       "style": {
         "noImplicitBoolean": "off"
@@ -24,7 +25,8 @@
   },
   "javascript": {
     "formatter": {
+      "quoteStyle": "single",
       "semicolons": "asNeeded"
-    }    
+    }
   }
 }

@@ -10,7 +10,7 @@ const HomePage: FC = () => {
     <div className={styles.container}>
       <Head>
         <title>Longforman - festival divadelní improvizace</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main className={classnames(styles.main, styles.first)}>

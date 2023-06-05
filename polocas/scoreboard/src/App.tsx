@@ -9,9 +9,9 @@ export const App = () => (
   <HashRouter>
     <Apollo>
       <Routes>
-        <Route path="/" exact element={<MatchList />} />
-        <Route path="/match/:matchId" exact element={<SpectatorView />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/' exact element={<MatchList />} />
+        <Route path='/match/:matchId' exact element={<SpectatorView />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Apollo>
   </HashRouter>

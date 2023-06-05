@@ -2,6 +2,7 @@
   "name": "@polocas/inspirations",
   "version": "0.9.18",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev-server.mjs"
@@ -9,8 +10,10 @@
   "files": [
     "dist"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
-    "@polocas/ui": "file:../ui",
-    "react-router": "^6.4.5"
+    "@polocas/ui-web": "file:../ui-web"
   }
 }

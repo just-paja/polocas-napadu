@@ -1,33 +1,64 @@
-import { EventStart, EventLocation } from "./events.js"
-import { PriceSummary } from "./prices.js"
+import type { PriceTag } from './prices.js'
+
+import { EventStart, EventLocation } from './events.js'
+import { PriceSummary } from './prices.js'
 import {
-	LocationIcon,
-	LogisticsIcon,
-	ShowFormatIcon,
-	TicketsIcon,
-} from "./icons.js"
+  LocationIcon,
+  LogisticsIcon,
+  ShowFormatIcon,
+  TicketsIcon,
+} from './icons.js'
 
-export const ShowStart = ({ show }) => (
-	<>
-		<LogisticsIcon /> <EventStart start={show.start} />
-	</>
-)
+export interface Location {
+  name: string
+}
 
-export const ShowLocation = ({ show }) => (
-	<>
-		<LocationIcon />{" "}
-		{show.location ? <EventLocation location={show.location} /> : null}
-	</>
-)
+export interface ShowType {
+  name: string
+}
 
-export const ShowFormat = ({ show }) => (
-	<>
-		<ShowFormatIcon /> {show.showType.name}
-	</>
-)
+export interface Show {
+  id: string
+  name: string
+  start: string
+  showType: ShowType
+  location?: Location
+  ticketPrices: PriceTag[]
+}
 
-export const ShowTicketPriceSummary = ({ show }) => (
-	<>
-		<TicketsIcon /> <PriceSummary prices={show.ticketPrices} />
-	</>
-)
+interface ShowDetailProps {
+  show: Show
+}
+
+export function ShowStart({ show }: ShowDetailProps) {
+  return (
+    <>
+      <LogisticsIcon /> <EventStart start={show.start} />
+    </>
+  )
+}
+
+export function ShowLocation({ show }: ShowDetailProps) {
+  return (
+    <>
+      <LocationIcon />{' '}
+      {show.location ? <EventLocation location={show.location} /> : null}
+    </>
+  )
+}
+
+export function ShowFormat({ show }: ShowDetailProps) {
+  return (
+    <>
+      <ShowFormatIcon /> {show.showType.name}
+    </>
+  )
+}
+
+export function ShowTicketPriceSummary({ show }: ShowDetailProps) {
+  return (
+    <>
+      <TicketsIcon /> <PriceSummary prices={show.ticketPrices} />
+    </>
+  )
+}

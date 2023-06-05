@@ -10,7 +10,7 @@ const dateFormat = 'YYYYMMDDTHHmmss\\Z'
 const typicalEventLength = 2
 const numberBase = 10
 
-const padLeft = number => (number < numberBase ? `0${number}` : number)
+const padLeft = (number) => (number < numberBase ? `0${number}` : number)
 const getEnd = (start, end) =>
   end ? moment(end) : moment(start).add(typicalEventLength, 'hour')
 
@@ -32,7 +32,7 @@ function getGoogleLink(event) {
 function getDuration(start, end) {
   const duration = moment.duration(
     moment(end).diff(start, 'minutes'),
-    'minutes'
+    'minutes',
   )
   return `${padLeft(duration.hours())}${padLeft(duration.minutes())}`
 }

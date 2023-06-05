@@ -21,7 +21,7 @@ export const getServerSideProps = compose(
   withPageProps,
   withQueryset({
     shows: { query: foulTypeQuery },
-  })
+  }),
 )
 
 export default function FoulTypeDetailPage({ slug }) {

@@ -1,15 +1,15 @@
-import { createContext, useContext } from "react"
+import { createContext, useContext } from 'react'
 import { Sponsor } from './constants.js'
 
 interface PageContextShape {
-    siteSponsorList: Sponsor[]
+  siteSponsorList: Sponsor[]
 }
 
 export interface UrlBaseShape {
-	host: string
-	origin: string
-	protocol: string
-	url: string
+  host: string
+  origin: string
+  protocol: string
+  url: string
 }
 
 export const RouterContext = createContext({})
@@ -17,7 +17,7 @@ export const MatchContext = createContext(null)
 export const ShowContext = createContext(null)
 export const UrlBase = createContext<UrlBaseShape | null>(null)
 export const PageContext = createContext<PageContextShape>({
-    siteSponsorList: [],
+  siteSponsorList: [],
 })
 
 export const useMatch = () => useContext(MatchContext)

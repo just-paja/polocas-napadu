@@ -10,8 +10,8 @@ export const FoulTypeDetail = ({ foulType }) => (
       {foulType.name}
       <Title text={foulType.name} />
       <Head>
-        <meta property="og:description" content={foulType.description} />
-        <meta property="og:type" content="article" />
+        <meta property='og:description' content={foulType.description} />
+        <meta property='og:type' content='article' />
       </Head>
     </Heading>
     <Markdown source={foulType.description} />

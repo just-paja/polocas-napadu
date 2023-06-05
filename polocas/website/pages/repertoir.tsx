@@ -18,7 +18,7 @@ export const getServerSideProps = compose(
       query: gql(showFormatListQuery),
     },
   }),
-  props => props
+  (props) => props,
 )
 
 export default function RepertoirPage({ showTypeList }) {
@@ -31,7 +31,7 @@ export default function RepertoirPage({ showTypeList }) {
             text={t('repertoir')}
             description={t('repertoirOgDescription')}
           />
-          <OgImage src="/static/pixmaps/og-show-list.jpg" />
+          <OgImage src='/static/pixmaps/og-show-list.jpg' />
           <Heading>{t('repertoir')}</Heading>
         </ContentContainer>
         <ShowFormatGallery showFormats={showTypeList} />

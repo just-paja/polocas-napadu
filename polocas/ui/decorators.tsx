@@ -1,8 +1,10 @@
-export const compose = (...handlers) =>
-	handlers
-		.slice()
-		.reverse()
-		.reduce((aggr, handler) => {
-			const a = handler(aggr)
-			return a?.then ? a.then((v) => v) : a
-		})
+type Handler = (...args: any[]) => any
+
+export const compose = (...handlers: Handler[]) =>
+  handlers
+    .slice()
+    .reverse()
+    .reduce((aggr, handler) => {
+      const a = handler(aggr)
+      return a?.then ? a.then((v: any) => v) : a
+    })

@@ -9,6 +9,9 @@
   "files": [
     "build"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
     "@polocas/ui": "file:../ui",
     "react-router": "^6.4.5"

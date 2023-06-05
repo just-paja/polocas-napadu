@@ -32,7 +32,7 @@ export const MatchList = withQuery(
       <div className={styles.menu}>
         <Heading>Sledovat zápas</Heading>
         <ul className={styles.list}>
-          {data.matchList.map(match => (
+          {data.matchList.map((match) => (
             <li className={styles.item} key={match.id}>
               <Link to={`/match/${match.id}`}>{match.show.name}</Link>
               <br />
@@ -45,5 +45,5 @@ export const MatchList = withQuery(
       </div>
     </Main>
   ),
-  GET_MATCHES
+  GET_MATCHES,
 )

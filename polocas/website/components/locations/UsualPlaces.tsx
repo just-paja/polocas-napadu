@@ -1,23 +1,34 @@
-import Markdown from 'react-markdown'
-import React from 'react'
+import React, { FC } from 'react'
 
+import { UsualPlace } from '@polocas/core/constants'
 import { Heading, Section } from '@polocas/ui/content'
-import { Location } from './Location'
+import { LocationAddress } from './LocationAddress'
+import { Markdown } from '@polocas/ui/text'
 import { withTranslation } from '@polocas/ui/i18n'
 
-const UsualPlace = ({ place }) => (
+interface UsualPlaceProps {
+  place: UsualPlace
+}
+
+const UsualPlaceSection: FC<UsualPlaceProps> = ({ place }) => (
   <Section>
     <Heading>{place.name}</Heading>
     <Markdown source={place.description} />
-    <Location location={place.location} />
+    <LocationAddress location={place.location} />
   </Section>
 )
 
-export const UsualPlaces = withTranslation(({ places, t }) => (
-  <Section>
-    <p>{t('usualPlacesFlavourText')}</p>
-    {places.map(place => (
-      <UsualPlace key={place.id} place={place} />
-    ))}
-  </Section>
-))
+interface UsualPlacesProps {
+  places: UsualPlace[]
+}
+
+export const UsualPlaces = withTranslation<UsualPlacesProps>(
+  ({ places, t }) => (
+    <Section>
+      <p>{t('usualPlacesFlavourText')}</p>
+      {places.map((place) => (
+        <UsualPlaceSection key={place.id} place={place} />
+      ))}
+    </Section>
+  ),
+)

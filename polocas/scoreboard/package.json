@@ -9,6 +9,9 @@
   "files": [
     "dist"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "dependencies": {
     "@polocas/ui": "file:../ui",
     "howler": "^2.2.3",

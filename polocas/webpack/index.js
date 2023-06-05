@@ -1,6 +1,5 @@
 /* istanbul ignore file */
-import babelConfig from '../../babel.config.js'
-import dotenv from 'dotenv'
+import babelConfig from '../../babel.config.cjs'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
@@ -14,33 +13,31 @@ import { readFileSync, readdirSync } from 'fs'
 const baseDir = dirname(fileURLToPath(import.meta.url))
 const DEFAULT_PORT = 5001
 
-dotenv.config()
+const getSafeName = (name) => name.replace(/^@/, '').replace(/\//g, '-')
 
-const getSafeName = name => name.replace(/^@/, '').replace(/\//g, '-')
+const getPackageDistDir = (name) => join(getDistDir(), getSafeName(name))
 
-const getPackageDistDir = name => join(getDistDir(), getSafeName(name))
-
-export const readManifest = packageDir =>
+export const readManifest = (packageDir) =>
   JSON.parse(readFileSync(join(packageDir, 'package.json')))
 
 export const getLocaleEntryPaths = (packageDir, prefix = '') => {
   const localesPath = resolve(packageDir, 'locales')
   return Array.from(readdirSync(localesPath, { withFileTypes: true }))
-    .filter(entry => entry.isDirectory() && !entry.name.includes('__'))
+    .filter((entry) => entry.isDirectory() && !entry.name.includes('__'))
     .reduce(
       (aggr, entry) => ({
         ...aggr,
         [[prefix, entry.name].filter(Boolean).join('-')]: resolve(
           localesPath,
           entry.name,
-          'index.mjs'
+          'index.mjs',
         ),
       }),
-      {}
+      {},
     )
 }
 
-export const getMode = env =>
+export const getMode = (env) =>
   env.NODE_ENV === 'production' ? 'production' : 'development'
 
 export const getBabelConfig = () => ({
@@ -69,9 +66,9 @@ export const getBranchVars = () => {
   const prefixed = Object.fromEntries(
     Object.entries(process.env)
       .map(([name, value]) =>
-        name.startsWith(prefix) ? [name.substring(prefix.length), value] : null
+        name.startsWith(prefix) ? [name.substring(prefix.length), value] : null,
       )
-      .filter(Boolean)
+      .filter(Boolean),
   )
   return {
     ...process.env,
@@ -103,24 +100,24 @@ export const getWebpackConfig = ({
   externalsType,
   externalsPresets,
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".mjs", "..."],
+    extensions: ['.tsx', '.ts', '.js', '.mjs', '...'],
     extensionAlias: {
-      ".js": [".js", ".ts", ".tsx"],
-      ".cjs": [".cjs", ".cts", ".ctsx"],
-      ".mjs": [".mjs", ".mts", ".mtsx"],
-    }
+      '.js': ['.js', '.ts', '.tsx'],
+      '.cjs': ['.cjs', '.cts', '.ctsx'],
+      '.mjs': ['.mjs', '.mts', '.mtsx'],
+    },
   },
   module: {
     rules: [
-      getBabelConfig(),
       {
         test: /\.([cm]?ts|tsx)$/,
         loader: 'ts-loader',
         options: {
           projectReferences: true,
           transpileOnly: false,
-        }
+        },
       },
+      getBabelConfig(),
       {
         test: /s[ac]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
@@ -150,7 +147,7 @@ export const getWebpackConfig = ({
  * @async
  * @returns WebpackStats
  */
-export const compile = async compiler =>
+export const compile = async (compiler) =>
   await new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) {
@@ -163,7 +160,7 @@ export const compile = async compiler =>
         statsErr.stack = info.errors[0].stack
         return reject(statsErr)
       }
-      compiler.close(closeErr => {
+      compiler.close((closeErr) => {
         if (closeErr) {
           reject(closeErr)
         }
@@ -177,28 +174,29 @@ export const compile = async compiler =>
 
 export const transpileScript = async ({ env, ...props }) => {
   const config = getWebpackConfig({
-      ...props,
-      env: {
-        ...env,
-        ...getBranchVars(),
-        NODE_ENV: 'production',
-      },
-    })
+    ...props,
+    env: {
+      ...env,
+      ...getBranchVars(),
+      NODE_ENV: 'production',
+    },
+  })
   const compiler = webpack(config)
   return await compile(compiler)
 }
 
-export const createDevServer = webpackEnv => {
+export const createDevServer = (webpackEnv) => {
   const webpackConfig = getWebpackConfig(webpackEnv)
-  const entryPath = resolve(baseDir, '..', webpackEnv.entryPathDev || webpackEnv.entryPath)
+  const entryPath = resolve(
+    baseDir,
+    '..',
+    webpackEnv.entryPathDev || webpackEnv.entryPath,
+  )
 
   const compilerConfig = {
     ...webpackConfig,
     entry: entryPath,
-    plugins: [
-      ...webpackConfig.plugins,
-      new HtmlWebpackPlugin({}),
-    ],
+    plugins: [...webpackConfig.plugins, new HtmlWebpackPlugin({})],
   }
   const compiler = webpack(compilerConfig)
   const devServerOptions = {
@@ -213,7 +211,7 @@ export const getAssetLoader = () => ({
   type: 'asset/resource',
 })
 
-export const getSassLoader = nodeEnv => ({
+export const getSassLoader = (nodeEnv) => ({
   test: /s[ac]ss$/,
   use: [
     nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -223,16 +221,24 @@ export const getSassLoader = nodeEnv => ({
   ],
 })
 
-export const getReactRules = nodeEnv => [
+export const getReactRules = (nodeEnv) => [
   {
-    test: /\.(js|jsx|ts|tsx)$/,
+    test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     loader: 'babel-loader',
     options: {
       ...babelConfig,
-      plugins: [
-        nodeEnv !== 'production' && 'react-refresh/babel',
-      ].filter(Boolean),
+      plugins: [nodeEnv !== 'production' && 'react-refresh/babel'].filter(
+        Boolean,
+      ),
+    },
+  },
+  {
+    test: /\.([cm]?ts|tsx)$/,
+    loader: 'ts-loader',
+    options: {
+      projectReferences: true,
+      transpileOnly: false,
     },
   },
   getSassLoader(nodeEnv),
@@ -247,7 +253,6 @@ export const getReactPlugins = ({ env, template }) =>
     template ? new HtmlWebpackPlugin({ template }) : null,
   ].filter(Boolean)
 
-
 export const getReactConfig = ({ env, template }) => ({
   plugins: getReactPlugins({ env, template }),
   rules: getReactRules(env.NODE_ENV),
@@ -259,7 +264,7 @@ const getDefaultEnv = () => ({
 })
 
 export const getConfig = ({
-  distDir, 
+  distDir,
   entryPath,
   env,
   experiments,
@@ -294,17 +299,19 @@ export const getConfig = ({
       path: distDir,
       publicPath: '/',
       filename: outputFileName || 'main-[chunkhash].js',
-      library: outputModules ? {
-        type: 'module',
-      } : undefined,
+      library: outputModules
+        ? {
+            type: 'module',
+          }
+        : undefined,
     },
     plugins,
     resolve: {
-      extensions: [".tsx", ".ts", ".js", ".mjs", "..."],
+      extensions: ['.tsx', '.ts', '.js', '.mjs', '...'],
       extensionAlias: {
-        ".js": [".js", ".ts", ".tsx"],
-        ".cjs": [".cjs", ".cts", ".ctsx"],
-        ".mjs": [".mjs", ".mts", ".mtsx"],
+        '.js': ['.js', '.ts', '.tsx'],
+        '.cjs': ['.cjs', '.cts', '.ctsx'],
+        '.mjs': ['.mjs', '.mts', '.mtsx'],
       },
     },
     target: target || 'web',
@@ -312,7 +319,7 @@ export const getConfig = ({
 }
 
 export const setupReactWebpack = ({ defaultPort, env, ...webpackProps }) => {
-  const getWebpackConfig = props =>
+  const getWebpackConfig = (props) =>
     getConfig({
       ...webpackProps,
       ...props,
@@ -323,7 +330,7 @@ export const setupReactWebpack = ({ defaultPort, env, ...webpackProps }) => {
       },
     })
 
-  const createDevServer = props => {
+  const createDevServer = (props) => {
     const compiler = webpack(getWebpackConfig(props))
     const devServerOptions = {
       open: true,
@@ -334,7 +341,7 @@ export const setupReactWebpack = ({ defaultPort, env, ...webpackProps }) => {
     return new WebpackDevServer(devServerOptions, compiler)
   }
   const runDevServer = () => createDevServer().start()
-  const transpileScript = props => {
+  const transpileScript = (props) => {
     return compile(webpack(getWebpackConfig(props)))
   }
   const build = () =>

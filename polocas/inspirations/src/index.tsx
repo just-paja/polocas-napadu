@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { App } from './App'
+import { App } from './App.js'
 import { createRoot } from 'react-dom/client'
 import { initLocalization } from '@polocas/ui/i18n'
 

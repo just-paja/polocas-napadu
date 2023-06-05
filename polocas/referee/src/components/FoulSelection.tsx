@@ -15,13 +15,13 @@ export const FoulSelection = withQuery(
   ({ data, ...props }) => (
     <Input
       {...props}
-      options={data.foulTypeList.map(option => ({
+      options={data.foulTypeList.map((option) => ({
         label: option.name,
         value: option.id,
       }))}
-      placeholder="Vyber druh chyby"
-      type="select"
+      placeholder='Vyber druh chyby'
+      type='select'
     />
   ),
-  GET_GAMES
+  GET_GAMES,
 )

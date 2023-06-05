@@ -11,7 +11,7 @@ const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
-  createServer((req, res) => handle(req, res)).listen(port, err => {
+  createServer((req, res) => handle(req, res)).listen(port, (err) => {
     if (err) {
       throw err
     }

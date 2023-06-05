@@ -14,11 +14,11 @@ export const HomeBanner = withTranslation(({ t }) => {
           <div className={styles.circle}>
             <Bulb />
           </div>
-          <Bulb className={styles.bulb2} color="inverse" />
+          <Bulb className={styles.bulb2} color='inverse' />
 
           <div className={styles.text}>
             <h1>{t('projectName')}</h1>
-            <p className="lead">{t('projectNameAppendix')}</p>
+            <p className='lead'>{t('projectNameAppendix')}</p>
           </div>
         </ContentContainer>
       </div>

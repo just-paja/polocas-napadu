@@ -25,13 +25,13 @@ const availableFanfares = [
   pointWindows,
 ]
 
-const fanfares = availableFanfares.map(sound => {
+const fanfares = availableFanfares.map((sound) => {
   AudioManager.store(
     sound,
     new Howl({
       src: [sound],
       format: 'wav',
-    })
+    }),
   )
   return sound
 })

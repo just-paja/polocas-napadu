@@ -11,19 +11,19 @@ import { Tracking } from '../components/tracking'
 import './_app.scss'
 
 const MyApp = ({ Component, pageProps }) => {
-console.log(apolloClient)
-return (
-  <ApolloProvider client={apolloClient}>
-    <PageContext.Provider value={pageProps}>
-      <Tracking />
-      <MetaBase />
-      <MetaPage title="Fantasion" />
-      <SSRProvider>
-        <Component {...pageProps} />
-      </SSRProvider>
-    </PageContext.Provider>
-  </ApolloProvider>
-)
+  console.log(apolloClient)
+  return (
+    <ApolloProvider client={apolloClient}>
+      <PageContext.Provider value={pageProps}>
+        <Tracking />
+        <MetaBase />
+        <MetaPage title='Fantasion' />
+        <SSRProvider>
+          <Component {...pageProps} />
+        </SSRProvider>
+      </PageContext.Provider>
+    </ApolloProvider>
+  )
 }
 
 export default appWithTranslation(MyApp)

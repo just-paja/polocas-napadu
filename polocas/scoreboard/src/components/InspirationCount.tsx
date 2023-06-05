@@ -18,5 +18,5 @@ export const InspirationCount = withQuery(
     </p>
   ),
   GET_MATCH_INSPIRATION_COUNT,
-  true
+  true,
 )

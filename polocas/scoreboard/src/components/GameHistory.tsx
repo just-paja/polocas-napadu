@@ -54,7 +54,7 @@ export const GameHistory = withQuery(({ data }) => {
     <div className={styles.bigFont}>
       {game.inspirations.length > 0 ? (
         <div className={styles.inspiration}>
-          {game.inspirations.map(inspiration => inspiration.text).join(', ')}
+          {game.inspirations.map((inspiration) => inspiration.text).join(', ')}
         </div>
       ) : null}
       <div className={styles.game}>({game.type})</div>

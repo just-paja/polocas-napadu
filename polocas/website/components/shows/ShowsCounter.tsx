@@ -9,7 +9,7 @@ import { Link } from '../links'
 
 const ShowsCounterItem = ({ format }) => (
   <Link
-    route="showFormatDetail"
+    route='showFormatDetail'
     params={{ slug: format.slug }}
     className={styles.item}
   >
@@ -23,8 +23,8 @@ export const ShowsCounter = withTranslation(({ showTypes, t }) => {
     <div className={styles.counter}>
       <h2>{t('howMuchDidWePlay')}</h2>
       <Markdown source={t('howMuchDidWePlayPerex')} />
-      <Row className="mt-3">
-        {showTypes.map(format => (
+      <Row className='mt-3'>
+        {showTypes.map((format) => (
           <Col key={format.id} md={4} xs={6}>
             <ShowsCounterItem key={format.id} format={format} />
           </Col>

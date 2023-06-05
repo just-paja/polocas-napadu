@@ -18,7 +18,7 @@ export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
       <h1>{showType.name}</h1>
       <Row>
         <Col lg={8}>
-          <Markdown className="lead" source={showType.shortDescription} />
+          <Markdown className='lead' source={showType.shortDescription} />
           <Markdown source={showType.description} />
           {showType.useGames || showType.useFouls ? (
             <>
@@ -26,12 +26,12 @@ export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
               <ul>
                 {showType.useGames && (
                   <li>
-                    <Link route="gameList">{t('gameList')}</Link>
+                    <Link route='gameList'>{t('gameList')}</Link>
                   </li>
                 )}
                 {showType.useFouls && (
                   <li>
-                    <Link route="foulTypeList">{t('foulTypes')}</Link>
+                    <Link route='foulTypeList'>{t('foulTypes')}</Link>
                   </li>
                 )}
               </ul>
@@ -40,7 +40,7 @@ export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
         </Col>
         <Col lg={4}>
           <List>
-            {showList.map(show => (
+            {showList.map((show) => (
               <BriefShowListItem key={show.id} show={show} />
             ))}
           </List>

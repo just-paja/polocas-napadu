@@ -2,8 +2,8 @@ import { Button } from '@polocas/ui/buttons'
 import { useMatch } from '@polocas/core/context'
 import { GameStage, StageOptions } from '@polocas/core/gameStage'
 
-const getStageLabel = stage => {
-  const option = StageOptions.find(o => o.value === stage)
+const getStageLabel = (stage) => {
+  const option = StageOptions.find((o) => o.value === stage)
   return option && option.label
 }
 

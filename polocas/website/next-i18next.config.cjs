@@ -4,5 +4,5 @@ module.exports = {
     //  fallbackLocale: 'cs',
     locales: ['default', 'cs', 'en'],
     localeDetection: false,
-  }
+  },
 }

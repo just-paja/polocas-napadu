@@ -6,7 +6,7 @@ export const Team = ({ children, side }) => {
   const { contestantGroups } = useMatch()
   const contestantType = getContestantTypeBySide(side)
   const team = contestantGroups.find(
-    group => group.contestantType === contestantType
+    (group) => group.contestantType === contestantType,
   )
 
   if (!team) {
@@ -14,7 +14,7 @@ export const Team = ({ children, side }) => {
   }
 
   return (
-    <div className="fs-3 p-3" style={{ backgroundColor: team.color }}>
+    <div className='fs-3 p-3' style={{ backgroundColor: team.color }}>
       <TeamDetails team={team} />
       {children}
     </div>

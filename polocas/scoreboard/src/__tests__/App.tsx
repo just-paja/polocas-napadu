@@ -11,7 +11,7 @@ describe('app', () => {
     root.render(
       <MockedProvider>
         <App />
-      </MockedProvider>
+      </MockedProvider>,
     )
     root.unmount()
   })

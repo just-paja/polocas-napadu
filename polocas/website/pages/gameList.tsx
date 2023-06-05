@@ -12,13 +12,13 @@ export default function GameListPage() {
     <CommonLayout>
       <Title text={t('games')} />
       <Head>
-        <meta property="og:description" content={t('gameListDescription')} />
-        <meta property="og:type" content="article" />
+        <meta property='og:description' content={t('gameListDescription')} />
+        <meta property='og:type' content='article' />
       </Head>
       <ContentContainer>
         <main className={styles.list}>
           <h1>{t('games')}</h1>
-          <p className="lead">{t('gameListDescription')}</p>
+          <p className='lead'>{t('gameListDescription')}</p>
           <GameList />
         </main>
       </ContentContainer>

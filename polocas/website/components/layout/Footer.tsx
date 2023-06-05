@@ -11,7 +11,7 @@ export const Footer = withTranslation(({ sponsors, t }) => (
     <SiteSponsors sponsors={sponsors} />
     <footer className={styles.footer}>
       <ContentContainer>
-        <div className="text-center">
+        <div className='text-center'>
           <LanguageSwitcher />
         </div>
         <SocialNetworks className={styles.social} inverse />

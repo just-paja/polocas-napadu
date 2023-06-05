@@ -35,8 +35,8 @@ const FoulTeamSelection = ({ groups, name, ...props }) => {
   const playerId = watch('playerId')
 
   useEffect(() => {
-    const selectedGroup = groups.find(g =>
-      g.players.some(p => p.id === playerId)
+    const selectedGroup = groups.find((g) =>
+      g.players.some((p) => p.id === playerId),
     )
     if (selectedGroup) {
       setValue(name, selectedGroup.id)
@@ -47,7 +47,7 @@ const FoulTeamSelection = ({ groups, name, ...props }) => {
     <RadioGroup
       {...props}
       name={name}
-      options={groups.map(group => ({
+      options={groups.map((group) => ({
         label: (
           <>
             {group.band.logo}
@@ -63,7 +63,7 @@ const FoulTeamSelection = ({ groups, name, ...props }) => {
 const FoulActorSelection = ({ players, ...props }) => (
   <RadioGroup
     {...props}
-    options={players.map(player => ({
+    options={players.map((player) => ({
       label: player.profile.name,
       value: player.id,
     }))}
@@ -76,20 +76,20 @@ const FoulForm = ({ values, onSubmit }) => {
   const collator = new Intl.Collator('cs')
   return (
     <Form onSubmit={onSubmit} defaultValues={values}>
-      <FoulSelection name="foulTypeId" label={t('foul-type')} required />
+      <FoulSelection name='foulTypeId' label={t('foul-type')} required />
       <FoulTeamSelection
-        name="contestantGroupId"
+        name='contestantGroupId'
         groups={contestantGroups}
         label={t('foul-team')}
         required
       />
       <FoulActorSelection
         players={contestantGroups
-          .map(group => group.players)
+          .map((group) => group.players)
           .flat()
           .sort((a, b) => collator.compare(a.profile.name, b.profile.name))}
         label={t('foul-person')}
-        name="playerId"
+        name='playerId'
       />
       <FormControls submitLabel={t('record-penalty-point')} />
     </Form>
@@ -101,7 +101,7 @@ export const PenaltyDialog = ({ open, onClose, values = defaultValues }) => {
     refetchQueries: ['MatchStage'],
     onCompleted: onClose,
   })
-  const handleSubmit = variables => saveFoul({ variables })
+  const handleSubmit = (variables) => saveFoul({ variables })
   return (
     <Modal onHide={onClose} show={open}>
       <Modal.Header closeButton>

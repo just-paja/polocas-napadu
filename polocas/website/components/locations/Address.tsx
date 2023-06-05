@@ -9,7 +9,7 @@ function addressToHtml(...args) {
   return args
     .join(',')
     .split(',')
-    .map(row => row.trim())
+    .map((row) => row.trim())
     .filter(nonEmpty)
     .reduce((aggr, addressRow, index, array) => {
       const row = <React.Fragment key={index}>{addressRow}</React.Fragment>

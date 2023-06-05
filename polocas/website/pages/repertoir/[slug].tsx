@@ -12,7 +12,7 @@ export const getServerSideProps = compose(
   withQueryset({
     show: { query: gql(showFormatQuery) },
   }),
-  props => props
+  (props) => props,
 )
 
 export default ({ showList, showType }) => {

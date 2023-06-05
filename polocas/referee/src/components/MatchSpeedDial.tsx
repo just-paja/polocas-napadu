@@ -9,11 +9,11 @@ export const MatchSpeedDial = ({ className }) => {
   const handlePenaltyDialogOpen = () => setShowPenaltyDialog(true)
   return (
     <>
-      <SpeedDial icon={<AddIcon />} title="Přidat" className={className}>
+      <SpeedDial icon={<AddIcon />} title='Přidat' className={className}>
         <SpeedDial.Item
           icon={<FoulIcon />}
           onClick={handlePenaltyDialogOpen}
-          title="Trestný bod"
+          title='Trestný bod'
         />
       </SpeedDial>
       <PenaltyDialog

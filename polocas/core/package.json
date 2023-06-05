@@ -14,5 +14,26 @@
   },
   "scripts": {
     "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": {
+        "development": "./index.tsx",
+        "default": "./dist/index.js"
+      }
+    },
+    "./constants": {
+      "types": "./dist/constants.d.ts",
+      "import": "./dist/constants.js"
+    },
+    "./context": {
+      "types": "./dist/context.d.ts",
+      "import": "./dist/context.js"
+    },
+    "./generics": {
+      "types": "./dist/generics.d.ts",
+      "import": "./dist/generics.js"
+    }
   }
 }

@@ -17,7 +17,7 @@ export function AnchoredArticle({ data }) {
         <h2>{anchoredArticle.name}</h2>
         <Markdown source={anchoredArticle.description} />
         <p>
-          <Link route="article" params={{ slug: anchoredArticle.slug }}>
+          <Link route='article' params={{ slug: anchoredArticle.slug }}>
             <a>{t('continueReading')}</a>
           </Link>
         </p>
@@ -37,7 +37,7 @@ export function Article({ data }) {
           <Markdown source={article.description} className={styles.body} />
         </div>
       </ContentContainer>
-      {article.chapters.map(chapter => (
+      {article.chapters.map((chapter) => (
         <section className={styles.chapter} key={chapter.slug}>
           <Carousel
             dynamicHeight

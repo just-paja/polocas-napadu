@@ -11,7 +11,7 @@ describe('Location component', () => {
           address: 'Norská 16, 101 00 Praha, Vršovice',
           name: 'Neobyčejná klubovna',
         }}
-      />
+      />,
     )
     expect(comp).toIncludeText('Neobyčejná klubovna')
   })
@@ -23,11 +23,11 @@ describe('Location component', () => {
           address: 'Norská 16, 101 00 Praha, Vršovice',
           name: 'Neobyčejná klubovna',
         }}
-      />
+      />,
     )
     expect(comp.find('Address')).toHaveProp(
       'address',
-      'Norská 16, 101 00 Praha, Vršovice'
+      'Norská 16, 101 00 Praha, Vršovice',
     )
   })
 })

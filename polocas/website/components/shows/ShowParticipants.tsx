@@ -10,10 +10,10 @@ import { ShowParticipant } from '@polocas-napadu/core/proptypes'
 import { useTranslation } from 'next-i18next'
 
 function ShowParticipantsMap({ participants }) {
-  return participants.map(participant => (
+  return participants.map((participant) => (
     <li key={participant.id}>
       <OptionalLink
-        route="profile"
+        route='profile'
         params={{ slug: participant.profile.slug }}
         isLink={Boolean(participant.profile.group)}
       >
@@ -33,7 +33,7 @@ export function ShowParticipants({ participants }) {
           <ShowParticipantsMap participants={participants} />
         </ul>
       ) : (
-        <Alert variant="light">{t('noShowParticipants')}</Alert>
+        <Alert variant='light'>{t('noShowParticipants')}</Alert>
       )}
     </List>
   )

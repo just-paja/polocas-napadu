@@ -10,7 +10,7 @@ import styles from './BriefShowListItem.module.scss'
 export const BriefShowListItem = ({ show }) => (
   <div className={styles.container}>
     <Link
-      route="showDetail"
+      route='showDetail'
       params={{ slug: show.slug }}
       className={styles.content}
     >

@@ -36,7 +36,10 @@
     },
     "./content": {
       "types": "./dist/content.d.ts",
-      "import": "./dist/content.js"
+      "import": {
+        "default": "./dist/content.js",
+        "development": "./content.tsx"
+      }
     },
     "./decorators": {
       "types": "./dist/decorators.d.ts",
@@ -45,6 +48,10 @@
     "./dialogs": {
       "types": "./dist/dialogs.d.ts",
       "import": "./dist/dialogs.js"
+    },
+    "./errors": {
+      "types": "./dist/errors.d.ts",
+      "import": "./dist/errors.js"
     },
     "./events": {
       "types": "./dist/events.d.ts",
@@ -66,16 +73,26 @@
       "types": "./dist/i18n.d.ts",
       "import": "./dist/i18n.js"
     },
-    "./locales/*": "./locales/*",
+    "./locales/": {
+      "import": "./locales/",
+      "default": "./locales/"
+    },
     "./global.scss": "./global.scss",
     "./variables.scss": "./variables.scss",
     "./shows": {
       "types": "./dist/shows.d.ts",
       "import": "./dist/shows.js"
+    },
+    "./text": {
+      "types": "./dist/text.d.ts",
+      "import": {
+        "default": "./dist/text.js",
+        "development": "./text.tsx"
+      }
     }
   },
   "dependencies": {
-    "@apollo/client": "^3.7.14",
+    "@apollo/client": "^3.8.6",
     "@polocas-napadu/core": "file:../core",
     "bootstrap": "^5.2.2",
     "classnames": "^2.3.2",
@@ -83,12 +100,10 @@
     "moment-timezone": "^0.5.43",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
+    "react-bootstrap": "^2.9.1",
+    "react-hook-form": "^7.47.0",
     "react-i18next": "^12.2.2",
-    "react-icons": "^4.8.0",
-    "react-overlays": "^5.2.1",
-    "react-router": "^6.4.5"
+    "react-icons": "^4.11.0",
+    "react-overlays": "^5.2.1"
   }
 }

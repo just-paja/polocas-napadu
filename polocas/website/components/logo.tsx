@@ -60,7 +60,7 @@ export function Bulb({ className, color }) {
   }
 
   return (
-    <svg className={className} viewBox="260 150 480 660">
+    <svg className={className} viewBox='260 150 480 660'>
       <path
         d={[
           'm 408.88,365.37',

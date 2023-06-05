@@ -25,14 +25,14 @@ export const ProfileComponent = withTranslation(({ data, t }) => {
       </PageHeading>
       <ContentContainer className={classnames(styles.center, styles.column)}>
         <Breadcrumb>
-          <Link route="about" passHref>
-            <Breadcrumb.Item href="">{t('about')}</Breadcrumb.Item>
+          <Link route='about' passHref>
+            <Breadcrumb.Item href=''>{t('about')}</Breadcrumb.Item>
           </Link>
-          <Link route="members" passHref>
-            <Breadcrumb.Item href="">{t('members')}</Breadcrumb.Item>
+          <Link route='members' passHref>
+            <Breadcrumb.Item href=''>{t('members')}</Breadcrumb.Item>
           </Link>
-          <Link route="profile" params={{ slug: profile.slug }}>
-            <Breadcrumb.Item href="">{profileName}</Breadcrumb.Item>
+          <Link route='profile' params={{ slug: profile.slug }}>
+            <Breadcrumb.Item href=''>{profileName}</Breadcrumb.Item>
           </Link>
         </Breadcrumb>
         <Markdown source={profile.about} />
