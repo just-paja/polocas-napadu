@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import type { QueryOptions } from '@apollo/client'
 
 import getConfig from "next/config.js"
 
@@ -26,18 +27,16 @@ type Props = any
 type Query = Function | QueryProps
 
 const getQuery = (props: Props, query: Query): Promise<any> => {
-  console.log('Get QUERY')
 	if (query instanceof Function) {
 		return getQuery(props, query(props))
 	}
-  console.log(apolloClient)
 	return apolloClient.query({
 		...query,
 		variables: {
 			...query.variables,
 			...props.params,
 		},
-	})
+	} as QueryOptions<any, any>)
 }
 
 const resolveQuery = (props: Props) => (query: Query) => getQuery(props, query)

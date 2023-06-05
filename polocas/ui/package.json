@@ -36,7 +36,10 @@
     },
     "./content": {
       "types": "./dist/content.d.ts",
-      "import": "./dist/content.js"
+      "import": {
+        "default": "./dist/content.js",
+        "development": "./content.tsx"
+      }
     },
     "./decorators": {
       "types": "./dist/decorators.d.ts",
@@ -72,6 +75,13 @@
     "./shows": {
       "types": "./dist/shows.d.ts",
       "import": "./dist/shows.js"
+    },
+    "./text": {
+      "types": "./dist/text.d.ts",
+      "import": {
+        "default": "./dist/text.js",
+        "development": "./text.tsx"
+      }
     }
   },
   "dependencies": {

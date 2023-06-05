@@ -1,6 +1,5 @@
 /* istanbul ignore file */
-import babelConfig from '../../babel.config.js'
-import dotenv from 'dotenv'
+import babelConfig from '../../babel.config.cjs'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
@@ -13,8 +12,6 @@ import { readFileSync, readdirSync } from 'fs'
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
 const DEFAULT_PORT = 5001
-
-dotenv.config()
 
 const getSafeName = name => name.replace(/^@/, '').replace(/\//g, '-')
 
