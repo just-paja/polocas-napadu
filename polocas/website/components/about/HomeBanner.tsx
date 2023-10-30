@@ -1,11 +1,12 @@
 import { BannerCarousel } from './BannerCarousel'
 import { Bulb } from '../logo'
 import { ContentContainer } from '../layout/ContentContainer'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 import styles from './HomeBanner.module.scss'
 
-export const HomeBanner = withTranslation(({ t }) => {
+export function HomeBanner() {
+  const { t } = useI18n()
   return (
     <header className={styles.banner}>
       <BannerCarousel className={styles.carousel} />
@@ -24,4 +25,4 @@ export const HomeBanner = withTranslation(({ t }) => {
       </div>
     </header>
   )
-})
+}

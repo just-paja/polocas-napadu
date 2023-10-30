@@ -9,8 +9,7 @@ import { HomeBanner } from '../components/about'
 import { OgImage } from '../components/opengraph'
 import { Title } from '../components/meta'
 import { compose } from '@polocas/ui/decorators'
-import { withQueryset } from '@polocas/next'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n, withQueryset } from '@polocas/next'
 import { withPageProps } from '../pages'
 import { showListQuery, showPhotosQuery } from '../graphql'
 import { gql } from '@apollo/client'
@@ -24,24 +23,27 @@ export const getServerSideProps = compose(
   (props) => props,
 )
 
-export default withTranslation(({ showList, t }) => (
-  <>
-    <Title
-      text={`${t('projectName')} - ${t('projectNameAppendix')}`}
-      description={t('projectAbout')}
-      pure
-    />
-    <OgImage src='/static/pixmaps/og-main.jpg' />
-    <MainMenu />
-    <HomeBanner />
-    <ContentContainer className={styles.content}>
-      <Row>
-        <Col>
-          <h2>{t('upcomingShows')}</h2>
-          <BriefFutureShowList shows={showList} />
-        </Col>
-      </Row>
-    </ContentContainer>
-    <Footer sponsors={[]} />
-  </>
-))
+export default function Home({ showList }) {
+  const { t } = useI18n()
+  return (
+    <>
+      <Title
+        text={`${t('projectName')} - ${t('projectNameAppendix')}`}
+        description={t('projectAbout')}
+        pure
+      />
+      <OgImage src='/static/pixmaps/og-main.jpg' />
+      <MainMenu />
+      <HomeBanner />
+      <ContentContainer className={styles.content}>
+        <Row>
+          <Col>
+            <h2>{t('upcomingShows')}</h2>
+            <BriefFutureShowList shows={showList} />
+          </Col>
+        </Row>
+      </ContentContainer>
+      <Footer sponsors={[]} />
+    </>
+  )
+}

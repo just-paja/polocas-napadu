@@ -22,8 +22,7 @@ export const BannerCarousel = ({ className }) => {
     return null
   }
   const list = showPhotoList
-  console.log(list)
-  const [backgroundPhoto, setBackgroundPhoto] = useState(list[0].id)
+  const [backgroundPhoto, setBackgroundPhoto] = useState(list[0]?.id)
   useEffect(() => {
     const timeout = setTimeout(
       () => setBackgroundPhoto(getRandomPhoto(list, backgroundPhoto)),

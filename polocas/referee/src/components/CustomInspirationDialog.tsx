@@ -32,7 +32,7 @@ export function CustomInspirationDialog({
 }: CustomInspirationDialogProps) {
   const match = useMatch()
   const [addAndUseInspiration] = useMutation(ADD_AND_USE_INSPIRATION, {
-    onCompleted: onClose ? (() => onClose()) : undefined,
+    onCompleted: onClose ? () => onClose() : undefined,
     refetchQueries: ['MatchStage'],
   })
   const handleSubmit = (formData: InspirationValues) => {
@@ -44,11 +44,11 @@ export function CustomInspirationDialog({
     })
   }
   return (
-    <Modal show={open} onHide={onClose ? (() => onClose()) : undefined}>
+    <Modal show={open} onHide={onClose ? () => onClose() : undefined}>
       <Modal.Header closeButton>Vlastní inspirace</Modal.Header>
       <Modal.Body>
         <InspirationForm
-          id="custom-inspiration-form"
+          id='custom-inspiration-form'
           values={values}
           onSubmit={handleSubmit}
         />

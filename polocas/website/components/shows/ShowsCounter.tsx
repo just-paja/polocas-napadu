@@ -3,9 +3,9 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import styles from './ShowsCounter.module.scss'
 
-import { Markdown } from '../markdown'
-import { withTranslation } from '@polocas/ui/i18n'
 import { Link } from '../links'
+import { Markdown } from '@polocas/ui/text'
+import { useI18n } from '@polocas/next/i18n'
 
 const ShowsCounterItem = ({ format }) => (
   <Link
@@ -18,7 +18,8 @@ const ShowsCounterItem = ({ format }) => (
   </Link>
 )
 
-export const ShowsCounter = withTranslation(({ showTypes, t }) => {
+export function ShowsCounter({ showTypes }) {
+  const { t } = useI18n()
   return (
     <div className={styles.counter}>
       <h2>{t('howMuchDidWePlay')}</h2>
@@ -32,4 +33,4 @@ export const ShowsCounter = withTranslation(({ showTypes, t }) => {
       </Row>
     </div>
   )
-})
+}

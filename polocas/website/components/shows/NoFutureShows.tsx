@@ -1,8 +1,9 @@
 import Alert from 'react-bootstrap/Alert'
 import React from 'react'
 
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
-export const NoFutureShows = withTranslation(({ t }) => (
-  <Alert variant='light'>{t('noShowsPlanned')}</Alert>
-))
+export function NoFutureShows() {
+  const { t } = useI18n()
+  return <Alert variant='light'>{t('noShowsPlanned')}</Alert>
+}

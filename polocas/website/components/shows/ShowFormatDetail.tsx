@@ -7,11 +7,12 @@ import { ContentContainer } from '../layout/ContentContainer'
 import { Gallery } from '../images'
 import { Link } from '../links'
 import { List } from '../layout/List'
-import { Markdown } from '../markdown'
+import { Markdown } from '@polocas/ui/text'
 import { Title } from '../meta'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
-export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
+export function ShowFormatDetail({ showList, showType }) {
+  const { t } = useI18n()
   return (
     <ContentContainer>
       <Title text={showType.name} />
@@ -49,4 +50,4 @@ export const ShowFormatDetail = withTranslation(({ showList, showType, t }) => {
       <Gallery photos={showType.photos} />
     </ContentContainer>
   )
-})
+}

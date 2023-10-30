@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import React from 'react'
 import styles from './social.module.scss'
 
-import { useI18n } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 import { openExternalUrl } from './links'
 import {
   InstagramIcon,
@@ -75,64 +75,68 @@ interface SocialNetworksProps {
   vertical?: boolean
 }
 
-export function SocialNetworks({ className, inverse, vertical }: SocialNetworksProps) {
+export function SocialNetworks({
+  className,
+  inverse,
+  vertical,
+}: SocialNetworksProps) {
   const { t } = useI18n()
   return (
-      <div
-        className={classnames(
-          styles.flex,
-          { [styles.inverse]: inverse, 'flex-column': vertical },
-          className,
-        )}
-      >
-        <SocialNetworkLink
-          href='tel:+420 608 212 242'
-          id='+420 608 212 242'
-          icon={CallIcon}
-          inverse={inverse}
-          title={t('on-phone')}
-          vertical={vertical}
-        />
-        <SocialNetworkLink
-          href='mailto:ahoj@polocas-napadu.cz'
-          id='ahoj@polocas-napadu.cz'
-          icon={EmailIcon}
-          inverse={inverse}
-          title={t('on-email')}
-          vertical={vertical}
-        />
-        <SocialNetworkLink
-          href='https://facebook.com/polocas.napadu/'
-          id='Poločas nápadu'
-          icon={FacebookIcon}
-          inverse={inverse}
-          title={t('on-facebook')}
-          vertical={vertical}
-        />
-        <SocialNetworkLink
-          href='https://instagram.com/polocasnapadu/'
-          id='polocasnapadu'
-          icon={InstagramIcon}
-          inverse={inverse}
-          title={t('on-instagram')}
-          vertical={vertical}
-        />
-        <SocialNetworkLink
-          href='https://twitter.com/polocasnapadu'
-          id='polocasnapadu'
-          icon={TwitterIcon}
-          inverse={inverse}
-          title={t('on-twitter')}
-          vertical={vertical}
-        />
-        <SocialNetworkLink
-          href='https://www.youtube.com/channel/UCYgA4ur68sc5W83PgEgnH7w'
-          id='Poločas nápadu'
-          icon={YouTubeIcon}
-          inverse={inverse}
-          title={t('on-youtube')}
-          vertical={vertical}
-        />
-      </div>
+    <div
+      className={classnames(
+        styles.flex,
+        { [styles.inverse]: inverse, 'flex-column': vertical },
+        className,
+      )}
+    >
+      <SocialNetworkLink
+        href='tel:+420 608 212 242'
+        id='+420 608 212 242'
+        icon={CallIcon}
+        inverse={inverse}
+        title={t('on-phone')}
+        vertical={vertical}
+      />
+      <SocialNetworkLink
+        href='mailto:ahoj@polocas-napadu.cz'
+        id='ahoj@polocas-napadu.cz'
+        icon={EmailIcon}
+        inverse={inverse}
+        title={t('on-email')}
+        vertical={vertical}
+      />
+      <SocialNetworkLink
+        href='https://facebook.com/polocas.napadu/'
+        id='Poločas nápadu'
+        icon={FacebookIcon}
+        inverse={inverse}
+        title={t('on-facebook')}
+        vertical={vertical}
+      />
+      <SocialNetworkLink
+        href='https://instagram.com/polocasnapadu/'
+        id='polocasnapadu'
+        icon={InstagramIcon}
+        inverse={inverse}
+        title={t('on-instagram')}
+        vertical={vertical}
+      />
+      <SocialNetworkLink
+        href='https://twitter.com/polocasnapadu'
+        id='polocasnapadu'
+        icon={TwitterIcon}
+        inverse={inverse}
+        title={t('on-twitter')}
+        vertical={vertical}
+      />
+      <SocialNetworkLink
+        href='https://www.youtube.com/channel/UCYgA4ur68sc5W83PgEgnH7w'
+        id='Poločas nápadu'
+        icon={YouTubeIcon}
+        inverse={inverse}
+        title={t('on-youtube')}
+        vertical={vertical}
+      />
+    </div>
   )
 }

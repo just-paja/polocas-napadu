@@ -4,7 +4,7 @@ import { UsualPlace } from '@polocas/core/constants'
 import { Heading, Section } from '@polocas/ui/content'
 import { LocationAddress } from './LocationAddress'
 import { Markdown } from '@polocas/ui/text'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 interface UsualPlaceProps {
   place: UsualPlace
@@ -22,13 +22,14 @@ interface UsualPlacesProps {
   places: UsualPlace[]
 }
 
-export const UsualPlaces = withTranslation<UsualPlacesProps>(
-  ({ places, t }) => (
+export function UsualPlaces({ places }: UsualPlacesProps) {
+  const { t } = useI18n()
+  return (
     <Section>
       <p>{t('usualPlacesFlavourText')}</p>
       {places.map((place) => (
         <UsualPlaceSection key={place.id} place={place} />
       ))}
     </Section>
-  ),
-)
+  )
+}

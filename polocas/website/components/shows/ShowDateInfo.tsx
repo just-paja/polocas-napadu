@@ -3,13 +3,14 @@ import styles from './ShowDateInfo.module.scss'
 
 import { AddToCalendar } from '../ics'
 import { EventStart } from '@polocas/ui/events'
-import { ExternalLink } from '../links'
+import { ExternalLink } from '@polocas/ui/links'
 import { Heading } from '@polocas/ui/content'
 import { LogisticInfo } from './LogisticInfo'
-import { withTranslation } from '@polocas/ui/i18n'
 import { LogisticsIcon, FacebookIcon } from '@polocas/ui/icons'
+import { useI18n } from '@polocas/next/i18n'
 
-export const ShowDateInfo = withTranslation(({ show, t }) => {
+export function ShowDateInfo({ show }) {
+  const { t } = useI18n()
   return (
     <LogisticInfo
       icon={LogisticsIcon}
@@ -29,4 +30,4 @@ export const ShowDateInfo = withTranslation(({ show, t }) => {
       </div>
     </LogisticInfo>
   )
-})
+}

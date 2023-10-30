@@ -10,7 +10,7 @@ import styles from './tracking.module.scss'
 import { getCookie, setCookies } from 'cookies-next'
 import { Button } from '@polocas/ui/buttons'
 import { Form, FormControls, Input } from '@polocas/ui/forms'
-import { useI18n } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 const COOKIE_CONSENT = 'cookieConsent'
 const CONSENT_FUNCTIONAL = 'functional'

@@ -8,7 +8,7 @@ import { Foul } from './Foul'
 import { STAGE_INTRO, getStageOption } from './stages'
 import { MatchStage } from './MatchStage'
 import { ScorePoint } from './ScorePoint'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 function getFouls(match) {
   return match.contestantGroups.reduce(
@@ -112,7 +112,8 @@ function renderScore(match) {
 const addKey = (eventType, array) =>
   array.map((item) => ({ ...item, eventType, key: `${eventType}-${item.id}` }))
 
-export const MatchProgress = withTranslation(({ matchId, t }) => {
+export function MatchProgress({ matchId }) {
+  const { t } = useI18n()
   if (!matchId) {
     return null
   }
@@ -142,4 +143,4 @@ export const MatchProgress = withTranslation(({ matchId, t }) => {
       ))}
     </div>
   )
-})
+}

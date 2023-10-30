@@ -2,9 +2,7 @@ import type { FC } from 'react'
 import type { DocumentNode } from '@apollo/client'
 
 import { useParams } from 'react-router'
-import {
-  useQuery,
-} from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
 interface Strippable {
   data: any

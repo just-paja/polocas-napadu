@@ -11,9 +11,10 @@ import { Link } from '../links'
 import { PageHeading } from '../layout/PageHeading'
 import { ProfileListItem } from './ProfileList'
 import { Title } from '../meta'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
-export const ProfileComponent = withTranslation(({ data, t }) => {
+export function ProfileComponent({ data }) {
+  const { t } = useI18n()
   const { profile } = data
   const profileName = formatName(profile)
   return (
@@ -40,4 +41,4 @@ export const ProfileComponent = withTranslation(({ data, t }) => {
       </ContentContainer>
     </>
   )
-})
+}

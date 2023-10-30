@@ -1,10 +1,11 @@
-import type { FC } from 'react'
-import type { QueryOptions } from '@apollo/client'
+import type { ApolloQueryResult, QueryOptions } from '@apollo/client'
 
 import getConfig from 'next/config.js'
 
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { mergeQueryResults, stripData } from '@polocas/ui/apollo'
+
+export * from './i18n.js'
 
 const { publicRuntimeConfig } = getConfig.default()
 const { API_URL } = publicRuntimeConfig
@@ -24,13 +25,17 @@ interface QueryProps {
 }
 
 type Props = any
-type Query = Function | QueryProps
+type QueryCreator = (props: Props) => QueryProps
+type Query = QueryCreator | QueryProps
 
-const getQuery = (props: Props, query: Query): Promise<any> => {
+async function getQuery<T>(
+  props: Props,
+  query: Query,
+): Promise<ApolloQueryResult<T>> {
   if (query instanceof Function) {
-    return getQuery(props, query(props))
+    return await getQuery(props, query(props))
   }
-  return apolloClient.query({
+  return await apolloClient.query({
     ...query,
     variables: {
       ...query.variables,
@@ -41,15 +46,18 @@ const getQuery = (props: Props, query: Query): Promise<any> => {
 
 const resolveQuery = (props: Props) => (query: Query) => getQuery(props, query)
 
-export const withQueryset =
-  (queryMap: Query[]) => (fn: FC) => async (props: Props) => {
-    const data = await Promise.all(
-      Object.values(queryMap).map(resolveQuery(props)),
-    )
-    return fn({
-      props: {
-        ...props.props,
-        ...mergeQueryResults(data.map(stripData)),
-      },
-    })
+export function withQueryset(queryMap: Query[]) {
+  return (next: Function) => {
+    return async function (props: Props) {
+      const data = await Promise.all(
+        Object.values(queryMap).map(resolveQuery(props)),
+      )
+      return next({
+        props: {
+          ...props.props,
+          ...mergeQueryResults(data.map(stripData)),
+        },
+      })
+    }
   }
+}

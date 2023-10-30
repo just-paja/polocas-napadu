@@ -17,7 +17,7 @@ interface InspirationDiscardProps {
   inspiration: Inspiration
 }
 
-function InspirationDiscard({ inspiration }: InspirationDiscardProps ) {
+function InspirationDiscard({ inspiration }: InspirationDiscardProps) {
   const [mutate, { loading }] = useMutation(INSPIRATION_DISCARD)
   const handleClick = () =>
     mutate({
@@ -54,7 +54,10 @@ interface InspirationListProps {
   readOnly?: boolean
 }
 
-export function InspirationList({ inspirations, readOnly = false }: InspirationListProps) {
+export function InspirationList({
+  inspirations,
+  readOnly = false,
+}: InspirationListProps) {
   return (
     <ListGroup>
       {inspirations.map((inspiration) => (

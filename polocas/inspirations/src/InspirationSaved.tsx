@@ -3,7 +3,9 @@ import type { MouseEventHandler } from 'react'
 import { Button } from '@polocas/ui/buttons'
 import { AgainIcon } from '@polocas/ui/icons'
 
-export const InspirationSaved = ({ onContinue }: { onContinue: MouseEventHandler }) => (
+export const InspirationSaved = ({
+  onContinue,
+}: { onContinue: MouseEventHandler }) => (
   <div>
     <h2>Díky!</h2>
     <p>

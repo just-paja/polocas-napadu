@@ -3,13 +3,16 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 
 import { ShowListItem } from './ShowListItem'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
-const NoFutureShows = withTranslation(({ t }) => (
-  <Alert className='mt-3' variant='light'>
-    {t('noShowsPlanned')}
-  </Alert>
-))
+function NoFutureShows() {
+  const { t } = useI18n()
+  return (
+    <Alert className='mt-3' variant='light'>
+      {t('noShowsPlanned')}
+    </Alert>
+  )
+}
 
 export const FutureShowList = ({ shows }) => {
   return (

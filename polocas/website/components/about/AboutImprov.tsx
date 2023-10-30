@@ -5,7 +5,7 @@ import waving from './photos/waving.webp'
 import drawing from './photos/drawing.webp'
 import styles from './AboutImprov.module.scss'
 
-import { useI18n } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 const GalleryPhoto = ({ src, alt }) => (
   <div className={styles.photo}>

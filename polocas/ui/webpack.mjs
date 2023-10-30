@@ -43,6 +43,7 @@ export const { build, runDevServer } = setupReactWebpack({
     'react-hook-form': 'react-hook-form',
     'react-icons': 'react-icons',
     'react-i18next': 'react-i18next',
+    'react-markdown': 'react-markdown',
     'react-overlays': 'react-overlays',
     'react-router': 'react-router',
   },

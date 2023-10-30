@@ -30,7 +30,13 @@ export function ExternalLink({
     [href],
   )
   return (
-    <a {...props} className={classnames(className)} href={href} rel='external' onClick={open}>
+    <a
+      {...props}
+      className={classnames(className)}
+      href={href}
+      rel='external'
+      onClick={open}
+    >
       {Icon && (
         <>
           <Icon />{' '}

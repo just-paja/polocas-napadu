@@ -10,7 +10,7 @@ interface BoardLayoutProps {
 
 export function BoardLayout({
   children,
-  layout = 'horizontal'
+  layout = 'horizontal',
 }: BoardLayoutProps) {
   return (
     <div className={classnames(styles.layout, styles[layout])}>{children}</div>

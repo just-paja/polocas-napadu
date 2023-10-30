@@ -3,7 +3,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 import { openExternalUrl } from './links.js'
 import { qsm } from 'query-string-manipulator'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 const dateFormat = 'YYYYMMDDTHHmmss\\Z'
 
@@ -72,16 +72,19 @@ function getICalLink(event) {
   ].join('%0A')
 }
 
-export const AddToCalendar = withTranslation(({ className, event, t }) => (
-  <NavDropdown className={className} title={t('addToCalendar')}>
-    <NavDropdown.Item href={getGoogleLink(event)} onClick={openExternalUrl}>
-      {t('googleCalendar')}
-    </NavDropdown.Item>
-    <NavDropdown.Item href={getYahooLink(event)} onClick={openExternalUrl}>
-      {t('yahooCalendar')}
-    </NavDropdown.Item>
-    <NavDropdown.Item href={getICalLink(event)} onClick={openExternalUrl}>
-      {t('iCalFile')}
-    </NavDropdown.Item>
-  </NavDropdown>
-))
+export function AddToCalendar({ className, event }) {
+  const { t } = useI18n()
+  return (
+    <NavDropdown className={className} title={t('addToCalendar')}>
+      <NavDropdown.Item href={getGoogleLink(event)} onClick={openExternalUrl}>
+        {t('googleCalendar')}
+      </NavDropdown.Item>
+      <NavDropdown.Item href={getYahooLink(event)} onClick={openExternalUrl}>
+        {t('yahooCalendar')}
+      </NavDropdown.Item>
+      <NavDropdown.Item href={getICalLink(event)} onClick={openExternalUrl}>
+        {t('iCalFile')}
+      </NavDropdown.Item>
+    </NavDropdown>
+  )
+}

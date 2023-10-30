@@ -1,7 +1,8 @@
 import { Link } from '../links.js'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
-export const GameList = withTranslation(({ gameRules, t }) => {
+export function GameList({ gameRules }) {
+  const { t } = useI18n()
   return (
     <>
       <p>{t('gameRulesStats', { total: gameRules.length })}</p>
@@ -16,4 +17,4 @@ export const GameList = withTranslation(({ gameRules, t }) => {
       </ul>
     </>
   )
-})
+}

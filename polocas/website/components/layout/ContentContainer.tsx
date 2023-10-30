@@ -6,10 +6,10 @@ import Container from 'react-bootstrap/Container'
 import styles from './ContentContainer.module.scss'
 
 interface ContentContainerProps {
-  as?: ElementType,
-  children: ReactNode,
-  className?: ClassName,
-  column?: boolean,
+  as?: ElementType
+  children: ReactNode
+  className?: ClassName
+  column?: boolean
 }
 
 export function ContentContainer({

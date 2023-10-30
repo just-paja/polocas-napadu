@@ -22,7 +22,9 @@ export const GameStage = () => {
         <h1>{currentStage?.game?.rules?.name}</h1>
         <Timer start={currentStage?.created} />
         <InspirationList
-          inspirations={currentStage?.game?.inspirations || [] as Inspiration[]}
+          inspirations={
+            currentStage?.game?.inspirations || ([] as Inspiration[])
+          }
           readOnly
         />
       </MainControls>

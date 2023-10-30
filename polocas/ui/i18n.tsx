@@ -29,7 +29,9 @@ export function withTranslation<T>(
   return fn
 }
 
-export function initLocalization(locales: Record<string, Record<string, string>>) {
+export function initLocalization(
+  locales: Record<string, Record<string, string>>,
+) {
   const resources = Object.fromEntries(
     Object.entries(locales).map(([lang, translation]) => [
       lang,

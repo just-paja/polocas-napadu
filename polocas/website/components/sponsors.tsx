@@ -4,7 +4,7 @@ import styles from './sponsors.module.scss'
 import { Image } from './images'
 import { openExternalUrl } from './links'
 import { useSponsors } from '@polocas-napadu/core/context'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 const SiteSponsorLogo = ({ sponsor }) => (
   <Image
@@ -18,7 +18,8 @@ const SiteSponsorLogo = ({ sponsor }) => (
   />
 )
 
-export const SiteSponsors = withTranslation(({ t }) => {
+export function SiteSponsors() {
+  const { t } = useI18n()
   const sponsors = useSponsors()
   if (!sponsors.length) {
     return null
@@ -36,4 +37,4 @@ export const SiteSponsors = withTranslation(({ t }) => {
       </div>
     </div>
   )
-})
+}

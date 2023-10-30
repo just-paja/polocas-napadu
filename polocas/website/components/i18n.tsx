@@ -1,7 +1,7 @@
 import styles from './i18n.module.scss'
 
 import { OptionalLink } from './links'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 const renderLink = (t, lngCurrent, lngChoice) => {
   return (
@@ -18,16 +18,21 @@ const renderLink = (t, lngCurrent, lngChoice) => {
   )
 }
 
-export const LanguageSwitcher = withTranslation(({ lng, i18n, t }) => (
-  <div>
-    {i18n.options.locales
-      .filter((item) => item !== 'default')
-      .reduce((acc, lngChoice, index, src) => {
-        const next = [...acc, renderLink(t, lng, lngChoice)]
-        if (index < src.length - 1) {
-          next.push(' | ')
-        }
-        return next
-      }, [])}
-  </div>
-))
+export function LanguageSwitcher({ lng }) {
+  const { ready, i18n, t } = useI18n()
+  const { language, options } = i18n
+  const languages = options?.locales || []
+  return (
+    <div>
+      {languages
+        .filter((item) => item !== 'default')
+        .reduce((acc, lngChoice, index, src) => {
+          const next = [...acc, renderLink(t, language, lngChoice)]
+          if (index < src.length - 1) {
+            next.push(' | ')
+          }
+          return next
+        }, [])}
+    </div>
+  )
+}

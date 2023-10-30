@@ -2,7 +2,7 @@ import Error from 'next/error'
 import Head from 'next/head'
 import React from 'react'
 
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 import { useRouter } from 'next/router'
 
 export const MetaBase = () => {
@@ -16,16 +16,23 @@ export const MetaBase = () => {
   )
 }
 
-export const MetaPage = ({ description, title }) => {
+interface MetaPageProps {
+  description?: string
+  title: string
+}
+
+export function MetaPage({ description, title }: MetaPageProps) {
   return (
     <Head>
       <title>{title}</title>
       <meta key='og:title' property='og:title' content={title} />
-      <meta
-        key='og:description'
-        property='og:description'
-        content={description}
-      />
+      {description && (
+        <meta
+          key='og:description'
+          property='og:description'
+          content={description}
+        />
+      )}
       <meta key='description' property='description' content={description} />
     </Head>
   )
@@ -38,15 +45,18 @@ export const MetaUrl = ({ noRobots, url }) => (
   </Head>
 )
 
-export const Title = withTranslation(({ pure, t, text, description }) => (
-  <Head>
-    <title>{pure ? text : `${text} - ${t('projectName')}`}</title>
-    <meta property='og:title' content={text} />
-    <meta property='og:site_name' content={t('projectName')} />
-    <meta property='og:description' content={description} />
-    <meta name='description' content={description} />
-  </Head>
-))
+export function Title({ pure, text, description }) {
+  const { t } = useI18n()
+  return (
+    <Head>
+      <title>{pure ? text : `${text} - ${t('projectName')}`}</title>
+      <meta property='og:title' content={text} />
+      <meta property='og:site_name' content={t('projectName')} />
+      <meta property='og:description' content={description} />
+      <meta name='description' content={description} />
+    </Head>
+  )
+}
 
 const BAD_REQUEST = 400
 

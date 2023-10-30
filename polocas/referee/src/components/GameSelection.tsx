@@ -19,7 +19,11 @@ interface GameSelectionProps {
   value?: NamedEntity
 }
 
-export function GameSelection({ disabled, onChange, value }: GameSelectionProps) {
+export function GameSelection({
+  disabled,
+  onChange,
+  value,
+}: GameSelectionProps) {
   const { data, loading } = useQuery(getGames)
   return (
     <Select

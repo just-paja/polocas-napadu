@@ -1,4 +1,4 @@
-import type { Match, Show  } from './constants.js'
+import type { Match, Show } from './constants.js'
 
 import { createContext, useContext } from 'react'
 import { Sponsor } from './constants.js'

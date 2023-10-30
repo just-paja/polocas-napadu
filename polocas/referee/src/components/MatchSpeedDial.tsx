@@ -16,7 +16,11 @@ export function MatchSpeedDial({ className, label }: MatchSpeedDialProps) {
   const handlePenaltyDialogOpen = () => setShowPenaltyDialog(true)
   return (
     <>
-      <SpeedDial icon={<AddIcon />} title={label || 'Přidat'} className={className}>
+      <SpeedDial
+        icon={<AddIcon />}
+        title={label || 'Přidat'}
+        className={className}
+      >
         <SpeedDial.Item
           icon={<FoulIcon />}
           onClick={handlePenaltyDialogOpen}

@@ -6,7 +6,7 @@ import styles from './MonthShowList.module.scss'
 import { Heading, Section } from '@polocas/ui/content'
 import { Link } from '../links'
 import { TicketButtons } from './TicketButtons'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 import { isLive, isPast } from '@polocas/ui/events'
 import {
   ShowStart,
@@ -52,11 +52,14 @@ const ListItem = ({ show }) => {
   )
 }
 
-const NoFutureShows = withTranslation(({ t }) => (
-  <Alert className='mt-3' variant='light'>
-    {t('noShowsPlanned')}
-  </Alert>
-))
+function NoFutureShows() {
+  const { t } = useI18n()
+  return (
+    <Alert className='mt-3' variant='light'>
+      {t('noShowsPlanned')}
+    </Alert>
+  )
+}
 
 export const MonthShowList = ({ shows }) => {
   return (

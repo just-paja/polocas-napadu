@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from '../links'
 import { getStageOption, STAGE_GAME } from './stages'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 function getGameLabel(stage) {
   if (stage.game && stage.game.rules) {
@@ -32,11 +32,12 @@ function getGameInspirations(stage) {
   return null
 }
 
-export const MatchStage = withTranslation(({ stage, t }) => {
+export function MatchStage({ stage }) {
+  const { t } = useI18n()
   const stageOption = getStageOption(stage)
   if (!stageOption) {
     return null
   }
   const stageLabel = t(`stage_${stage.type}`)
   return <>{stage.type === STAGE_GAME ? getGameLabel(stage) : stageLabel}</>
-})
+}

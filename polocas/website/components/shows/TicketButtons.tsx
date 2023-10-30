@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Button } from '@polocas/ui/Button'
 import { TicketsIcon } from '@polocas/ui/icons'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 function LinkButton({ href, label, ...props }) {
   if (!href) {
@@ -16,7 +16,8 @@ function LinkButton({ href, label, ...props }) {
   )
 }
 
-export const TicketButtons = withTranslation(({ event, t }) => {
+export function TicketButtons({ event }) {
+  const { t } = useI18n()
   if (
     (event.linkTickets || event.linkReservations) &&
     moment().isBefore(event.start)
@@ -40,4 +41,4 @@ export const TicketButtons = withTranslation(({ event, t }) => {
     )
   }
   return null
-})
+}

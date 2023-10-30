@@ -8,8 +8,8 @@ import { AnchoredArticle } from '../components/articles'
 import { ProfileGroupList } from '../components/profiles'
 import { ShowsCounter } from '../components/shows/ShowsCounter'
 import { Title } from '../components/meta'
+import { useI18n } from '@polocas/next/i18n'
 import { withPageProps } from '../pages'
-import { withTranslation } from '@polocas/ui/i18n'
 import { profileGroupListQuery, showCountQuery } from '../graphql'
 
 export const getServerSideProps = compose(
@@ -25,16 +25,19 @@ export const getServerSideProps = compose(
   (props) => props,
 )
 
-export default withTranslation(({ profileGroupList, showTypeList, t }) => (
-  <CommonLayout>
-    <Title text={t('about')} />
-    <ContentContainer>
-      <GroupDescription />
-    </ContentContainer>
-    <ProfileGroupList groups={profileGroupList} />
-    <ContentContainer>
-      <ShowsCounter showTypes={showTypeList} />
-    </ContentContainer>
-    <AnchoredArticle variables={{ siteAnchor: 'history' }} />
-  </CommonLayout>
-))
+export default function About({ profileGroupList, showTypeList }) {
+  const { t } = useI18n()
+  return (
+    <CommonLayout>
+      <Title text={t('about')} />
+      <ContentContainer>
+        <GroupDescription />
+      </ContentContainer>
+      <ProfileGroupList groups={profileGroupList} />
+      <ContentContainer>
+        <ShowsCounter showTypes={showTypeList} />
+      </ContentContainer>
+      <AnchoredArticle variables={{ siteAnchor: 'history' }} />
+    </CommonLayout>
+  )
+}

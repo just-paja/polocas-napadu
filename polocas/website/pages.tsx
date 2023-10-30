@@ -10,7 +10,7 @@ const { publicRuntimeConfig } = getConfig()
 
 const origin = `https://${publicRuntimeConfig.baseDomain}`
 const defaultLang = publicRuntimeConfig.defaultLang
-const determineLocale = (locale) =>
+const determineLocale = (locale?: string) =>
   !locale || locale === 'default' ? defaultLang : locale
 
 const getSponsors = async () =>
@@ -26,7 +26,10 @@ export const withPageProps = (fn) => async (props) => {
       baseUrl: `${origin}/${locale}`,
       lang: locale,
       ...mergeQueryResults(
-        await Promise.all([getSponsors(), serverSideTranslations(locale)]),
+        await Promise.all([
+          getSponsors(),
+          serverSideTranslations(locale, ['common']),
+        ]),
       ),
     },
   })

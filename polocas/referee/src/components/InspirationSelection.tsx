@@ -51,7 +51,7 @@ export function InspirationSelection() {
           <ShuffleButton
             disabled={
               preparedInspirationCount === 0 ||
-              !(currentStage?.inspirations?.length)
+              !currentStage?.inspirations?.length
             }
             label='Vylosovat a nahradit'
             replace

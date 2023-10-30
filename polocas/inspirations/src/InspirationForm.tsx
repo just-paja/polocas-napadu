@@ -35,7 +35,9 @@ export const InspirationForm = ({
             disabled={saving}
             id='inspirationField'
             label='Inspirace'
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setInspiration(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setInspiration(e.target.value)
+            }
             value={inspiration}
             helpText='Inspirace může být cokoliv, třeba "Poslední tramvaj", "Pán s taškou" nebo "Stroj na lásku"'
           />

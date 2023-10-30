@@ -6,7 +6,7 @@ interface MarkdownProps {
   source: string
 }
 
-export const Markdown: FC<MarkdownProps> = ({ source, ...props }) => {
+export function Markdown({ source, ...props }: MarkdownProps) {
   return source ? <ReactMarkdown {...props}>{source}</ReactMarkdown> : null
 }
 

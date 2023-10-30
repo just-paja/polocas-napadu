@@ -9,16 +9,16 @@ interface InspirationFormValues {
 interface InspirationFormProps {
   id: string
   onSubmit: (values: InspirationFormValues) => void
-  values?: InspirationFormValues 
+  values?: InspirationFormValues
 }
 
-export function InspirationForm({ id, onSubmit, values = defaultValues }: InspirationFormProps) {
+export function InspirationForm({
+  id,
+  onSubmit,
+  values = defaultValues,
+}: InspirationFormProps) {
   return (
-    <Form
-      id={id}
-      defaultValues={values}
-      onSubmit={onSubmit}
-    >
+    <Form id={id} defaultValues={values} onSubmit={onSubmit}>
       <div>
         <Input
           name='inspiration'

@@ -21,8 +21,8 @@ import { showQuery } from '../../graphql'
 import { ShowVenueInfo } from '../../components/shows/ShowVenueInfo'
 import { TicketsIcon } from '@polocas/ui/icons'
 import { Title } from '../../components/meta'
+import { useI18n } from '@polocas/next/i18n'
 import { withPageProps } from '../../pages'
-import { withTranslation } from '@polocas/ui/i18n'
 import {
   CommonLayout,
   ContentContainer,
@@ -65,8 +65,8 @@ const ShowDetailDescription = ({ show }) => (
   </>
 )
 
-const ShowDetailTypeLink = withTranslation(({ showType, t }) => {
-  console.log(showType)
+function ShowDetailTypeLink({ showType }) {
+  const { t } = useI18n()
   if (isVisible(showType)) {
     return (
       <Link route='showFormatDetail' params={{ slug: showType.slug }}>
@@ -75,9 +75,10 @@ const ShowDetailTypeLink = withTranslation(({ showType, t }) => {
     )
   }
   return null
-})
+}
 
-const ShowDetailEmailReservations = withTranslation(({ show, t }) => {
+function ShowDetailEmailReservations({ show }) {
+  const { t } = useI18n()
   if (show.emailReservations) {
     return (
       <p>
@@ -89,9 +90,10 @@ const ShowDetailEmailReservations = withTranslation(({ show, t }) => {
     )
   }
   return null
-})
+}
 
-const ShowDetailMatchReport = withTranslation(({ match, t }) => {
+function ShowDetailMatchReport({ match }) {
+  const { t } = useI18n()
   if (match) {
     return (
       <Col as={Section} lg={6}>
@@ -101,14 +103,17 @@ const ShowDetailMatchReport = withTranslation(({ match, t }) => {
     )
   }
   return null
-})
+}
 
-const ShowDetailParticipants = withTranslation(({ participants, t }) => (
-  <Col as={Section} lg={6}>
-    <Heading>{t('showParticipants')}</Heading>
-    <ShowParticipants participants={participants} />
-  </Col>
-))
+function ShowDetailParticipants({ participants }) {
+  const { t } = useI18n()
+  return (
+    <Col as={Section} lg={6}>
+      <Heading>{t('showParticipants')}</Heading>
+      <ShowParticipants participants={participants} />
+    </Col>
+  )
+}
 
 export const getServerSideProps = compose(
   withPageProps,
@@ -125,36 +130,39 @@ const TicketPrice = ({ price }) => (
   </div>
 )
 
-const EventPrices = withTranslation(({ event, prices, t }) => (
-  <LogisticInfo
-    icon={TicketsIcon}
-    summary={<Heading>{t('ticket-links')}</Heading>}
-  >
-    <div>
-      {prices.map((price) => (
-        <TicketPrice price={price} key={price.id} />
-      ))}
-    </div>
-    <div className='d-flex flex-wrap'>
-      <LinkButton
-        href={event.linkTickets}
-        label={t('buyTickets')}
-        icon={<TicketsIcon />}
-        variant='primary'
-        size='lg'
-        className='mt-2 me-2 flex-grow-1'
-      />
-      <LinkButton
-        href={event.linkReservations}
-        label={t('reserveSeats')}
-        icon={<TicketsIcon />}
-        variant={event.linkTickets ? 'secondary' : 'primary'}
-        size='lg'
-        className='mt-2 me-2 flex-grow-1'
-      />
-    </div>
-  </LogisticInfo>
-))
+function EventPrices({ event, prices }) {
+  const { t } = useI18n()
+  return (
+    <LogisticInfo
+      icon={TicketsIcon}
+      summary={<Heading>{t('ticket-links')}</Heading>}
+    >
+      <div>
+        {prices.map((price) => (
+          <TicketPrice price={price} key={price.id} />
+        ))}
+      </div>
+      <div className='d-flex flex-wrap'>
+        <LinkButton
+          href={event.linkTickets}
+          label={t('buyTickets')}
+          icon={<TicketsIcon />}
+          variant='primary'
+          size='lg'
+          className='mt-2 me-2 flex-grow-1'
+        />
+        <LinkButton
+          href={event.linkReservations}
+          label={t('reserveSeats')}
+          icon={<TicketsIcon />}
+          variant={event.linkTickets ? 'secondary' : 'primary'}
+          size='lg'
+          className='mt-2 me-2 flex-grow-1'
+        />
+      </div>
+    </LogisticInfo>
+  )
+}
 
 const InfoCol = ({ children, ...props }) => (
   <Col className={styles.logisticsItem} md={6} lg={6} xl={5} {...props}>

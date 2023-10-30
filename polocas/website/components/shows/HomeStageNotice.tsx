@@ -1,13 +1,14 @@
 import React from 'react'
 
 import { Section, Heading } from '@polocas/ui/content'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/next/i18n'
 
 function formatPlace(place) {
   return place.location.name
 }
 
-export const HomeStageNotice = withTranslation(({ usualPlaces, t }) => {
+export function HomeStageNotice({ usualPlaces }) {
+  const { t } = useI18n()
   if (!usualPlaces.length) {
     return null
   }
@@ -22,4 +23,4 @@ export const HomeStageNotice = withTranslation(({ usualPlaces, t }) => {
       </p>
     </Section>
   )
-})
+}

@@ -1,10 +1,12 @@
-import Markdown from 'react-markdown'
+import { Markdown } from '@polocas/ui/text'
+import { useI18n } from '@polocas/next/i18n'
 
-import { withTranslation } from '@polocas/ui/i18n'
-
-export const GroupDescription = withTranslation(({ t }) => (
-  <section>
-    <h1>{t('groupDescriptionHeading')}</h1>
-    <Markdown source={t('groupDescriptionPerex')} />
-  </section>
-))
+export function GroupDescription() {
+  const { t } = useI18n()
+  return (
+    <section>
+      <h1>{t('groupDescriptionHeading')}</h1>
+      <Markdown source={t('groupDescriptionPerex')} />
+    </section>
+  )
+}
