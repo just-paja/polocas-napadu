@@ -1,8 +1,7 @@
-import Modal from 'react-bootstrap/Modal'
-
 import { Form, FormControls, RadioGroup } from '@polocas/ui/forms'
 import { FoulSelection } from './FoulSelection.js'
 import { gql, useMutation } from '@apollo/client'
+import { Modal } from 'react-bootstrap'
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useMatch } from '@polocas/core/context'

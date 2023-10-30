@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ContentContainer } from '..'
 import { mount } from 'enzyme'
 

@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import React from 'react'
 import styles from './showList.module.scss'
 
 import { gql } from '@apollo/client'

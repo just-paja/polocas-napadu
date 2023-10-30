@@ -55,20 +55,23 @@ export interface Inspiration extends Entity {
 }
 
 export interface Game extends Entity {
-  inspirations: Inspiration
+  inspirations: Inspiration[]
   type: string
+  rules?: GameRules
 }
 
 export interface Stage extends Entity {
   game: Game
   type: GameStage
+  inspirations?: Inspiration[]
 }
 
 export interface Match extends Entity {
-  closed: boolean
-  currentStage: Stage
-  contestantGroups: ContestantGroup[]
-  show: Show
+  closed?: boolean
+  currentStage?: Stage
+  contestantGroups?: ContestantGroup[]
+  show?: Show
+  preparedInspirationCount?: number
 }
 
 export interface GenericError {

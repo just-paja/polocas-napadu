@@ -75,6 +75,7 @@ interface FormlessInputProps {
   as?: ElementType
   className?: ClassName
   error?: Error
+  disabled?: boolean
   id?: string
   label?: ReactNode
   name: string

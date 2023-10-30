@@ -27,9 +27,17 @@
       "types": "./dist/constants.d.ts",
       "import": "./dist/constants.js"
     },
+    "./contestants": {
+      "types": "./dist/contestants.d.ts",
+      "import": "./dist/contestants.js"
+    },
     "./context": {
       "types": "./dist/context.d.ts",
       "import": "./dist/context.js"
+    },
+    "./gameStage": {
+      "types": "./dist/gameStage.d.ts",
+      "import": "./dist/gameStage.js"
     },
     "./generics": {
       "types": "./dist/generics.d.ts",

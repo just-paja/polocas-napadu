@@ -1,6 +1,18 @@
+import type { ReactNode } from 'react'
+
 import classnames from 'classnames'
 import styles from './BoardLayout.module.scss'
 
-export const BoardLayout = ({ children, layout = 'horizontal' }) => (
-  <div className={classnames(styles.layout, styles[layout])}>{children}</div>
-)
+interface BoardLayoutProps {
+  children?: ReactNode
+  layout?: 'horizontal' | 'vertical'
+}
+
+export function BoardLayout({
+  children,
+  layout = 'horizontal'
+}: BoardLayoutProps) {
+  return (
+    <div className={classnames(styles.layout, styles[layout])}>{children}</div>
+  )
+}

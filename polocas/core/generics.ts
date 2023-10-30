@@ -13,6 +13,8 @@ export type Image = ImageObject | string
 
 export interface Entity {
   id: Ident
+  created?: string
+  modified?: string
 }
 
 export interface NamedEntity extends Entity {

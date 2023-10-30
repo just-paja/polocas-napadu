@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { renderWithI18n } from '../../../mock'
 import { SocialNetworks, SocialNetworkLink } from '../social'
 

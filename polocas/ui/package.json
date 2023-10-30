@@ -21,10 +21,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": {
-        "development": "./index.tsx",
-        "default": "./dist/index.js"
-      }
+      "import": "./dist/index.js"
     },
     "./apollo": {
       "types": "./dist/apollo.d.ts",
@@ -36,10 +33,7 @@
     },
     "./content": {
       "types": "./dist/content.d.ts",
-      "import": {
-        "default": "./dist/content.js",
-        "development": "./content.tsx"
-      }
+      "import": "./dist/content.js"
     },
     "./decorators": {
       "types": "./dist/decorators.d.ts",
@@ -85,10 +79,7 @@
     },
     "./text": {
       "types": "./dist/text.d.ts",
-      "import": {
-        "default": "./dist/text.js",
-        "development": "./text.tsx"
-      }
+      "import": "./dist/text.js"
     }
   },
   "dependencies": {
@@ -104,6 +95,7 @@
     "react-hook-form": "^7.47.0",
     "react-i18next": "^12.2.2",
     "react-icons": "^4.11.0",
+    "react-markdown": "^9.0.0",
     "react-overlays": "^5.2.1"
   }
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import Markdown from 'react-markdown'
 
 import { ContentContainer } from '../layout/ContentContainer'

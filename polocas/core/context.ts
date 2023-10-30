@@ -1,3 +1,5 @@
+import type { Match, Show  } from './constants.js'
+
 import { createContext, useContext } from 'react'
 import { Sponsor } from './constants.js'
 
@@ -13,8 +15,10 @@ export interface UrlBaseShape {
 }
 
 export const RouterContext = createContext({})
-export const MatchContext = createContext(null)
-export const ShowContext = createContext(null)
+export const MatchContext = createContext<Match>({
+  id: '',
+})
+export const ShowContext = createContext<Show | null>(null)
 export const UrlBase = createContext<UrlBaseShape | null>(null)
 export const PageContext = createContext<PageContextShape>({
   siteSponsorList: [],

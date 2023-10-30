@@ -1,8 +1,9 @@
-import ListGroup from 'react-bootstrap/ListGroup'
+import type { Inspiration } from '@polocas/core/constants'
 
 import { Button } from '@polocas/ui/buttons'
 import { DeleteIcon } from '@polocas/ui/icons'
 import { gql, useMutation } from '@apollo/client'
+import { ListGroup } from 'react-bootstrap'
 
 const INSPIRATION_DISCARD = gql`
   mutation InspirationDiscard($inspirationId: Int!) {
@@ -12,7 +13,11 @@ const INSPIRATION_DISCARD = gql`
   }
 `
 
-const InspirationDiscard = ({ inspiration }) => {
+interface InspirationDiscardProps {
+  inspiration: Inspiration
+}
+
+function InspirationDiscard({ inspiration }: InspirationDiscardProps ) {
   const [mutate, { loading }] = useMutation(INSPIRATION_DISCARD)
   const handleClick = () =>
     mutate({
@@ -27,7 +32,12 @@ const InspirationDiscard = ({ inspiration }) => {
   )
 }
 
-const InspirationItem = ({ inspiration, readOnly }) => {
+interface InspirationItemProps {
+  inspiration: Inspiration
+  readOnly?: boolean
+}
+
+function InspirationItem({ inspiration, readOnly }: InspirationItemProps) {
   return (
     <ListGroup.Item
       key={inspiration.id}
@@ -39,14 +49,21 @@ const InspirationItem = ({ inspiration, readOnly }) => {
   )
 }
 
-export const InspirationList = ({ inspirations, readOnly = false }) => (
-  <ListGroup>
-    {inspirations.map((inspiration) => (
-      <InspirationItem
-        inspiration={inspiration}
-        readOnly={readOnly}
-        key={inspiration.id}
-      />
-    ))}
-  </ListGroup>
-)
+interface InspirationListProps {
+  inspirations: Inspiration[]
+  readOnly?: boolean
+}
+
+export function InspirationList({ inspirations, readOnly = false }: InspirationListProps) {
+  return (
+    <ListGroup>
+      {inspirations.map((inspiration) => (
+        <InspirationItem
+          inspiration={inspiration}
+          readOnly={readOnly}
+          key={inspiration.id}
+        />
+      ))}
+    </ListGroup>
+  )
+}

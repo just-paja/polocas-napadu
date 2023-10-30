@@ -1,6 +1,5 @@
 import type { Show } from '@polocas/ui'
 
-import React from 'react'
 import styles from './ShowList.module.scss'
 
 import { gql } from '@apollo/client'

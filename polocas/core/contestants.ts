@@ -13,6 +13,7 @@ export enum ContestantSide {
 export interface ContestantGroup extends Entity {
   band: TeamEntity
   contestantType: ContestantType
+  color?: string
 }
 
 export const getContestantTypeBySide = (

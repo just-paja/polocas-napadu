@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './articles.module.scss'
 
 import { Carousel } from './images'

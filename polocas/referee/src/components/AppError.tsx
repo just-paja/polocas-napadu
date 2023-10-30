@@ -1,11 +1,11 @@
-const AppError = ({ error }) => {
+import { ErrorMessage } from '@polocas/core/constants'
+
+export const AppError = ({ error = null }: { error: ErrorMessage }) => {
   if (!error) {
     return null
   }
   if (error instanceof Error) {
     return <span>{error.message}</span>
   }
-  return <span>{error}</span>
+  return <span>{String(error)}</span>
 }
-
-export default AppError

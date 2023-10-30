@@ -1,6 +1,5 @@
 import classnames from 'classnames'
 import ImageGallery from 'react-image-gallery'
-import React from 'react'
 
 import styles from './images.module.scss'
 

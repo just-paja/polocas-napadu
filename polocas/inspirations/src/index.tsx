@@ -2,20 +2,22 @@ import type { FC } from 'react'
 
 import { App } from './App.js'
 import { createRoot } from 'react-dom/client'
-import { initLocalization } from '@polocas/ui/i18n'
-
-import cs from '@polocas/ui/locales/cs/common.json'
-import en from '@polocas/ui/locales/en/common.json'
+import { locales, initLocalization } from '@polocas/ui/i18n'
 
 import './index.scss'
 
 const render = (RootComponent: FC) => {
-  const root = createRoot(document.getElementById('root'))
-  root.render(<RootComponent />)
+  const el = document.getElementById('root')
+  if (el) {
+    const root = createRoot(el)
+    root.render(<RootComponent />)
+  } else {
+    console.error('Missing root element')
+  }
 }
 
 const startUp = () => {
-  initLocalization({ cs, en })
+  initLocalization(locales)
   render(App)
 }
 

@@ -1,13 +1,15 @@
-import React from 'react'
 import styles from './ContactUs.module.scss'
 
-import { Markdown } from '../markdown'
+import { Markdown } from '@polocas/ui/text'
 import { SocialNetworks } from '../social'
-import { withTranslation } from '@polocas/ui/i18n'
+import { useI18n } from '@polocas/ui/i18n'
 
-export const ContactUs = withTranslation(({ t }) => (
-  <>
-    <Markdown source={t('contactText')} />
-    <SocialNetworks className={styles.networks} vertical />
-  </>
-))
+export function ContactUs() {
+  const { t } = useI18n()
+  return (
+    <>
+      <Markdown source={t('contactText')} />
+      <SocialNetworks className={styles.networks} vertical />
+    </>
+  )
+}

@@ -3,6 +3,11 @@ import type { FC } from 'react'
 import { use } from 'i18next'
 import { useTranslation, initReactI18next } from 'react-i18next'
 
+import cs from '@polocas/ui/locales/cs/common.json' assert { type: 'json' }
+import en from '@polocas/ui/locales/en/common.json' assert { type: 'json' }
+
+export const locales = { cs, en }
+
 export type Translate = (t: string) => string
 
 export interface TranslatedComponent {
@@ -24,7 +29,7 @@ export function withTranslation<T>(
   return fn
 }
 
-export function initLocalization(locales: Record<string, string>) {
+export function initLocalization(locales: Record<string, Record<string, string>>) {
   const resources = Object.fromEntries(
     Object.entries(locales).map(([lang, translation]) => [
       lang,

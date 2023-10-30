@@ -1,3 +1,5 @@
+import type { GameRules } from '@polocas/core/constants'
+
 import { BoardLayout } from './BoardLayout.js'
 import { ContestantSide } from '@polocas/core/contestants'
 import { ControlsLayout } from './ControlsLayout.js'
@@ -20,7 +22,7 @@ const SET_GAME = gql`
 export const GameSetupStage = () => {
   const [setGame, { loading }] = useMutation(SET_GAME)
   const match = useMatch()
-  const handleChange = (value) =>
+  const handleGameChange = (value?: GameRules) =>
     setGame({
       refetchQueries: ['MatchStage'],
       variables: {
@@ -42,9 +44,9 @@ export const GameSetupStage = () => {
         {match.closed ? null : (
           <>
             <GameSelection
-              onChange={handleChange}
-              saving={loading}
-              value={match.currentStage.game && match.currentStage.game.rules}
+              onChange={handleGameChange}
+              disabled={loading}
+              value={match?.currentStage?.game?.rules}
             />
             <Heading>Inspirace ({match.preparedInspirationCount})</Heading>
             <InspirationSelection />

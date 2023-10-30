@@ -2,9 +2,23 @@ import { Form, FormControls, Input } from '@polocas/ui/forms'
 
 const defaultValues = { inspiration: '' }
 
-export const InspirationForm = ({ onSubmit, values = defaultValues }) => {
+interface InspirationFormValues {
+  inspiration?: string
+}
+
+interface InspirationFormProps {
+  id: string
+  onSubmit: (values: InspirationFormValues) => void
+  values?: InspirationFormValues 
+}
+
+export function InspirationForm({ id, onSubmit, values = defaultValues }: InspirationFormProps) {
   return (
-    <Form defaultValues={values} onSubmit={onSubmit}>
+    <Form
+      id={id}
+      defaultValues={values}
+      onSubmit={onSubmit}
+    >
       <div>
         <Input
           name='inspiration'

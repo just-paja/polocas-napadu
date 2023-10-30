@@ -10,7 +10,7 @@ import styles from './tracking.module.scss'
 import { getCookie, setCookies } from 'cookies-next'
 import { Button } from '@polocas/ui/buttons'
 import { Form, FormControls, Input } from '@polocas/ui/forms'
-import { useTranslation } from 'next-i18next'
+import { useI18n } from '@polocas/ui/i18n'
 
 const COOKIE_CONSENT = 'cookieConsent'
 const CONSENT_FUNCTIONAL = 'functional'
@@ -24,7 +24,7 @@ const defaultConsent = {
 }
 
 const ConsentForm = ({ consent, onCancel, onSubmit }) => {
-  const { t } = useTranslation()
+  const { t } = useI18n()
   const defaultValues = consent || defaultConsent
   const stopPropagation = (e) => e.stopPropagation()
   return (

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { MatchContext } from '@polocas/core/context'
 
 export const withStage = (Component) => (props) =>

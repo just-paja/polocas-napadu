@@ -1,7 +1,16 @@
+import type { ElementType, ReactNode } from 'react'
+import type { ClassName } from '@polocas/core/generics'
+
 import classnames from 'classnames'
 import Container from 'react-bootstrap/Container'
-import React from 'react'
 import styles from './ContentContainer.module.scss'
+
+interface ContentContainerProps {
+  as?: ElementType,
+  children: ReactNode,
+  className?: ClassName,
+  column?: boolean,
+}
 
 export function ContentContainer({
   as,
@@ -9,7 +18,7 @@ export function ContentContainer({
   className,
   column,
   ...props
-}) {
+}: ContentContainerProps) {
   return (
     <Container
       as={as}

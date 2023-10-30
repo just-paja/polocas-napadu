@@ -1,3 +1,5 @@
+import type { Inspiration } from '@polocas/core/constants'
+
 import { BoardLayout } from './BoardLayout.js'
 import { ContestantSide } from '@polocas/core/contestants'
 import { ControlsLayout } from './ControlsLayout.js'
@@ -17,10 +19,10 @@ export const GameStage = () => {
       </BoardLayout>
       <MainControls center>
         <p>Právě probíhá kategorie</p>
-        <h1>{currentStage.game.rules.name}</h1>
-        <Timer start={currentStage.created} />
+        <h1>{currentStage?.game?.rules?.name}</h1>
+        <Timer start={currentStage?.created} />
         <InspirationList
-          inspirations={currentStage.game.inspirations}
+          inspirations={currentStage?.game?.inspirations || [] as Inspiration[]}
           readOnly
         />
       </MainControls>

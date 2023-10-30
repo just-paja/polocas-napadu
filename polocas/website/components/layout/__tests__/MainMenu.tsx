@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { MainMenu } from '..'
 import { renderWithI18n } from '../../../mock'
 

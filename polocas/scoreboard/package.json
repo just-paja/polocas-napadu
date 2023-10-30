@@ -2,6 +2,7 @@
   "name": "@polocas/scoreboard",
   "version": "0.9.18",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/dev-server.mjs"

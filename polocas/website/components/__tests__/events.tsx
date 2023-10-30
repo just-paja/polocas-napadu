@@ -1,5 +1,4 @@
 import moment from 'moment-timezone'
-import React from 'react'
 
 import { advanceTo, clear } from 'jest-date-mock'
 import { EventStart } from 'ui/events'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { AppError } from './AppError.js'
 import { gql, useQuery } from '@apollo/client'
 import { Heading, Main } from '@polocas/ui/content'

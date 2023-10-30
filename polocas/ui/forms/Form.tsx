@@ -32,7 +32,7 @@ interface FormProps<T extends FieldValues> {
   children: ReactNode
   id: string
   onSubmit: SubmitHandler<T>
-  resolver: Resolver<T>
+  resolver?: Resolver<T>
 }
 
 function ReflessForm<T extends FieldValues>(

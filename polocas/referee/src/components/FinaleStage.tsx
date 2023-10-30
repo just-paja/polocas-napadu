@@ -4,10 +4,10 @@ import { ControlsLayout } from './ControlsLayout.js'
 import { Heading } from '@polocas/ui/content'
 import { MainControls } from './MainControls.js'
 import { Team } from './Team.js'
-import { useTranslation } from 'react-i18next'
+import { useI18n } from '@polocas/ui/i18n'
 
 export const FinaleStage = () => {
-  const { t } = useTranslation()
+  const { t } = useI18n()
   return (
     <ControlsLayout>
       <BoardLayout>

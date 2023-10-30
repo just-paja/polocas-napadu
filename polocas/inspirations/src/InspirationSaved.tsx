@@ -1,7 +1,5 @@
 import type { MouseEventHandler } from 'react'
 
-import React from 'react'
-
 import { Button } from '@polocas/ui/buttons'
 import { AgainIcon } from '@polocas/ui/icons'
 

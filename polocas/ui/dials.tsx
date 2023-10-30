@@ -1,5 +1,5 @@
 import type { ClassName } from '@polocas/core/generics'
-import type { PropsWithChildren, ReactNode } from 'react'
+import type { MouseEventHandler, PropsWithChildren, ReactNode } from 'react'
 
 import classnames from 'classnames'
 import React, { useRef, useState } from 'react'
@@ -17,6 +17,8 @@ export const useSpeedDial = () => React.useContext(SpeedDialContext)
 
 type SpeedDialItemProps = PropsWithChildren<{
   className?: ClassName
+  icon?: ReactNode
+  onClick?: MouseEventHandler<HTMLButtonElement>
   title: string
 }>
 

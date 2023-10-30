@@ -1,6 +1,5 @@
-import Container from 'react-bootstrap/Container'
-
 import { Apollo } from '@polocas/ui/apollo'
+import { Container } from 'react-bootstrap'
 import { FixedDialog } from '@polocas/ui/dialogs'
 import { HashRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router'

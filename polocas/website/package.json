@@ -36,8 +36,8 @@
     "@polocas/scoreboard": "file:../scoreboard",
     "@polocas/ui": "file:../ui",
     "locale": "^0.1.0",
+    "next-i18next": "^14.0.3",
     "query-string-manipulator": "^1.2.2",
-    "react-image-gallery": "^1.2.11",
-    "react-markdown": "^8.0.3"
+    "react-image-gallery": "^1.2.11"
   }
 }

@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-
 import { Show } from '@polocas/core/constants'
 import { gql, useMutation } from '@apollo/client'
 import { InspirationForm } from './InspirationForm.js'
 import { InspirationSaved } from './InspirationSaved.js'
+import { useState } from 'react'
 
 const ADD_INSPIRATION = gql`
   mutation AddInspiration($showId: Int!, $inspirationText: String!) {
@@ -13,6 +12,10 @@ const ADD_INSPIRATION = gql`
   }
 `
 
+interface InspirationValues {
+  inspiration: string
+}
+
 export const InsertInspiration = ({ show }: { show: Show }) => {
   const [saved, setSaved] = useState(false)
   const [save, { loading, error }] = useMutation(ADD_INSPIRATION)
@@ -21,7 +24,7 @@ export const InsertInspiration = ({ show }: { show: Show }) => {
     return <InspirationSaved onContinue={() => setSaved(false)} />
   }
 
-  const handleSubmit = async (formValue) => {
+  const handleSubmit = async (formValue: InspirationValues) => {
     await save({
       refetchQueries: ['ShowInfo'],
       variables: {

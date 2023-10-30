@@ -1,16 +1,18 @@
+import type { Stage } from '@polocas/core/constants'
+
 import { FinaleStage } from './FinaleStage.js'
 import { GameResultsStage } from './GameResultsStage.js'
 import { GameSetupStage } from './GameSetupStage.js'
 import { GameStage as GameStageComponent } from './GameStage.js'
 import { GameStage } from '@polocas/core/gameStage'
-import { gql } from '@apollo/client'
+import { gql, useQuery } from '@apollo/client'
 import { IntroStage } from './IntroStage.js'
 import { MatchContext } from '@polocas/core/context'
 import { PauseStage } from './PauseStage.js'
 import { ShowSetupStage } from './ShowSetupStage.js'
-import { withQuery } from '@polocas/ui/apollo'
+import { useParams } from 'react-router'
 
-const GET_MATCH = gql`
+const getMatch = gql`
   query MatchStage($matchId: Int!) {
     match(id: $matchId) {
       id
@@ -65,7 +67,7 @@ const GET_MATCH = gql`
   }
 `
 
-const getStageView = (stage) => {
+const getStageView = (stage: Stage) => {
   if (stage) {
     if (stage.type === GameStage.Intro) {
       return <IntroStage />
@@ -89,12 +91,25 @@ const getStageView = (stage) => {
   return <ShowSetupStage />
 }
 
-export const MatchStage = withQuery(
-  ({ data }) => (
+const DEFAULT_POLL_INTERVAL = 500
+
+export function MatchStage() {
+  const params = useParams()
+  const { data, error, loading } = useQuery(getMatch, {
+    pollInterval: DEFAULT_POLL_INTERVAL,
+    variables: {
+      ...params,
+    },
+  })
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Error!</div>
+  }
+  return (
     <MatchContext.Provider value={data.match}>
-      {getStageView(data.match.currentStage)}
+      {getStageView(data.match?.currentStage)}
     </MatchContext.Provider>
-  ),
-  GET_MATCH,
-  true,
-)
+  )
+}

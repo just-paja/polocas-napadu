@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { UsualPlace } from '..'
 import { mount } from 'enzyme'
 

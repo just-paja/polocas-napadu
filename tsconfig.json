@@ -18,6 +18,7 @@
     "lib": ["esnext"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
     "strict": true,
     "target": "esnext"
   },

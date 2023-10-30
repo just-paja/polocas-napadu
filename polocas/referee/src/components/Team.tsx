@@ -1,11 +1,19 @@
+import type { ReactNode } from 'react'
+
+import { ContestantSide } from '@polocas/core/contestants'
 import { getContestantTypeBySide } from '@polocas/core/contestants'
 import { TeamDetails } from './TeamDetails.js'
 import { useMatch } from '@polocas/core/context'
 
-export const Team = ({ children, side }) => {
+interface TeamProps {
+  children?: ReactNode
+  side: ContestantSide
+}
+
+export function Team({ children, side }: TeamProps) {
   const { contestantGroups } = useMatch()
   const contestantType = getContestantTypeBySide(side)
-  const team = contestantGroups.find(
+  const team = contestantGroups?.find(
     (group) => group.contestantType === contestantType,
   )
 

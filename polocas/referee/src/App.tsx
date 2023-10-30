@@ -8,7 +8,7 @@ export const App = () => (
   <HashRouter>
     <Apollo>
       <Routes>
-        <Route path='/match/:matchId' exact element={<RefereeView />} />
+        <Route path='/match/:matchId' element={<RefereeView />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Apollo>

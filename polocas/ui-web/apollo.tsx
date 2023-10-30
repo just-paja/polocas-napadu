@@ -1,15 +1,8 @@
-import qs from 'query-string'
-
-import type { FC, ReactNode } from 'react'
+import type { FC } from 'react'
 import type { DocumentNode } from '@apollo/client'
 
 import { useParams } from 'react-router'
-import { setContext } from '@apollo/client/link/context'
 import {
-  ApolloClient,
-  ApolloProvider,
-  createHttpLink,
-  InMemoryCache,
   useQuery,
 } from '@apollo/client'
 
@@ -23,50 +16,6 @@ export const mergeQueryResults = (results: object[]) =>
     (aggr: object, chunk: object) => Object.assign(aggr, chunk),
     {},
   )
-
-interface ApolloProps {
-  apiUrl?: string
-  children: ReactNode
-}
-
-interface Headers {
-  [key: string]: string
-}
-
-export function({ apiUrl, children }: ApolloProps) {
-  const params = qs.parse(document.location.search)
-  if ('authToken' in params) {
-    sessionStorage.setItem('authToken', String(params.token))
-  }
-  if ('apiUrl' in params) {
-    sessionStorage.setItem('apiUrl', String(params.apiUrl))
-    document.location.search = ''
-  }
-
-  const sessionApiUrl = sessionStorage.getItem('apiUrl')
-  const sessionAuthToken = sessionStorage.getItem('authToken')
-  const httpLink = createHttpLink({
-    uri: sessionApiUrl || apiUrl || process.env.apiUrl,
-  })
-  const authLink = setContext(
-    (_any: any, { headers }: { headers?: Headers }) => {
-      return {
-        headers: {
-          ...headers,
-          authorization: sessionAuthToken
-            ? `JWT ${sessionAuthToken}`
-            : undefined,
-        },
-      }
-    },
-  )
-
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    link: authLink.concat(httpLink),
-  })
-  return <ApolloProvider client={client}>{children}</ApolloProvider>
-}
 
 const DEFAULT_POLL_INTERVAL = 500
 

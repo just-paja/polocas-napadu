@@ -1,22 +1,22 @@
+import type { ApolloError } from '@apollo/client'
 import type { ChangeEvent } from 'react'
 
-import React, { useState } from 'react'
 import styles from './InspirationForm.module.scss'
 
-import { ErrorMessage } from '@polocas/core/constants'
 import { Button } from '@polocas/ui/buttons'
 import { Heading, Section } from '@polocas/ui/content'
 import { PlainInput } from '@polocas/ui/inputs'
 import { SendIcon } from '@polocas/ui/icons'
+import { useState } from 'react'
 
 interface InspirationFormProps {
-  error: ErrorMessage
+  error?: ApolloError
   onSubmit: Function
   saving: boolean
 }
 
 export const InspirationForm = ({
-  error = null,
+  error,
   onSubmit,
   saving = false,
 }: InspirationFormProps) => {

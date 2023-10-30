@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Address } from '..'
 import { shallow } from 'enzyme'
 
